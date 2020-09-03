@@ -486,7 +486,7 @@ html {
 .textarea-style,
 .input-style {
     outline: none;
-    height: 30px;
+    height: auto;
     width: inherit;
     /*margin-left: 10px;*/
     padding: 5px;
