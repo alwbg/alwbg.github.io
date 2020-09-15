@@ -93,14 +93,14 @@
             val: 4,
             name: '火龙果'
         }, {
-            val: 4,
-            name: '香蕉'
-        }, {
             val: 5,
-            name: '菠萝'
+            name: '猕猴桃'
         }, {
             val: 6,
-            name: '火龙果'
+            name: '哈密瓜'
+        }, {
+            val: 7,
+            name: '水蜜桃'
         }/* , {
             val: 7,
             name: '香蕉'
@@ -151,9 +151,9 @@
                     room.append('<div class="d input-style">Time</div><br/>')
                     room.append('<input class="d input-style" style="width:100%"/><br/><br/><br/>')
                     room.append('<input class="d input-style" style="width:100%" data-simply="true"/><br/><br/><br/>')
-                    console.log(this.room.find('div#id.all[app]'))
-                    console.log(dialog.within('.windows', room[0]))
-                    console.log(dialog.is('.confirm-content', room[0]))
+                    // console.log(this.room.find('div#id.all[app]'))
+                    // console.log(dialog.within('.windows', room[0]))
+                    // console.log(dialog.is('.confirm-content', room[0]))
                     model.input({
                         context: room[0],
                         data: source,
@@ -176,7 +176,7 @@
                     room.append('<br/><br/><br/>')
                     var a = room.find('.d').click(function(e){
                         var self = this;
-                        console.log(this)
+                        // console.log(this)
                         require('times', function(k){
                             // console.log(self)
                             k.factory(self).run({
@@ -192,6 +192,7 @@
                         source: source,
                         sname: '多选',
                         trigger_attr: 'val',
+                        current:'1,6',
                         append: true,
                         split: ',',
                         show_attr: '(({name}|.multi-title))(({val}|.multi-info))',
@@ -208,6 +209,7 @@
                     var ap = model.select({
                         context: room[0],
                         source: source,
+                        current:'1',
                         sname: '单选',
                         trigger_attr: 'val',
                         append: true,

@@ -6,7 +6,7 @@
 
 body,
 html {
-    font-family: 'Source Code Pro', "SF Pro SC", "SF Pro Text", "SF Pro Icons", "PingFang SC", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+    font-family: system-ui, 'Source Code Pro', "SF Pro SC", "SF Pro Text", "SF Pro Icons", "PingFang SC", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
     font-size: 12px;
     /*-webkit-user-select: none;*/
     /*-moz-user-focus: none;*/
@@ -1887,7 +1887,9 @@ span.tags.fail {
     color: #5d5d5d;
     border: 1px solid #ececec;
 }
-
+.display-hide{
+    display: none !important;
+}
 body {
     font-size: 12px;
 }
@@ -2818,7 +2820,9 @@ input.hover-show-hand[readonly]{
 	border-left-width: 5px;
 	margin-left: 0px;
 }
-
+.select-box.multi .select.select-not-empty.cur .selected{
+	overflow: auto;
+}
 /*多选/已选中的*/
 .select-box.multi .select.cur .selected {
 	height: auto!important;
