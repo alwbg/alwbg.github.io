@@ -510,6 +510,8 @@ input.input-style[readonly] {
 .textarea-style:focus-within,
 .input-style:focus-within {
     border: 1px solid #b3b1b1;
+
+    /* border-radius: 11px; */
 }
 
 .opt .input-style {
@@ -520,15 +522,18 @@ input.input-style[readonly] {
     width: 150px;
 
     animation: to100px 0.2s;
+    animation-fill-mode:forwards;
 }
 
 @keyframes to100px {
     from {
-        width: 70px
+        width: 70px;
+        border-radius: .3rem;
     }
 
     to {
         width: 150px;
+        border-radius: 11px;
     }
 }
 
@@ -1214,11 +1219,11 @@ input.input-style[readonly] {
 .windows .SType13 .link_state,
 .windows .SType13 .link_type,
 .windows .SType13 .link_url,
-.windows .SType13 .link_name,
-.windows .SType18 .link_state,
+.windows .SType13 .link_name/*,
+ .windows .SType18 .link_state,
 .windows .SType18 .link_type,
 .windows .SType18 .link_url,
-.windows .SType18 .link_name{
+.windows .SType18 .link_name */{
     display: none;
 }
 
@@ -1795,6 +1800,7 @@ span.tags.fail {
     display: inline-block;
     padding: 0px;
     margin-right: 10px;
+    border-radius: 10px;;
 }
 .label-input .label-clear{
     display: none;
@@ -1807,16 +1813,16 @@ span.tags.fail {
     display: inline-block;
     position: absolute;
     background-color: #e2e0e0;
-    height: 15px;
-    width: 15px;
-    line-height: 15px;
+    height: 16px;
+    width: 16px;
+    line-height: 14px;
     text-align: center;
     border-radius: 10px;
     color: #595959;
     font-size: 14px;
     font-weight: bold;
-    top: 6px;
-    right: 3px;
+    top: 5px;
+    right:4px;
 }
 #page-code{
     height: 30px;
@@ -1890,6 +1896,56 @@ span.tags.fail {
 .display-hide{
     display: none !important;
 }
+
+.info .mode-list.l-title .ui-state,.ui-state{
+    text-align: left;
+}
+
+.ui-state::after,
+.ui-state::before{
+    border-radius: 30px;
+    display: block;
+    content: "";
+    height: 30px;
+}
+.open .ui-state::after,
+.close .ui-state::after {
+    display: inline-block;
+    margin: 3px;
+    width: 16px;
+    height: 16px;
+    margin-left: 16px;
+    margin-top: -20px;
+    background-color: #ffffff;
+    border: 1px solid #ffffff;
+    box-shadow: inset 0 0.46875rem 2.1875rem rgba(4, 9, 20, 0.03), 0 0.9375rem 1.40625rem rgba(4, 9, 20, 0.03), 0 0.25rem 0.53125rem rgba(4, 9, 20, 0.05), 0 0.125rem 0.1875rem rgba(4, 9, 20, 0.03);
+}
+
+.open .ui-state::before,
+.close .ui-state::before  {
+    background-color: #8bc34a;
+    width: 34px;
+    height: 20px;
+    border: 1px solid transparent;
+    box-shadow: inset 20px -17rem 0rem 0px rgba(4, 9, 20, 0.03), inset 0 0.9375rem 0rem rgba(4, 9, 20, 0.03), inset 0 0.25rem 0rem rgba(4, 9, 20, 0.05), inset 0 0.125rem 0.1875rem rgba(4, 9, 20, 0.03);
+}
+.ui-state{
+    background:transparent;
+    height: auto;
+    width: fit-content;
+
+    line-height: 0px;
+    font-size: 0px;
+    min-width: 46px;
+}
+.close .ui-state::after {
+    background-color: #ffffff;
+    margin-left: 2px;
+}
+
+.close .ui-state::before {
+    background-color: #c9cacc;
+}
 body {
     font-size: 12px;
 }
@@ -1904,6 +1960,7 @@ body {
     cursor: pointer;
     overflow: hidden;
     margin-right: 10px;
+    margin: 5px;
 }
 
 .formbox .checkbox .el-name,
@@ -2031,6 +2088,7 @@ fieldset {
     cursor: pointer;
     overflow: hidden;
     margin-right: 10px;
+    margin: 5px;
 }
 
 .radio .el-name,
@@ -2461,7 +2519,8 @@ body, html{
     background-color: #ffffff;
 }
 .windows.ios .input-style,.windows.ios .textarea-style{
-	background-color: #353535;
+	background-color: #d2d2d2;
+	/* color:#; */
 }
 .windows.ios input-style:focus-within{
     border: 1px solid #b3b1b1;
