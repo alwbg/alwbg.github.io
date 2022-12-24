@@ -9,7 +9,7 @@
 	<title>Model Test</title>
 	<script type="text/javascript">
 		var _Qma = {
-            v: '00000',
+            v: '2022.12.24',
 			alias :{
                 'areain' : 'tools#areain',
                 'model' : 'tools#model',
@@ -26,204 +26,15 @@
         }
         DEBUG = true
     </script>
-    <style> 
-        :root {
-            color-scheme: light dark;
-            --body-text-color: rgb(125, 127, 127);
-        }
-
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --body-text-color: rgb(133, 133, 133);
-            }
-        }
-
-        html {
-            width: 100%;
-        }
-
-
-        body{
-            background-color: #fff;
-        }
-        .overflow.windows .confirm-content, .overflow.windows .dialog-confirm{
-            overflow: visible;
-        }
-        .radio-box{
-            margin-bottom: 30px;
-        }
-
-
-        .input-style{
-            /*background-color: #d4d4d4; */
-            /* color: #cacaca; */
-            outline: none;
-            /* height: 30px; */
-            width: inherit;
-            /* margin-left: 10px; */
-            padding: 5px;
-            font-size: 12px;
-            font-weight: bold;
-            border: 0;
-            border-radius: 0.3rem;
-            background-color: #232323;
-            height: 30px;
-            line-height: 30px;
-            margin-bottom: 10px;
-            padding: 5px;
-            width: fit-content;
-        }
-    </style>
 </head>
 <body>
-    <img src="./static/0.jpeg" style="width: 100px;"/>
-    <img src="./static/1.png" style="width: 100px;"/>
-    <img src="./static/2.png" style="width: 100px;"/>
-	<script src="runjs.js?1" srcs="http://runjs.i.com/source/runjs.source.js">
-        var source = [{
-            val: 1,
-            name: '苹果'
-        }, {
-            val: 2,
-            name: '香蕉'
-        }, {
-            val: 3,
-            name: '菠萝'
-        }, {
-            val: 4,
-            name: '火龙果'
-        }, {
-            val: 5,
-            name: '猕猴桃'
-        }, {
-            val: 6,
-            name: '哈密瓜'
-        }, {
-            val: 7,
-            name: '水蜜桃'
-        }/* , {
-            val: 7,
-            name: '香蕉'
-        }, {
-            val: 8,
-            name: '菠萝'
-        }, {
-            val: 9,
-            name: '火龙果'
-        }, {
-            val: 10,
-            name: '香蕉'
-        }, {
-            val: 11,
-            name: '菠萝'
-        }, {
-            val: 12,
-            name: '火龙果'
-        }, {
-            val: 13,
-            name: '香蕉'
-        }, {
-            val: 14,
-            name: '菠萝'
-        }, {
-            val: 15,
-            name: '火龙果'
-        } */]
+	<script src="runjs.js?last">
 
-       
-        function Times(){
-        }
-        require(['dialog', 'model'], function(dialog, model){
-            dialog.confirm('Form', '', function(){
-            }, {
-                cs: 'inner:x .confirm-title x .confirm-cancel .confirm-content 40',
-                last: function(){
-                    var self = this;
-                    this.addClass('black');
-                   /*  console.log(this.room.mousedown(function(e){
-                        console.log(e, this)
-                    })) */
-                    this.room.attr({
-                        'id': 'id',
-                        'app': ''
-                    }).addClass('all')
-                    var room = /* ['body']|| */this.room.find('.confirm-content');
-                    room.append('<div class="d input-style">Time</div><br/>')
-                    room.append('<input class="d input-style" style="width:100%"/><br/><br/><br/>')
-                    room.append('<input class="d input-style" style="width:100%" data-simply="true"/><br/><br/><br/>')
-                    // console.log(this.room.find('div#id.all[app]'))
-                    // console.log(dialog.within('.windows', room[0]))
-                    // console.log(dialog.is('.confirm-content', room[0]))
-                    model.input({
-                        context: room[0],
-                        data: source,
-                        onselect: function(a, b){
-                            dialog.tips('请求请', 3000, room.find('label[data-key="'+ a +'"]')[0]).addClass('black')
-                        }
-                    });
-
-                    model.input({
-                        type: 'checkbox',
-                        context: room[0],
-                        data: source,
-                        onselect: function(a, b){
-                            // dialog.tips(a, 3, room.find('label[data-key="'+ a +'"]')[0] ).addClass('black')
-                            // console.log(...arguments)
-                        }
-                    });
-                    // room.append('<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>')
-
-                    room.append('<br/><br/><br/>')
-                    var a = room.find('.d').click(function(e){
-                        var self = this;
-                        // console.log(this)
-                        require('times', function(k){
-                            // console.log(self)
-                            k.factory(self).run({
-                                e: e,
-                                target: self,
-                                mode: 'YYYY-MM-DD hh:mm:ss',// (凌晨|早上|中午|午后|傍晚|晚上) 
-                                simply: dialog.attr(self, 'data-simply')
-                            });
-                        });
-                    })
-                    model.select({
-                        context: room[0],
-                        source: source,
-                        sname: '多选',
-                        trigger_attr: 'val',
-                        current:'1,6',
-                        append: true,
-                        split: ',',
-                        show_attr: '(({name}|.multi-title))(({val}|.multi-info))',
-                        multi: true,
-                        onshow: function(target) {
-                            // this.addClass('overflow');
-                        },
-                        onhide: function(target){
-                            // this.removeClass('overflow')
-                        },
-                        overflow: '.confirm-content'
-                    })
-                    room.append('<div id="app1">')
-                    var ap = model.select({
-                        context: room[0],
-                        source: source,
-                        current:'1',
-                        sname: '单选',
-                        trigger_attr: 'val',
-                        append: true,
-                        // multi: true,
-                        show_attr: '(({name}|.multi-title))(({val}|.multi-info))',
-                        overflow: '.confirm-content'
-                    })
-                    console.log(this.room.find('#app1'))
-                    room.append('<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>')
-                }
-            })            
-        })
-
-       
+       require('./js/modules/test#di', (m) => m.run());
+       var dialog = require('dialog');
+       dialog.each([0,1,2], (k, v) => {
+           dialog.query('img[src="./static/?.?" style="width: 33%;"]'.on(v, v==0 ? 'jpeg' : 'png'), true).appendTo('body')
+       })
     </script>
 </body>
 </html>
