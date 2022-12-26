@@ -29,12 +29,11 @@
 </head>
 <body>
 	<script src="runjs.js?last">
-
-       require('./js/modules/test#di', (m) => m.run());
-       var dialog = require('dialog');
-       dialog.each([0,1,2], (k, v) => {
-           dialog.query('img[src="./static/?.?" style="width: 33%;"]'.on(v, v==0 ? 'jpeg' : 'png'), true).appendTo('body')
-       })
+        require('./script/modules/test#di', (m) => m.run());
+        var dialog = require('dialog');
+        dialog.each([0, 1, 2], (k, v) => {
+            dialog.query('img[src="./static/?.?" style="width: 33%;"]'.on(v, v == 0 ? 'jpeg' : 'png'), true).appendTo('body')
+        })
     </script>
 </body>
 </html>
