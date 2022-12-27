@@ -1,21 +1,23 @@
 <html>
+
 <head>
-	<meta charset="utf-8" />
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta content="yes" name="apple-mobile-web-app-capable" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <!-- <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,  user-scalable=0" name="viewport" /> -->
     <meta name="disabled-adaptations" content="watch">
-	<title>Model Test</title>
-	<script type="text/javascript">
-		var _Qma = {
+    <title>Model Test</title>
+    <script type="text/javascript">
+        var _Qma = {
             v: '2022.12.24',
-			alias :{
-                'areain' : 'tools#areain',
-                'model' : 'tools#model',
-                'dialog' : 'tools#dialog',
-                'mode' : 'tools#mode',
-                'time'	: 'tools#time',
+            alias: {
+                'areain': 'tools#areain',
+                'model': 'tools#model',
+                'dialog': 'tools#dialog',
+                'mode': 'tools#mode',
+                'time': 'tools#time',
                 'times': 'tools#time.box'
             },
             depends: {
@@ -27,13 +29,18 @@
         DEBUG = true
     </script>
 </head>
+
 <body>
-	<script src="runjs.js?last">
-        require('./script/modules/test#di', (m) => m.run());
+    <script src="runjs.js?last">
+        let exec = () => {
+            require('./script/modules/test#di', (m) => m.run());
+        }
+        exec();
         var dialog = require('dialog');
         dialog.each([0, 1, 2], (k, v) => {
-            dialog.query('img[src="./static/?.?" style="width: 33%;"]'.on(v, v == 0 ? 'jpeg' : 'png'), true).appendTo('body')
+            dialog.query('img[src="./static/?.?" style="width: 33%;"]'.on(v, v == 0 ? 'jpeg' : 'png'), true).appendTo('body').click(exec)
         })
     </script>
 </body>
+
 </html>

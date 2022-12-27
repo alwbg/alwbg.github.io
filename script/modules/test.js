@@ -205,6 +205,7 @@ define('di', ['dialog'], function (dialog) {
             events: {
                 fillTestList() {
                     this.testlist.push({ name: '{100-2000}'.format(), shows: true })
+                    dialog.resize();
                     console.log(this);
                 },
                 testlistClick() {
