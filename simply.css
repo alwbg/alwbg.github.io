@@ -2327,3 +2327,9 @@ html {
 body {
   background: #333333;
 }
+
+@media (max-width: 600px) {
+  body > img {
+    width: 100% !important;
+  }
+}
