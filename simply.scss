@@ -36,26 +36,32 @@ body{
 	margin: 10px;
 	margin-bottom: 20px;
 }
-
+.windows.ios .wea.line{
+	padding: 2px;
+}
 .tq{
-	color: #fff
+	color: #000
 }
 .city {
 	font-size: 20px;
 	font-weight: bold;
 	margin: 10px;
 	margin-bottom: 10px;
+	color: #fff;
 }
 .days{
 	display: flex;
 	justify-content: space-between;
+}
+.tip-msg,.error-tips,.city-items{
+	padding:0 10px;
 }
 .day{
 	background-repeat: no-repeat;
 	background-size: 50px auto;
 	background-position: right top;
 	// width: 120px;
-	background-color: #3e3e3e;
+	background-color: #d3d0d0;
 	border-radius: 10px;
 	margin: 3px;
 	padding: 6px;
@@ -93,6 +99,14 @@ body{
 		font-size: 10px;
 		zoom: 0.9;
 		color: #00bcd4;
+	}
+	position: relative;
+	img {
+		position: absolute;
+		top: -30px;
+		right: -30px;
+		width: 110px;
+		z-index: 10;
 	}
 }
 .day-title{

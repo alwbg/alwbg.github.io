@@ -52,7 +52,7 @@ define('di', ['dialog'], function (dialog) {
     try {
         var modeString =
             `
-            ((div.line>Wea[:value="searchcity" :fly="inputs"]))
+            ((div.line.wea>Wea[:value="searchcity" :fly="inputs"]))
 ((
     (div.line>(
         +div{测试Array.length}+

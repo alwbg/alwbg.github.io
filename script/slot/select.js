@@ -261,7 +261,7 @@ define('button', ['dialog'], (dialog) => {
 define('tq', ['dialog'], (dialog) => {
     var tq = dialog.render(`
     div>(div.error-tips{天气搜索免责声明,如有侵权,联系删除...(alwbg@163.com)})+
-    +(div{调用接口测试(接口,ICON来源来源www.tianqiapi.com)}+
+    +(div.tip-msg{调用接口测试(接口,ICON来源来源www.tianqiapi.com)}+
         Select.city-items[:trigger="name" :data="citys" :current="citycur"]
     )+
     (
@@ -272,7 +272,8 @@ define('tq', ['dialog'], (dialog) => {
             div.city{城市:{city}}
             +div.days[:if="data.length"]>
                 (
-                    div.day[:for="data" :style.backgroundImage="'url(./images/icons/'+wea_img+'.png)'"]>
+                    div.day[:for="data"]>
+                    img[:src="'./images/icons/'+wea_img+'.png'"]+
                     .day-title{{day}}
                     +div.date{{date}}
                     +div.rain>(span.t{降雨概率}+span{{rain}})
@@ -310,7 +311,7 @@ define('tq', ['dialog'], (dialog) => {
                 clearTimeout(this.t);
                 this.t = setTimeout(() => {
                     console.log(city)
-                    this.data = [];
+                    // this.data = [];
                     require(_Qma.searchuri.on({ city: city || '1' }), (data) => {
                         console.log(data)
                         this.error = '';
