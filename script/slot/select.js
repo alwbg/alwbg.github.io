@@ -278,7 +278,7 @@ define('tq', ['dialog'], (dialog) => {
                     +div.rain>(span.t{降雨概率}+span{{rain}})
                     +div.tem>(span.t{实时温度}+span{{tem}})
                     +div.tem1>(span.t{高温}+span{{tem1}})
-                    +div.tem2>(span.t{高温}+span{{tem2}})
+                    +div.tem2>(span.t{低温}+span{{tem2}})
                     +div.humidity>(span.t{湿度}+span{{humidity}})
                     +div.air>(span.t{空气质量}+span{{air}})
                     +div.win_speed>(span.t{风速}+span{{win_speed}})
