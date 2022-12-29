@@ -286,7 +286,7 @@ define('tq', ['dialog'], (dialog) => {
                     +div.air_level>(span.t{空气等级}+span{{air_level}})
                     +div.narrative{{narrative}}
                 )
-                +div[:if="!data.length" style="text-align:center;font-size:15px;height:100px;line-height:100px"]{{error ? error:"loading..."}}
+                +div.tip-msg.empty-search[:if="!data.length"]{{error ? error:"loading..."}}
     )
         `, {
         slot: {
@@ -296,7 +296,7 @@ define('tq', ['dialog'], (dialog) => {
         data() {
             return {
                 citycur: '',
-                citys: [{name: '北京'}, {name: '深圳'}, {name: '沈阳'}, {name: '咸阳'}],
+                citys: [{name: '北京'}, {name: '深圳'}, {name: '沈阳'}, {name: '咸阳'}, {name: '上海'}, {name: '成都'}, {name: '拉萨'}, {name: '不存在'}],
                 fly: false,
                 data: '',
                 city: '-',
@@ -318,6 +318,7 @@ define('tq', ['dialog'], (dialog) => {
                         this.citycur = city;
                         dialog.merge(this, data, true);
                         if (data.data == undefined){
+                            this.data = [];
                             this.error = '空空如也~~   请重新输入';
                             this.city = city;
                         }
