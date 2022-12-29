@@ -2328,8 +2328,101 @@ body {
   background: #333333;
 }
 
-@media (max-width: 600px) {
+.city-items {
+  margin-bottom: 20px;
+}
+
+.error-tips {
+  color: #FF5722;
+  text-align: center;
+  margin: 10px;
+  margin-bottom: 20px;
+}
+
+.tq {
+  color: #fff;
+}
+
+.city {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 10px;
+  margin-bottom: 10px;
+}
+
+.days {
+  display: flex;
+  justify-content: space-between;
+}
+
+.day {
+  background-repeat: no-repeat;
+  background-size: 50px auto;
+  background-position: right top;
+  background-color: #3e3e3e;
+  border-radius: 10px;
+  margin: 3px;
+  padding: 6px;
+  font-weight: 100;
+  border: 1px solid #222;
+  box-sizing: border-box;
+}
+.day > * {
+  margin: 7px;
+}
+.day:first-child {
+  width: auto;
+  display: block;
+}
+.day > .date {
+  font-size: 10px;
+  zoom: 0.9;
+  color: #ff9800;
+}
+.day > * {
+  display: flex;
+}
+.day > * > span {
+  width: 100%;
+}
+.day > * > span:not(.t) {
+  color: #ff5722;
+  text-align: right;
+}
+.day .t {
+  display: inline-block;
+  width: 100%;
+}
+.day .narrative {
+  font-size: 10px;
+  zoom: 0.9;
+  color: #00bcd4;
+}
+
+.day-title {
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.windows.ios .dialog-confirm {
+  backdrop-filter: saturate(180%) blur(20px);
+}
+
+@media (max-width: 700px) {
   body > img {
     width: 100% !important;
+  }
+  .days {
+    display: block;
+  }
+  .days .day:not(:first-child) {
+    display: inline-block;
+    width: calc(33.3333333333% - 6px);
+  }
+}
+@media (max-width: 500px) {
+  .days .day:not(:first-child) {
+    display: inline-block;
+    width: calc(50% - 6px);
   }
 }

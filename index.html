@@ -24,14 +24,17 @@
                 dialog: {
                     deps: ['simply.css']
                 }
-            }
+            },
+            searchuri: 'http://v0.yiketianqi.com/api?unescape=1&version=v91&appid=43656176&appsecret=I42og6Lm&ext=&cityid=&city=?&callback=define'
         }
         DEBUG = true
     </script>
+    <style>
+    </style>
 </head>
 
 <body>
-    <script src="runjs.js?last">
+    <script src="runjs.js?last-none">
         let exec = () => {
             require('./script/modules/test#di', (m) => m.run());
         }
@@ -40,6 +43,7 @@
         dialog.each([0, 1, 2], (k, v) => {
             dialog.query('img[src="./static/?.?" style="width: 33%;"]'.on(v, v == 0 ? 'jpeg' : 'png'), true).appendTo('body').click(exec)
         })
+        
     </script>
 </body>
 

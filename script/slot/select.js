@@ -257,3 +257,80 @@ define('button', ['dialog'], (dialog) => {
         }
     })
 })
+
+define('tq', ['dialog'], (dialog) => {
+    var tq = dialog.render(`
+    div>(div.error-tips{天气搜索免责声明,如有侵权,联系删除...(alwbg@163.com)})+
+    +(div{调用接口测试(接口,ICON来源来源www.tianqiapi.com)}+
+        Select.city-items[:trigger="name" :data="citys" :current="citycur"]
+    )+
+    (
+        Input[:value="value" :tips="请输入城市中文名" :fly="fly"]
+    )
+    +(
+        div.tq>
+            div.city{城市:{city}}
+            +div.days[:if="data.length"]>
+                (
+                    div.day[:for="data" :style.backgroundImage="'url(./images/icons/'+wea_img+'.png)'"]>
+                    .day-title{{day}}
+                    +div.date{{date}}
+                    +div.rain>(span.t{降雨概率}+span{{rain}})
+                    +div.tem>(span.t{实时温度}+span{{tem}})
+                    +div.tem1>(span.t{高温}+span{{tem1}})
+                    +div.tem2>(span.t{高温}+span{{tem2}})
+                    +div.humidity>(span.t{湿度}+span{{humidity}})
+                    +div.air>(span.t{空气质量}+span{{air}})
+                    +div.win_speed>(span.t{风速}+span{{win_speed}})
+                    +div.air_level>(span.t{空气等级}+span{{air_level}})
+                    +div.narrative{{narrative}}
+                )
+                +div[:if="!data.length" style="text-align:center;font-size:15px;height:100px;line-height:100px"]{{error ? error:"loading..."}}
+    )
+        `, {
+        slot: {
+            Input: require('./script/slot/select#input'),
+            Select: require('./script/slot/select')
+        },
+        data() {
+            return {
+                citycur: '',
+                citys: [{name: '北京'}, {name: '深圳'}, {name: '沈阳'}, {name: '咸阳'}],
+                fly: false,
+                data: '',
+                city: '-',
+                // // update_time: '-'
+                value: null,
+                t: 0,
+                error: ''
+            }
+        },
+        watch: {
+            value(city) {
+                clearTimeout(this.t);
+                this.t = setTimeout(() => {
+                    console.log(city)
+                    this.data = [];
+                    require(_Qma.searchuri.on({ city: city || '1' }), (data) => {
+                        console.log(data)
+                        this.error = '';
+                        this.citycur = city;
+                        dialog.merge(this, data, true);
+                        if (data.data == undefined){
+                            this.error = '空空如也~~   请重新输入';
+                            this.city = city;
+                        }
+                    })
+
+                }, 1 * 1000)
+            },
+            citycur(city) {
+                this.value = city;
+                this.fly = true;
+                console.log(city)
+            }
+        }
+    });
+    tq.data.data = []
+    return tq
+})
