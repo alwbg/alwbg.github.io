@@ -2434,6 +2434,9 @@ body {
 .windows.ios .dialog-confirm {
   backdrop-filter: saturate(180%) blur(20px);
 }
+.windows.ios .dialog-confirm .rainbox {
+  overflow-x: hidden !important;
+}
 
 @media (max-width: 700px) {
   body > img {
