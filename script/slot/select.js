@@ -270,7 +270,7 @@ define('tq', ['dialog'], (dialog) => {
     +(
         div.tq>
             div.city{城市:{city}}
-            +div.days[:if="data.length"]>
+            +div.days>
                 (
                     div.day[:for="data"]>
                     img[:src="'./images/icons/'+wea_img+'.png'"]+
@@ -286,7 +286,7 @@ define('tq', ['dialog'], (dialog) => {
                     +div.air_level>(span.t{空气等级}+span{{air_level}})
                     +div.narrative{{narrative}}
                 )
-                +div.tip-msg.empty-search[:if="!data.length"]{{error ? error:"loading..."}}
+                +div.tip-msg.empty-search[:if="!data.length"]{{error}}
     )
         `, {
         slot: {
@@ -298,12 +298,12 @@ define('tq', ['dialog'], (dialog) => {
                 citycur: '',
                 citys: [{name: '北京'}, {name: '深圳'}, {name: '沈阳'}, {name: '咸阳'}, {name: '上海'}, {name: '成都'}, {name: '拉萨'}, {name: '不存在'}],
                 fly: false,
-                data: '',
+                data: [],
                 city: '-',
                 // // update_time: '-'
                 value: null,
                 t: 0,
-                error: ''
+                error: 'loading...'
             }
         },
         watch: {
@@ -314,7 +314,7 @@ define('tq', ['dialog'], (dialog) => {
                     // this.data = [];
                     require(_Qma.searchuri.on({ city: city || '1' }), (data) => {
                         console.log(data)
-                        this.error = '';
+                        this.error = 'loading...';
                         this.citycur = city;
                         dialog.merge(this, data, true);
                         if (data.data == undefined){

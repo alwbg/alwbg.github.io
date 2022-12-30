@@ -57,6 +57,11 @@ body{
 	padding:0 10px;
 }
 .day{
+	&:hover{
+		img {
+			animation: markMove 2s infinite ease-in;
+		}
+	}
 	// background-repeat: no-repeat;
 	// background-size: 50px auto;
 	// background-position: right top;

@@ -2374,6 +2374,9 @@ body {
   box-sizing: border-box;
   position: relative;
 }
+.day:hover img {
+  animation: markMove 2s infinite ease-in;
+}
 .day > * {
   margin: 7px;
 }
