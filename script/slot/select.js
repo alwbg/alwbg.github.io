@@ -272,7 +272,7 @@ define('tq', ['dialog'], (dialog) => {
             div.city{城市:{city}}
             +div.days>
                 (
-                    div.day-box[:for="data"]>
+                    div.day-box[:for="data" :class="wea_img+''"]>
                         div.day>
                         (
                             img[:src="'./images/icons/'+wea_img+'.png'"]+
@@ -309,7 +309,7 @@ define('tq', ['dialog'], (dialog) => {
         data() {
             return {
                 citycur: '',
-                citys: [{name: '北京'}, {name: '深圳'}, {name: '沈阳'}, {name: '咸阳'}, {name: '上海'}, {name: '成都'}, {name: '拉萨'}, {name: '不存在'}],
+                citys: [{name: '北京'}, {name: '深圳'}, {name: '沈阳'}, {name: '咸阳'}, {name: '上海'}, {name: '成都'}, {name: '拉萨'}, {name: '重庆'}, {name: '不存在'}],
                 fly: false,
                 data: [],
                 city: '-',
