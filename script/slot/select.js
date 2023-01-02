@@ -325,7 +325,7 @@ define('tq', ['dialog'], (dialog) => {
                 this.t = setTimeout(() => {
                     console.log(city)
                     // this.data = [];
-                    require(_Qma.searchuri.on({ city: city || '1' }), (data) => {
+                    require(_Qma.searchuri.on({ city: city || '' }), (data) => {
                         console.log(data)
                         this.error = 'loading...';
                         this.citycur = city;
