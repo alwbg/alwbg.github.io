@@ -52,7 +52,7 @@ define('di', ['dialog'], function (dialog) {
     try {
         var modeString =
             `
-            ((div.line.wea>Wea[:value="searchcity" :fly="inputs"]))
+            ((div.line.wea>Wea[:value="searchcity" :showday="showday" :fly="inputs"]))
 ((
     (div.line>(
         +div{测试Array.length}+
@@ -112,6 +112,7 @@ define('di', ['dialog'], function (dialog) {
                 Select: require('./script/slot/select')
             },
             data: {
+                showday: _Qma.dv || 'v9',
                 inputs: false,
                 searchcity: '',
                 // uploadurl: '//i.com:8889/file',

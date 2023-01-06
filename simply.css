@@ -2358,6 +2358,7 @@ body {
 .days {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 .days .tip-msg,
 .days .error-tips,

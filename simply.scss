@@ -66,6 +66,7 @@ body {
 
 	display: flex;
 	justify-content: space-between;
+	flex-wrap: wrap;
 
 	.day-box {
 		perspective: 700px;
