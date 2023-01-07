@@ -259,6 +259,28 @@ define('button', ['dialog'], (dialog) => {
 })
 
 define('tq', ['dialog'], (dialog) => {
+
+    function trigger(root, city = root.city, showday = root.showday) {
+        clearTimeout(root.t);
+        root.t = setTimeout(() => {
+            console.log(city, root)
+            // this.data = [];
+            let api = _Qma.searchuri.on({ city: city || '', v: showday });
+            // return console.log(api);
+            require(api, (data) => {
+                console.log(data)
+                root.error = 'loading...';
+                root.citycur = city;
+                dialog.merge(root, data, true);
+                if (data.data == undefined) {
+                    root.data = [];
+                    root.error = '空空如也~~   请重新输入';
+                    root.city = city;
+                }
+            })
+
+        }, 1 * 1000)
+    }
     var tq = dialog.render(`
     div>(div.error-tips{天气搜索免责声明,如有侵权,联系删除...(alwbg@163.com)})+
     +(div.tip-msg{调用接口测试(接口,ICON来源来源www.tianqiapi.com)}+
@@ -266,37 +288,38 @@ define('tq', ['dialog'], (dialog) => {
     )+
     (
         Input[:value="value" :tips="请输入城市中文名" :fly="fly"]
+    )+(
+        Select.city-items[:trigger="v" :data="showdays" :current="showday"]
     )
     +(
         div.tq>
             div.city{城市:{city}}
             +div.days>
                 (
-                    div.day-box[:for="data" :class="wea_img+''"]>
-                        div.day>
+                    div.day-box[:for="data" :class="wea_day_img+''"]>
+                        div.day[]>
                         (
-                            img[:src="'./images/icons/'+wea_img+'.png'"]+
+                            img[:src="'./images/icons/'+wea_day_img+'.png'"]+
                             .day-title{{day}}
                             +div.date{{date}}
                             +div.rain>(span.t{降雨概率}+span{{rain}})
                             +div.tem>(span.t{实时温度}+span{{tem}℃})
                             +div.tem1>(span.t{高温}+span{{tem1}℃})
                             +div.tem2>(span.t{低温}+span{{tem2}}℃)
-                            +div.humidity>(span.t{湿度}+span{{humidity}})
-                            +div.air>(span.t{空气质量}+span{{air}})
+                            +div.humidity>(span.t{湿度}+span{{humidity||'-'}})
+                            +div.air>(span.t{空气质量}+span{{air||'-'}})
                             +div.win_speed>(span.t{风速}+span{{win_speed}})
-                            +div.air_level>(span.t{空气等级}+span{{air_level}})
+                            +div.air_level>(span.t{空气等级}+span{{air_level||'-'}})
                         )
                         +div.back>
                             (
-                                img[:src="'./images/icons/'+wea_img+'.png'"]+
-                                +div.sunrise>(span.t{日出}+span{{sunrise}})
-                                +div.sunset>(span.t{日落}+span{{sunset}})
-                                +div.moonPhrase>(span.t{月相}+span{{moonPhrase}})
-                                +div.moonrise>(span.t{月出}+span{{moonrise}})
-                                +div.moonset>(span.t{月落}+span{{moonset}})
-                                +div.visibility>(span.t{能见度}+span{{visibility}})
-                                +div.narrative{{narrative}}
+                                img[:src="'./images/icons/'+wea_day_img+'.png'"]+
+                                +div.wea_day>(span.t{白天天气情况}+span{{wea_day}})
+                                +div.wea_night>(span.t{夜间天气情况}+span{{wea_night||'-'}})
+                                +div.sunrise>(span.t{日出}+span{{sunrise||'-'}})
+                                +div.sunset>(span.t{日落}+span{{sunset||'-'}})
+                                +div.visibility>(span.t{能见度}+span{{visibility||'-'}})
+                                +div.narrative{{narrative||air_tips}}
                             )
                 )
                 +div.tip-msg.empty-search[:if="!data.length"]{{error}}
@@ -308,44 +331,37 @@ define('tq', ['dialog'], (dialog) => {
         },
         data() {
             return {
-                citycur: '',
-                citys: [{name: '北京'}, {name: '深圳'}, {name: '沈阳'}, {name: '咸阳'}, {name: '上海'}, {name: '成都'}, {name: '拉萨'}, {name: '重庆'}, {name: '不存在'}],
+                citycur: '北京',
+                showday: '',
+                citys: [{ name: '北京' }, { name: '深圳' }, { name: '沈阳' }, { name: '咸阳' }, { name: '上海' }, { name: '成都' }, { name: '拉萨' }, { name: '重庆' }, { name: '不存在' }],
+                showdays: [{ name: '40天', v: 'v31' }, { name: '7天', v: 'v9' }],
                 fly: false,
                 data: [],
-                city: '-',
+                city: '',
                 // // update_time: '-'
                 value: null,
                 t: 0,
-                error: 'loading...'
+                error: 'loading...',
+                win_speed: '-',
+                air_level: '-',
+                air: '-',
+                humidity: '-',
             }
         },
         watch: {
             value(city) {
-                clearTimeout(this.t);
-                this.t = setTimeout(() => {
-                    console.log(city)
-                    // this.data = [];
-                    require(_Qma.searchuri.on({ city: city || '' }), (data) => {
-                        console.log(data)
-                        this.error = 'loading...';
-                        this.citycur = city;
-                        dialog.merge(this, data, true);
-                        if (data.data == undefined){
-                            this.data = [];
-                            this.error = '空空如也~~   请重新输入';
-                            this.city = city;
-                        }
-                    })
-
-                }, 1 * 1000)
+                trigger(this, city)
             },
             citycur(city) {
                 this.value = city;
                 this.fly = true;
                 console.log(city)
+            },
+            showday(v) {
+                trigger(this, this.city, v)
             }
         }
     });
-    tq.data.data = []
+    // tq.data.data = []
     return tq
 })
