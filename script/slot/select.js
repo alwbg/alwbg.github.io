@@ -297,7 +297,7 @@ define('tq', ['dialog'], (dialog) => {
             +div.days>
                 (
                     div.day-box[:for="data" :class="wea_day_img+''"]>
-                        div.day[]>
+                        div.day[:t="day?day:date_nl"]>
                         (
                             img[:src="'./images/icons/'+wea_day_img+'.png'"]+
                             .day-title{{day}}
@@ -334,7 +334,7 @@ define('tq', ['dialog'], (dialog) => {
                 citycur: '北京',
                 showday: '',
                 citys: [{ name: '北京' }, { name: '深圳' }, { name: '沈阳' }, { name: '咸阳' }, { name: '上海' }, { name: '成都' }, { name: '拉萨' }, { name: '重庆' }, { name: '不存在' }],
-                showdays: [{ name: '40天', v: 'v31' }, { name: '7天', v: 'v9' }],
+                showdays: [{ name: '40天', v: 'v3' }, { name: '7天', v: 'v9' }],
                 fly: false,
                 data: [],
                 city: '',
