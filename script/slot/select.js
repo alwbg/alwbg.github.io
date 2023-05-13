@@ -270,7 +270,7 @@ define('tq', ['dialog'], (dialog) => {
             require(api, (data) => {
                 console.log(data)
                 root.error = 'loading...';
-                root.citycur = city;
+                root.citycur = city || data.city;
                 dialog.merge(root, data, true);
                 if (data.data == undefined) {
                     root.data = [];
