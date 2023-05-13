@@ -52,7 +52,9 @@ define('di', ['dialog'], function (dialog) {
     try {
         var modeString =
             `
-            ((div.line.wea>Wea[:value="searchcity" :showday="showday" :fly="inputs"]))
+            ((
+                div.line.wea>
+                div.inline-block>span[:class="showtq ? '_open': '_close'" class="i-state" :onclick="showtq"]+span.color-box[:class=" showtq ? 'color-box-green' : 'color-box-gray'"]{{showtq ? "天气模块状态为打开" : "已隐藏天气模块"}}+div[:if="showtq"]>Wea[:value="searchcity" :showday="showday" :fly="inputs"]))
 ((
     (div.line>(
         +div{测试Array.length}+
@@ -112,6 +114,8 @@ define('di', ['dialog'], function (dialog) {
                 Select: require('./script/slot/select')
             },
             data: {
+                // 天气模块开关
+                showtq: true,
                 showday: _Qma.dv || 'v9',
                 inputs: false,
                 searchcity: '',
@@ -185,7 +189,10 @@ define('di', ['dialog'], function (dialog) {
                     // this.message2 += 1;
                     dialog.resize()
                 },
-
+                showtq:function(){
+                    this.showtq = !this.showtq
+                    dialog.resize()
+                },
                 click1: function () {
                     this.$idx += 1;
                     return false;
