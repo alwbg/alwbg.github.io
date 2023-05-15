@@ -2319,6 +2319,9 @@ html {
   padding: 20px;
   border: 1px solid #313131;
 }
+.windows.ios .line .input-style, .windows.ios .line .textarea-style {
+  background-color: #313131;
+}
 
 .red {
   background-color: #c9302c !important;

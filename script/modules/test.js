@@ -51,7 +51,7 @@ define('di', ['dialog'], function (dialog) {
     var { render/* , isEmpty, runer: iRuner, each, merge, picker: iPicker, css: iCss, attr: iAttr, is: iElementIs, query: iQuery, clazz: iClass  */ } = dialog;
     try {
         var modeString =
-            `
+            `((br+br+br))((div.line>{时间插件测试项}+Timebox[:tips="请选择区间日期"]))
             ((
                 div.line.wea>
                 div.inline-block>span[:class="showtq ? '_open': '_close'" class="i-state" :onclick="showtq"]+span.color-box[:class=" showtq ? 'color-box-green' : 'color-box-gray'"]{{showtq ? "天气模块状态为打开" : "已隐藏天气模块"}}+div[:if="showtq"]>Wea[:value="searchcity" :showday="showday" :fly="inputs"]))
@@ -111,7 +111,8 @@ define('di', ['dialog'], function (dialog) {
                 // Test: require('./script/slot/list.test'),
                 Wea: require('./script/slot/select#tq'),
                 Onoff: require('./script/slot/select#onoff'),
-                Select: require('./script/slot/select')
+                Select: require('./script/slot/select'),
+                Timebox: require('./script/slot/time')
             },
             data: {
                 // 天气模块开关
