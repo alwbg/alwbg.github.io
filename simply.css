@@ -2337,7 +2337,8 @@ body {
 }
 
 .error-tips {
-  color: #cddc39; /* #FF5722; */
+  color: #cddc39;
+  /* #FF5722; */
   text-align: center;
   margin: 10px;
   margin-bottom: 20px;
@@ -2372,8 +2373,9 @@ body {
 .days .day-box {
   perspective: 700px;
   position: relative;
+  margin: 1px;
   height: 260px;
-  width: 14.2857142857%;
+  width: calc(14.2857142857% - 2px);
 }
 .days .day-box .narrative {
   font-size: 10px;
@@ -2538,7 +2540,12 @@ body {
   }
   .days .day-box:not(:first-child) {
     display: inline-block;
-    width: 33.3333333333%;
+    width: calc(33.3333333333% - 2px);
+  }
+  .days .day-box:nth-child(3n):not(:first-child) {
+    margin-top: 2px;
+    margin-left: 1px;
+    margin-right: 1px;
   }
 }
 @media (max-width: 500px) {
@@ -2547,6 +2554,14 @@ body {
   }
   .days .day-box:not(:first-child) {
     display: inline-block;
-    width: 50%;
+    width: calc(50% - 2px);
+  }
+  .days .day-box:nth-child(2n+1):not(:first-child) {
+    margin-top: 2px;
+    margin-left: 1px;
+  }
+  .days .day-box:nth-child(2n):not(:first-child) {
+    margin-top: 2px;
+    margin-right: 1px;
   }
 }
