@@ -2347,7 +2347,7 @@ body {
   padding: 2px;
 }
 
-.tq {
+.tq .day-box {
   color: #000;
 }
 
@@ -2513,7 +2513,6 @@ body {
   font-size: 15px;
   height: 100px;
   line-height: 100px;
-  color: #fff;
 }
 .days .day-title {
   font-size: 15px;
