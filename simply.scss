@@ -17,6 +17,9 @@
 	border-radius: 10px;
 	padding: 20px;
 	border: 1px solid #313131;
+	& .date-slot {
+		background-color: #282828;
+	}
 }
 
 .red {
@@ -34,7 +37,7 @@ body {
 }
 
 .error-tips {
-	color: #FF5722;
+	color: #cddc39;/* #FF5722; */
 	text-align: center;
 	margin: 10px;
 	margin-bottom: 20px;
@@ -116,10 +119,10 @@ body {
 
 		$TQ: (
 			"qing": #ebe5ad,
-			'yin': #cac8c8,
+			'yin': #9e9e9e/* cac8c8 */,
 			'yun': #ffefc4,
 			'yu': #bed1ff,
-			'lei': #9798aa,
+			'lei': #cac3ff/* 9798aa */,
 			'shachen': #9cb54c,
 			'xue': #dedede
 			);
@@ -134,55 +137,6 @@ body {
 				}
 			}
 		}
-		/* &.yin{
-			& >.day{
-				background-image: linear-gradient(34deg, rgb(255 255 255), #cac8c8)
-			}
-			& >.back{
-				background-image: linear-gradient(320deg, rgb(255 255 255), #cac8c8)
-			}
-		} 
-		&.yun{
-			& >.day{
-				background-image: linear-gradient(34deg, rgb(255 255 255), #ffefc4)
-			}
-			& >.back{
-				background-image: linear-gradient(320deg, rgb(255 255 255), #ffefc4)
-			}
-		}
-		&.yu{
-			& >.day{
-				background-image: linear-gradient(34deg, rgb(255 255 255), #bed1ff)
-			}
-			& >.back{
-				background-image: linear-gradient(320deg, rgb(255 255 255), #bed1ff)
-			}
-		}
-		&.lei{
-			& >.day{
-				background-image: linear-gradient(34deg, rgb(255 255 255), #9798aa)
-			}
-			& >.back{
-				background-image: linear-gradient(320deg, rgb(255 255 255), #9798aa)
-			}
-		}
-		&.shachen{
-			& >.day{
-				background-image: linear-gradient(34deg, rgb(255 255 255), #9cb54c)
-			}
-			& >.back{
-				background-image: linear-gradient(320deg, rgb(255 255 255), #9cb54c)
-			}
-		}
-		&.xue{
-			& >.day{
-				background-image: linear-gradient(34deg, rgb(255 255 255), #dedede)
-			}
-			& >.back{
-				background-image: linear-gradient(320deg, rgb(255 255 255), #dedede)
-			}
-		}*/
-
 		&:hover {
 			& .day {
 				img {
@@ -224,7 +178,7 @@ body {
 					width: 100%;
 
 					&:not(.t) {
-						color: #ff5722;
+						color: #F44336;
 						text-align: right;
 					}
 				}
@@ -256,9 +210,11 @@ body {
 		background-color: #000;
 
 		&>.date {
-			font-size: 10px;
+			font-size: 16px;
 			zoom: 0.9;
-			color: #ff9800;
+			color: #000000;
+			font-weight: bold;
+			font-family: fantasy;
 		}
 	}
 

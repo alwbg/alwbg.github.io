@@ -164,7 +164,7 @@ define('input', ['dialog'], function (dialog) {
         position: absolute;
         display: block;
         width: 100%;
-        color: #979797;
+        /* color: #979797; */
         line-height: 40px;
     }
 
@@ -174,7 +174,7 @@ define('input', ['dialog'], function (dialog) {
     }
     @keyframes input-fly-m {
         to {
-            color: #fff;
+            /* color: #fff; */
             padding-left: 0;
             top: -25px;
             font-size: 12px;

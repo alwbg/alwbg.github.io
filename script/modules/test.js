@@ -51,7 +51,10 @@ define('di', ['dialog'], function (dialog) {
     var { render/* , isEmpty, runer: iRuner, each, merge, picker: iPicker, css: iCss, attr: iAttr, is: iElementIs, query: iQuery, clazz: iClass  */ } = dialog;
     try {
         var modeString =
-            `((br+br+br))((div.line>{时间插件测试项}+Timebox[:tips="请选择区间日期"]))
+            `
+            ((span[:class="theme ? '_open': '_close'" class="i-state" :onclick="theme"]))
+            ((span.color-box[:class=" theme ? 'color-box-green' : ''"]{{!theme?"暗色":"亮色"}}))
+            ((br+br+br))((div.line>{时间插件测试项}+Timebox[:tips="请选择区间日期"]))
             ((
                 div.line.wea>
                 div.inline-block>span[:class="showtq ? '_open': '_close'" class="i-state" :onclick="showtq"]+span.color-box[:class=" showtq ? 'color-box-green' : 'color-box-gray'"]{{showtq ? "天气模块状态为打开" : "已隐藏天气模块"}}+div[:if="showtq"]>Wea[:value="searchcity" :showday="showday" :fly="inputs"]))
@@ -115,6 +118,8 @@ define('di', ['dialog'], function (dialog) {
                 Timebox: require('./script/slot/time')
             },
             data: {
+                themeState: null,
+                theme: !true,
                 // 天气模块开关
                 showtq: true,
                 showday: _Qma.dv || 'v9',
@@ -167,6 +172,19 @@ define('di', ['dialog'], function (dialog) {
                 show(cur, last) {//console.log(cur, last)
                     // dialog.query('.windows')[cur ? 'hide' : 'show']()
                     cur || (this.sele.data.id = (this.sele.data.id + '').replace(/^.*,([^,]+)$/, '$1'))
+                },
+                theme(data) {
+                    if(this.themeState) {
+                        if(!data){
+                            this.themeState.remove()
+                        }
+                    }
+                    var _this = this;
+                    if (data) {
+                        require('./css/white.css', function() {
+                            _this.themeState = this;
+                        });
+                    }
                 }
             },
             events: {
@@ -197,6 +215,9 @@ define('di', ['dialog'], function (dialog) {
                 click1: function () {
                     this.$idx += 1;
                     return false;
+                },
+                theme() {
+                    this.theme = !this.theme;
                 }
             }
         });
@@ -213,6 +234,7 @@ define('di', ['dialog'], function (dialog) {
                         // setTimeout(() => {
                         //     worker.data.searchcity = ''
                         // }, 1000)
+                        worker.data.theme = true
                         this.addClass('ios');
                         // this.addClass('ios simply');
                         dialog.query('.confirm-cancel.close[data-bind="c"]{×}', true).appendTo(this.room).click(() => {

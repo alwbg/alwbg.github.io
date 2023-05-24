@@ -1,0 +1,64 @@
+.windows .dialog-confirm {
+  background-color: #f9f9f9 !important;
+  color: #000 !important;
+}
+
+.windows .city {
+  color: #000;
+}
+.windows.ios .line .date-slot {
+  background-color: #f9f9f9;
+}
+.windows.ios .line {
+  background-color: #f1f1f1;
+  border-radius: 10px;
+  padding: 20px;
+  border: 0 solid #dadada;
+}
+.windows .times-simply {
+  background: #fff;
+  border: 1px solid saddlebrown;
+  margin-right: 3px;
+  color: #000;
+}
+.windows .times-simply .time-simply-close {
+  background: #8b4514;
+  color: #fff;
+}
+.windows .times {
+  background-color: #fff;
+  border-radius: 0.7rem;
+  border: 1px solid #242424;
+  /* width: 200px; */
+  padding: 14px;
+}
+.windows .times .title {
+  position: relative;
+  color: #000;
+}
+.windows .times > :not(.forbidden).current-month:hover:before, .windows .times > :not(.forbidden).prev-month:hover:before, .windows .times > :not(.forbidden).next-month:hover:before {
+  background: #930a00;
+}
+.windows .times span.hover.current-month:not(.forbidden) {
+  color: #fff !important;
+}
+.windows .times .title-month,
+.windows .times .current-month,
+.windows .times .prev-month,
+.windows .times .next-month {
+  color: #505050;
+  border: 1px solid #f9f9f9;
+  background-color: #fff;
+  /*margin: 1px;*/
+}
+.windows .times .prev-month,
+.windows .times .next-month {
+  color: #ccc;
+}
+.windows .times .title-month {
+  /* border-radius: 0; */
+  border-color: #fff;
+  background-color: #f5f5f5;
+  /*/* color: #fff;*/
+  font-weight: 700;
+}
