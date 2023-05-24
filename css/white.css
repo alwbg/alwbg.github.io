@@ -32,6 +32,12 @@
   /* width: 200px; */
   padding: 14px;
 }
+html .windows .times > .current-month:not(.forbidden):hover:before {
+  background: #430303 !important;
+}
+.windows .times span.cur {
+  color: #fff;
+}
 .windows .times .title {
   position: relative;
   color: #000;
