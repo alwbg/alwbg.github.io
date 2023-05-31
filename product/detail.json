@@ -1,0 +1,55 @@
+{
+    "msg": "success",
+    "code": "200",
+    "data": {
+        "show_sales": 10, 
+        "sku_list": [ 
+            {
+                "image_url": "//alwbg.github.io/static/0.jpeg", 
+                "stock": 100, 
+                "price": 5.2, 
+                "product_id": "100003", 
+                "name": "黑色", 
+                "sku_id": "1004" 
+            },
+            {
+                "image_url": "//alwbg.github.io/static/2.png", 
+                "stock": 99, 
+                "price": 6.1, 
+                "product_id": "1000033", 
+                "name": "炫黑", 
+                "sku_id": "1004" 
+            },
+            {
+                "image_url": "//alwbg.github.io/static/1.png", 
+                "stock": 10, 
+                "price": 5.4, 
+                "product_id": "1000032", 
+                "name": "默认", 
+                "sku_id": "1004" 
+            }
+        ],
+        "name": "商品名称商品名称商品名称商品名称商品名称", 
+        "image_url": "//alwbg.github.io/static/0.jpeg", 
+        "category_ids": "1;2",
+        "image_list_url": [ 
+            "//alwbg.github.io/static/0.jpeg",
+            "//alwbg.github.io/static/1.png",
+            "//alwbg.github.io/static/2.png"
+        ],
+        "show_view": 10, 
+        "category_name": "食品;休闲食品", 
+        "product_id": "100003", 
+        "desc": "//alwbg.github.io/static/2.png;//alwbg.github.io/static/0.jpeg;//alwbg.github.io/static/1.png", 
+        "price": 5.2,
+        "service": {
+            "SERVICE_TEXT" : "添加微信客服",
+            "SERVICE_NO" : "73829510"
+        },
+        "agreement": { 
+            "user": "url", 
+            "private": "url"
+        }
+    },
+    "ts": "1648552101.588"
+}

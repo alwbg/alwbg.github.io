@@ -1,0 +1,972 @@
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=0" name="viewport" />
+    <title>产品信息</title>
+    <style>
+        
+        @media (width: 320px) {html{zoom: 0.915;}}@media (min-width: 321px) and (max-width: 330px) {html{zoom: 0.94;}}@media (min-width: 331px) and (max-width: 340px) {html{zoom: 0.97;}}@media (min-width: 341px) and (max-width: 350px) {html{zoom: 1;}}@media (min-width: 351px) and (max-width: 360px) {html{zoom: 1.02;}}@media (min-width: 361px) and (max-width: 370px) {html{zoom: 1.04;}}@media (min-width: 371px) and (max-width: 380px) {html{zoom: 1.07;}}@media (min-width: 381px) and (max-width: 390px) {html{zoom: 1.09;}}@media (min-width: 391px) and (max-width: 400px) {html{zoom: 1.13;}}@media (min-width: 401px) and (max-width: 410px) {html{zoom: 1.16;}}@media (min-width: 411px) and (max-width: 420px) {html{zoom: 1.18;}}@media (min-width: 421px) and (max-width: 430px) {html{zoom: 1.22;}}@media (min-width: 431px) and (max-width: 440px) {html{zoom: 1.24;}}@media (min-width: 441px) and (max-width: 450px) {html{zoom: 1.26;}}@media (min-width: 451px) and (max-width: 460px) {html{zoom: 1.28;}}@media (min-width: 461px) and (max-width: 470px) {html{zoom: 1.3;}}@media (min-width: 471px) and (max-width: 480px) {html{zoom: 1.32;}}@media (min-width: 481px) and (max-width: 490px) {html{zoom: 1.34;}}@media (min-width: 491px) and (max-width: 600px) {html{zoom: 1.36;}}@media (min-width: 501px) and (max-width: 510px) {html{zoom: 1.38;}}@media (min-width: 511px) and (max-width: 520px) {html{zoom: 1.40;}}@media (min-width: 521px) and (max-width: 530px) {html{zoom: 1.42;}}@media (min-width: 531px) and (max-width: 540px) {html{zoom: 1.44;}}@media (min-width: 541px) and (max-width: 550px) {html{zoom: 1.46;}}@media (min-width: 551px) and (max-width: 560px) {html{zoom: 1.56;}}@media (min-width: 561px) and (max-width: 570px) {html{zoom: 1.6;}}@media (min-width: 571px) and (max-width: 580px) {html{zoom: 1.64;}}@media (min-width: 581px) and (max-width: 590px) {html{zoom: 1.68;}}@media (min-width: 591px) and (max-width: 600px) {html{zoom: 1.70;}}@media (min-width: 601px) and (max-width: 610px) {html{zoom: 1.72;}}@media (min-width: 611px) and (max-width: 620px) {html{zoom: 1.74;}}@media (min-width: 621px) and (max-width: 630px) {html{zoom: 1.76;}}@media (min-width: 631px) and (max-width: 640px) {html{zoom: 1.78;}}@media (min-width: 641px) and (max-width: 650px) {html{zoom: 1.8;}}@media (min-width: 651px) and (max-width: 660px) {html{zoom: 1.68;}}@media (min-width: 661px) and (max-width: 670px) {html{zoom: 1.7;}}@media (min-width: 671px) and (max-width: 680px) {html{zoom: 1.72;}}@media (min-width: 681px) and (max-width: 690px) {html{zoom: 1.74;}}@media (min-width: 691px) and (max-width: 700px) {html{zoom: 1.76;}}@media (min-width: 701px) and (max-width: 900px) {html{zoom: 2.2;}}@media (min-width: 900px) {html{zoom: 2.6;}}@media (min-width: 1900px) {html{zoom: 3;}}
+        
+        html, body{padding: 0;margin: 0;font-size: 13px;;font-family: PingFangSC-Regular, 'Source Code Pro', "SF Pro SC", "SF Pro Text", "SF Pro Icons", "PingFang SC", "Helvetica Neue", "Helvetica", "Arial", sans-serif;background-color: #fff;-webkit-tap-highlight-color: transparent;}
+        body{height: 100%;line-height: 100%;opacity: 0.3;/* padding-top: 100px;; */text-align: center;}
+        .windows{width: 100%;}
+        .height-auto{height: auto !important;}
+        .windows .content{display: block;overflow: auto;}
+
+        .windows .room{display: block;overflow: scroll}
+        .dialog-tips .content{
+            width: auto;
+            display: inline-block;
+            background: rgba(0,0,0,0.80);
+            border-radius: 8px;
+            font-family: PingFangSC-Regular;
+            font-size: 13px;
+            color: #F1F1F1;
+            letter-spacing: 0;
+            text-align: center;
+            padding: 16px;
+        }
+
+        .dialog-success .content{
+            background: #FFFFFF;
+            border-radius: 13px;
+            width: 256px;
+            height: 128px;;
+        }
+        .dialog-success .bg{
+            display: block;
+            background-color: #000;
+            opacity: 0.7;
+        }
+        .focus{
+            overflow: hidden;
+        }
+        .focus-img, .focus{
+            width: 100%;
+            height: 360px;
+            overflow: hidden;
+            display: inline-block;
+            position: relative;
+        }
+        .focus-img img{
+            width: 100%;
+            height: 100%;
+        }
+        .focus-dot{
+            position: absolute;
+            z-index: 1000;
+            bottom: 15px;
+            right: 15px;
+            background: rgba(0,0,0,0.30);
+            border-radius: 11px;
+            width: 46px;
+            height: 20px;
+            line-height: 20px;
+            text-align: center;
+            color: #fff;
+        }
+        .price-room{
+            background-image: url(./images/price-bg.png);
+            background-repeat: no-repeat;
+            background-size:contain;
+            width: 100%;
+            height: 58px;
+            line-height: 58px;
+        }
+        .price-room .price{
+            font-family: PingFangSC-Semibold;
+            font-size: 18px;
+            color: #FFFFFF;
+            letter-spacing: 0;
+            line-height: 18px;
+            vertical-align: middle;
+            margin-left: 20px;
+            height: 56px;
+            display: inline-block;
+            line-height: 56px;
+            font-weight: bold;
+        }
+        .price-room .price > span{
+            font-family: PingFangSC-Semibold;
+            font-size: 26px;
+            color: #FFFFFF;
+            letter-spacing: 0;
+            /* line-height: 26px; */
+        }
+        .price-room .buy-count{
+            float: right;
+            margin-right: 20px;
+            font-family: PingFangSC-Regular;
+            /* font-size: 12px; */
+            color: #FFFFFF;
+            letter-spacing: 0;
+            /* line-height: 12px; */
+        }
+        .bold{
+            font-weight: bold;
+        }
+        .inline-block{
+            display: inline-block;
+        }
+        .block{
+            display: block;
+        }
+        .title{
+            margin: 3px 10px 10px 10px;
+            font-family: PingFangSC-Semibold;
+            font-size: 13px;
+            color: #000000;
+            letter-spacing: 0;
+            display: block;
+            padding: 10px;
+        }
+        .power{
+            background: #F14F56;
+            border-radius: 2px;
+            font-size: 10px;
+            line-height: 20px;
+            color: #FFFFFF;
+            padding: 3px 5px 3px 5px;
+            margin-right: 10px;
+        }
+        .desc img{
+            width: 100%;
+            height: auto;
+        }
+        /* 物流 */
+        .logistics{
+            display: flex;
+            margin-bottom: 20px;
+        }
+        .logistics .t{
+            width: 15%;
+            margin-left: 20px;
+            /* background-color: #0076FF; */
+        }
+        .logistics .r{
+            width: 80%;
+            vertical-align: top;
+        }
+        .bottom{
+            display: flex;
+            
+        }
+        .server{
+            display: flex;
+            flex-direction: column;
+            float: left;
+            margin: 10 10px 20 20px;
+            width: 30px;
+            /* background-color: #F25858;             */
+            font-size: 10px;
+            color: #9C9C9C;
+
+        }
+        .server .icon{
+            display: inline-block;
+            background-image: url(./images/service.png);
+            background-size: contain;
+            height: 20px;
+            width: 20px;
+        }
+        .to-buy, .to-pay{
+            font-family: PingFangSC-Semibold;
+            font-size: 12px;
+            color: #FFFFFF;
+            line-height: 12px;
+            background: #F25858;
+            border-radius: 3px;
+            width: 80%;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            display: inline-block;
+            margin: 12px 12px 12px 0;
+        }
+        .paying{
+            background: #8ec116;
+        }
+        .loading-room{
+            text-align:center;
+            background-color:#fafafa;
+            color: #aaa;
+            font-size: 14px;
+            font-weight: bold;
+            margin:10px;
+            border-radius: 10px;
+        }
+        .desc img, .focus img {
+            background-image: url(./images/empty.png);
+            background-size: 50%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: #F7F7F7;
+        }
+
+
+
+        /* 购买页 */
+        .buytips .bg{
+            background-color: #000;
+            opacity: 0.5;
+        }
+        .buytips .content{
+            background-color: #fff;
+            border-radius: 10px 10px 0 0;
+        }
+        .line {
+            border: 1px solid #F6F6F6;
+            margin: 15px 0 15px 0;
+        }
+        .inner{
+            margin-top: 30px;;
+            margin-bottom: 30px;;
+            /* background-color: #eee; */
+            overflow: auto;
+        }
+        .cardbox{
+            padding: 20px;
+            background-color: #fff;
+            margin-bottom: 8px;
+        }
+        .tobuy{
+            overflow: hidden;
+            background: #F8F8F8;
+        }
+        /* 商品 */
+        .buy-product-detail{
+            display: inline-block;
+            height: 92px;
+            vertical-align: top;
+            padding-left:  15px;;
+        }
+        .product-title{
+            display: block;
+            margin-bottom: 10px;
+            min-height: 43px;
+            /* background-color: #7D7D7D; */
+            width: 100%;
+        }
+        .buy-detail-price {
+            color: #F14F56;
+            margin-top: 10px;
+            font-size: 15px;;
+        }
+        .buy-detail-price .bold{
+            font-size: 20px;
+            line-height: 20.8px;
+            margin-left: 2px;
+        }
+        .buy-detail-price .bold.small {
+            font-size:  16px;
+            margin-left: 0px;
+        }
+        .buy-title{
+            font-weight: bold;
+            margin: 0 0 10px 0;
+        }
+        .buy-img-info{
+            background-image: url(./images/empty.png);
+            background-size: contain;
+            height: 92px;
+            width: 92px;
+            display: inline-block;
+            border-radius: 6px;
+            overflow: hidden;
+            /* margin-left: 20px; */
+        }
+        .buy-img-info img{
+            height: 100%;
+            width: 100%;
+        }
+        .suk-list{
+            margin: 22px 0 10px 0;
+            /* height: 30px; */
+        }
+        /* 规格 */
+        .suk-list .suk{
+            display: inline-block;
+            background: #F7F7F7;
+            padding: 8px;
+            font-size: 12px;
+            color: #4D4D4D;
+            letter-spacing: 0;
+            line-height: 12px;
+            margin: 5px;
+        }
+        .suk-list .suk.select{
+            background: #FFF0F0;
+            color: #F14F56;
+            font-weight: bold;
+        }
+        .buy-count-info{
+            margin: 22px 0 22px 0;
+        }
+        .buy-count-room{
+            float: right;
+        }
+        .buy-count-room .de{
+            background: #EDEDED;
+            border-radius: 3px;
+            height: 19px;
+            line-height: 19px;
+            width: 19px;
+            display: inline-block;
+            text-align: center;
+        }
+        .buy-count{
+            display: inline-block;
+            margin: 0 10px 0 10px;
+            font-weight: bold;
+        }
+        .deepcolor, .buy-one{
+            font-size: 10px;
+            color: #7D7D7D;
+            letter-spacing: 0;
+            line-height: 11px;
+        }
+        .buy-one{
+            margin-left:10px;
+        }
+        .to-pay{
+            width: 20%;
+        }
+        .topayprice-info{
+            width: 60%;
+            line-height: 60px;
+            font-size: 11px;
+            color: #7D7D7D;
+            text-align: right;
+            padding-right: 10px;
+            /* background-color: #7D7D7D; */
+        }
+        .topayprice-info .topay-info{
+            font-size: 12px;
+            color: #000000;
+            margin-left: 10px;
+        }
+        .topayprice-info .topay-info .price{
+            font-size: 16px;
+            color: #F14F56;
+            margin-left: 7px;
+        }
+        .topayprice-info .topay-info .price.bold{
+            font-size: 22px;
+            margin-left: 1px;
+        }
+
+        /* 收货信息 */
+        .buyer-info input,.buyer-info textarea, .buyer-info input:focus-within{
+            border: 0 transparent solid;
+            /* height: 99%; */
+            width: 100%;
+            text-align: right;
+            padding: 7px;
+            font-size: 12px;
+            color: #000000;
+            font-weight: bold;
+        }
+        .buyer-info input,.buyer-info textarea{
+            text-align: left;
+            width: 100%;
+            border: 0 transparent solid;
+            /* height: 99%; */
+            text-align: right;
+            padding: 7px;
+            font-size: 12px;
+            color: #000000;
+            font-weight: bold;
+        }
+        /* .buyer-info input: */
+        .buyer-info .buyer-item{
+            height: 30px;
+            /* background-color: #9C9C9C; */
+            margin-top: 3px;
+        }
+        .buyer-info .buyer-item span{
+            height: 30px;
+            line-height: 30px;
+            display: inline-block;
+        }
+        .buyer-info .buyer-item span.textarea{
+            height: 60px;
+        }
+        .buyer-info .left{
+            width: 20%;
+        }
+        .buyer-info .right{
+            width: 80%;
+            vertical-align: top;
+        }
+        .card{
+            text-align: right;
+        }
+        ::placeholder {
+            color: #aaa;
+            text-align: right;
+            font-weight: lighter;
+        }
+        .tips-msg{
+            background: #F8F8F8;
+            border-radius: 2px;
+            margin: 0 15px 0 15px;
+            padding: 6px;
+            font-size: 10px;
+            color: #8F8F8F;
+        }
+        .link{
+            color: #2891FF;
+            text-decoration: none;
+            padding: 3px;
+        }
+        /* 支付 */
+        .pay-type{
+            margin-bottom: 15px;
+        }
+        .paytype-icon{
+            display: inline-block;
+            height: 23px;
+        }
+        .pay-type img{
+            height: 100%;
+        }
+        .pay-type .select{
+            display: block;
+
+            background-image: url(./images/select.png);
+            background-size: 100%;
+            /* vertical-align: super; */
+            width: 18px;
+            height: 18px;;
+            float:right;
+        }
+        .pay-type.cur .select{
+            background-image: url(./images/selected.png);
+        }
+
+
+        .back{
+            background-image: url(./images/back.png);
+            height: 28px;
+            width: 28px;
+            position: absolute;
+            left: 15px;
+            top: 20px;
+            z-index: 9000000;    background-size: 100%;
+        }
+        .paysuccess .content{
+            background-color: #fff;
+            /* background-color: #2891FF; */
+            background: rgba(255,255,255,0.99);
+            border-radius: 10px;
+            padding: 17px 17px 0 17px;
+            width: 240px;
+            height: 120px;
+
+        }
+        .paysuccess .bg{
+            background-color: #000000;
+            opacity: 0.3;
+        }
+        .paysuccess .confirm-title{
+            font-size: 14px;
+            color: #152934;
+            font-weight: bold;
+            text-align: center;
+        }
+        .paysuccess .confirm-content{
+            text-align: center;
+            margin: 18px 0 20px 0;
+            font-size: 14px;
+            color: #152934;
+        }
+        .paysuccess .confirm-cancel, .paysuccess .confirm-submit{
+            width: 50%;
+            height: 36px;
+            display: inline-block;
+            line-height: 36px;
+            text-align: center;
+            font-size: 14px;
+
+            border-top: 1px solid #F1F1F2;
+        }
+        .paysuccess .confirm-submit{
+            color: #0076FF;
+            font-weight: bold;
+            width:calc(50% - 1px);
+            border-left: 1px solid #F1F1F2;
+        }
+        .buy-info{
+            display: flex;
+        }
+    </style>
+</head>
+
+<body>
+    <script type="text" class="mode">
+        <div class="room">
+            <div :if="!loading">
+                <div class="focus">
+                    <div :style.margin-left="left" :style.width="_width* focus.length" style="height: 100%;" :ontouchstart="_start" :ontouchmove="_move" :ontouchend="_end">
+                        <span class="focus-img" :for="focus" :style.width="_width">
+                            <img :src="$item" />
+                        </span>
+                    </div>
+                    <div class="focus-dot">{_index}\/{focus ? focus.length : 0}</div>
+                </div>
+                <div class="price-room">
+                    <span class="price">¥<span class="bold">{price}</span>起</span>
+                    <span class="buy-count">已售{show_sales}</span>
+                </div>
+                <div class="title bold">
+                    {title ? title : '标题'}
+                </div>
+                <div class="title">
+                    <span class="power">推荐理由</span>{recommon ? recommon : '推荐理由'}
+                </div>
+                <div class="logistics">
+                    <span class="t inline-block">物流</span><span class="r inline-block">{logistics}</span>
+                </div>
+                <div class="desc">
+                    <img :for="desc" :src="$item" />
+                </div>
+            </div>
+            <div class="loading-room" :if="loading" :style.lineHeight="lh">
+                商品加载中...
+            </div>
+        </div>
+        <div class="bottom">
+            <span class="server" :onclick="callservice"><span class="icon"></span><span>客服</span></span><span :if="!loading" class="to-buy bold" :onclick="gotobuy">立即购买</span>
+        </div>
+    </script>
+
+    <script type="text" class="mode-to-buy">
+        <div class="room tobuy">
+            <div class="cardbox">
+                <div class="buy-title">立即购买</div>
+                <div class="buy-info">
+                    <span class="buy-img-info">
+                        <img :src="show_image_url" />
+                    </span>
+                    <span class="buy-product-detail">
+                        <span class="product-title bold">{show_title}</span>
+                        <span class="deepcolor block">库存{show_stock_}件</span>
+                        <span class="buy-detail-price block">¥<span class="bold">{price_start}</span><span class="bold small">.{price_end}</span></span>
+                    </span>
+                </div>
+                <div class="line"></div>
+                <div class="buy-title">规格</div>
+                <div class="suk-list">
+                    <span :for="sku_list" class="suk" :class.select="selected" :onclick="select_suk">
+                        {name}
+                    </span>
+                </div>
+                <div class="buy-count-info">
+                    <span class="buy-count-title bold">购买数量</span><span class="buy-one">每人限购200件</span>
+                    <span class="buy-count-room">
+                        <span class="de" :onclick="reduce">-</span>
+                        <span class="buy-count">{count}</span>
+                        <span class="de" :onclick="add">+</span>
+                    </span>
+                </div>
+                <div class="buyer-info">
+                    <div class="buyer-item"><span class="left">订单留言</span><span class="right"><textarea type="tel" rows="2"  placeholder="选填，请先和卖家协商一致" :value="buyer_desc" :onfocus="onfocus" :onblur="onblur"></textarea></span></div>
+                </div>
+            </div>
+
+            <div class="cardbox">
+                <div class="buy-title">收货信息</div>
+                <div class="buyer-info">
+                    <div class="buyer-item buyer_name"><span class="left">收货人</span><span class="right"><input placeholder="输入收货人姓名" :value="buyer_name" :onfocus="onfocus"/></span></div>
+                    <div class="buyer-item buyer_tel"><span class="left">联系方式</span><span class="right"><input type="tel" maxlength="11" placeholder="输入11位手机号码" :value="buyer_tel" :onfocus="onfocus"/></span></div>
+                    <div class="buyer-item buyer_area"><span class="left">所在地区</span><span class="right"><input placeholder="所在地区" :value="buyer_area" :onfocus="onfocus"/></span></div>
+                    <div class="buyer-item buyer_addr">
+                        <span class="left">详细地址</span>
+                        <span class="right textarea"><textarea placeholder="如街道，小区门牌号等详细地址" rows="2" :value="buyer_addr" :onfocus="onfocus"></textarea></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cardbox">
+                <div class="buy-title">支付方式</div>
+                <div class="pay-type" :for="pays" :class="payselect == name ? 'cur' : ''" :onclick="toselectpaytype"><span class="paytype-icon"><img :src="icon" /></span><span class="select"></span></div>
+                <div class="tips-msg">
+                    已阅读并同意小店<span class="link" :data-link="linkuser" :onclick="goto">《用户协议》</span><span class="link" :data-link="linkprivate" :onclick="goto">《隐私协议》</span>，并授权小店获取您的账号信息（头像，昵称等）。
+                </div>
+            </div>
+        </div>
+        <div class="bottom">
+            <span class="server" :onclick="callservice">
+                <span class="icon"></span><span>客服</span>
+            </span>
+            <span class="topayprice-info">
+                共{count}件, 
+                <span class="topay-info">
+                    合计 <span class="price">¥</span><span class="price bold">{(show_price * count).toFixed(2)}</span>
+                </span>
+            </span>
+            <span :if="!paying" class="to-pay bold" :onclick="gotopay">立即付款</span>
+            <span :if="paying" class="to-pay bold paying">付款中...</span>
+        </div>
+    </script>
+</body>
+<script type="text/javascript" src="./script/tools.js?2022.04.01"></script>
+<!-- <script type="text/javascript" src="//git.i.com/dialog/v1/dialog.js"></script> -->
+<!-- <script type="text/javascript" src="//192.168.1.99/redbean/h5/source.js"></script> -->
+<script>
+    var BACK = dialog.query('<div class="back"></div>').appendTo(document.documentElement).click(function() {
+        RunOSfx('closeWeb', true);
+    })
+    function _Request() {
+        console.log(ajax)
+        var settings = dialog.picker(arguments, '0=>url,1=>success,2=>fail,3=>type,4=>data')
+        ajax.request(settings);
+    }
+// 测试数据
+
+    // _ARGS.product_id = '100006';
+    _ARGS.tobuy = true;
+
+    // 第一次打开时的动画 可以被覆盖 @see dialog.push('auto', 'animate', Function)
+    dialog.push('auto', 'show', function (D, start, end) {
+        D.room.stop(true, true).css({
+            top: start || '+=10'
+        }).stop(true, true).animate({
+            top: end || '-=10',
+            opacity: 1
+        }, 100);
+    });
+    var Global = this;
+    // 补偿缺失全局方法
+    Global.MSG = function (desc, code) {
+        dialog.notice('[0]{1,:1,}'.format(arguments), 3)
+    }
+    function callservice(host) {
+        dialog.runer(dialog.picker(Global, 'android.showServerDialog|MSG=>trigger').trigger, android, host.service.SERVICE_TEXT, host.service.SERVICE_NO);
+    }
+    var SCREEN = dialog.screen();
+    var DetailRender = dialog.render(dialog.query('.mode').html(), {
+        data: {
+            loading: true,
+            focus: [],
+            title: '',
+            recommon: '',
+            price: 0,
+            sku_list: [],
+            logistics: "物流信息",
+            // 加载页面高度
+            lh: 0,
+            // 服务号
+            service: {
+                SERVICE_NO: '1000',
+                SERVICE_TEXT: '添加微信客服'
+            },
+            _width: SCREEN.width,
+            _index: 1,
+            left: 0,
+
+            buyer_name: '',
+            buyer_tel: '',
+            buyer_area: '',
+            buyer_addr: '',
+            buyer_desc: '',
+            agreement: {}
+        },
+        events: {
+            callservice() {
+                callservice(this);
+            },
+            gotobuy() {
+                ToBuy(this)
+            },
+            _start(e) {
+                detail.movestart = dialog.picker(e, 'changedTouches.0.pageX=>x').x || 0;
+            },
+            _move(e) {
+                var lr = detail.movestart - dialog.picker(e, 'changedTouches.0.pageX=>x').x;
+                var offwidth = this._width * (this._index - 1);
+                this.left =
+                    -(offwidth + lr)
+
+                // document.title = lr;
+            },
+            _end() {
+                var left = - this.left;
+                var per = left % this._width >= this._width / 2 ? 2 : 1;
+                this._index = Math.min(this.focus.length, Math.max(1, per + (left / this._width) >> 0));
+                // this.left = - this._width * (this._index - 1);
+                // console.log(this.left, left);
+                dialog.query('.focus > div:first-child').animate({
+                    'margin-left': - this._width * (this._index - 1)
+                }, 300)
+                // document.title = this._index;
+            }
+        }
+    });
+
+    var errorMap = {
+        // '1': '订单已支付',
+        // '0': '订单已取消',
+        '-1': '网络错误异常',
+        '-2': '订单未支付',
+        '-97': '订单未支付',
+        '-98': '订单未支付',
+        '-99': '微信未安装'
+    }
+
+    var Buy;
+    function ToBuy(self) {
+        _ARGS.tobuy = true;
+        BACK.hide();
+        location.hash = Strings.kv2url(_ARGS)
+        Buy = dialog.render(dialog.query('.mode-to-buy').html(), {
+            data: {
+                sku_list: [],
+                count: 1,
+                price_start: '0',
+                price_end: '00',
+                show_price: 0,
+                price_source: 0,
+                _selected: {},
+                _image_url: null,
+                _image_url_: null,
+                show_title: null,
+                _title: null,
+                show_stock_: 0,
+                _stock: 0,
+
+                buyer_name: '',
+                buyer_tel: '',
+                buyer_area: '',
+                buyer_addr: '',
+                buyer_desc: '',
+
+                pays: [{
+                    name: 'alipay',
+                    icon: './images/alipay.png'
+                },{
+                    name: 'wxpay',
+                    icon: './images/wxpay.png'
+                }],
+                payselect: 0,
+                linkuser: '#user',
+                linkprivate: '#private',
+
+                paying: false,
+                oninputing: false
+            },
+            watch: {
+                show_price(q) {
+                    this.price_start = q >> 0;
+                    this.price_end = (+q).toFixed(2).replace(/^\d+(?:\.(\d{2})\d*|)$/, '$1');
+                },
+                buyer_name(data) {
+                    DetailRender.data.buyer_name = data
+                },
+                buyer_tel(data) {
+                    DetailRender.data.buyer_tel = data
+                },
+                buyer_area(data) {
+                    DetailRender.data.buyer_area = data
+                },
+                buyer_addr(data) {
+                    DetailRender.data.buyer_addr = data
+                },
+                buyer_desc(data) {
+                    DetailRender.data.buyer_desc = data
+                }
+            },
+            events: {
+                onfocus(e) {
+                    if (this.oninputing) {
+                        return;
+                    }
+                    this.oninputing = true;
+                    setTimeout(function() {
+                        var target = e.target;
+                        var rec = dialog.runer(dialog.picker(target, 'getBoundingClientRect|rect=>rect').rect, target)
+                        // alert(BuyDialog.room.find('.room').css('height'))
+                        BuyDialog.room.find('.room').attr('scrollTop', rec.top - 70)
+                    }, 500)
+                },
+                callservice() {
+                    callservice(this);
+                },
+                gotopay() {
+                    if (!this._selected.price)
+                        return Global.MSG('请选择: 规格')
+                    if(dialog.each('buyer_name,buyer_tel,buyer_area,buyer_addr'.split(','), function(k, v) {
+                        if(!this[v]) return Global.MSG('收货信息缺失'), dialog.query('.[0] input,.[0] textarea'.format([v])).trigger('focus'), true;
+                    }, this)) {
+                        return;
+                    }
+                    
+                    if (!this.payselect)
+                        return Global.MSG('请选择: 支付方式')
+                    
+                    var data = dialog.picker(this, 'count=>quantity,product_id,_selected.sku_id=>sku_id,buyer_name=>receiver_name,buyer_tel=>receiver_mobile,buyer_area=>receiver_area,buyer_addr=>receiver_address,payselect=>pay_type,buyer_desc=>desc')
+                    dialog.merge(data, {
+                        content_id: _ARGS.content_id || '0'
+                    })
+                    var PayData = this;
+                    PayData.paying = true;
+                    // 
+                    // return;
+                    _Request('[HOST]/honor/dsp/trade', function (json) {
+                        var data = json.data;
+                        if (json.code != 200) {
+                            PayData.paying = false;
+                            return Global.MSG('{msg}'.format(dialog.picker(json, 'msg|data.paramReq.message|msg=>msg')))
+                        }
+
+                        RunOSfx('payOrder', JSON.stringify(data), function(data) /* success */{
+                            errorMap[data] && RunOSfx('toastMsg', errorMap[data], true);
+                            PayData.paying = false;
+                            if (data == "1") Goto();
+                        }, function()/* err */ {
+                            PayData.paying = false;
+                        })
+                    }, function () {
+                        PayData.paying = false;
+                        // console.log({});
+                    }, 'post', JSON.stringify(data))
+                },
+                goto(e) {
+                    var link = dialog.attr(e.target, 'data-link');
+                    RunOSfx('startWeb', link, "1"/* 带删除按钮 */, true);
+                },
+                select_suk() {
+                    if (!this.selected) {
+                        var idx = this._selected.$idx;
+                        // 删除上一次选中
+                        idx !== undefined && (this.sku_list[idx].selected = false);
+                    }
+                    this.count = 1;
+                    this._selected = this.selected ? {} : this.$item;
+                    this._selected.$idx = this.$idx;
+                    // 设置选中显示
+                    this.show_image_url = this.selected ? this._image_url_ : this.image_url;
+                    this.show_title = this.selected ? this._title : this.name;
+                    this.show_stock_ = this.selected ? this._stock : this.stock;
+                    // 设置显示价格
+                    this.show_price =
+                        // 设置选中
+                        (this.selected = !this.selected)
+                            ? this.price
+                            : this.price_source;
+                },
+                add() {
+                    this.count = Math.min(this.count + 1, 200);
+                },
+                reduce() {
+                    this.count = Math.max(this.count - 1, 1)
+                },
+                toselectpaytype() {
+                    // document.title = this.name
+                    this.payselect = this.name
+                }
+            }
+        });
+
+        dialog.each(dialog.picker(self, 'agreement.user=>linkuser,agreement.private=>linkprivate,product_id,title=>show_title,title=>_title,price=>show_price,price=>price_source,image_url=>show_image_url,image_url=>_image_url_,service,price,buyer_name,buyer_tel,buyer_area,buyer_addr'), function (k, v) {
+            this[k] = v;
+        }, Buy.data);
+        // alert(JSON.stringify(Buy.data.agreement))
+        // 总库存
+        var stock = 0;
+        dialog.each(self.sku_list, function (k, v) {
+            this.push(v);
+            stock += v.stock;
+        }, Buy.data.sku_list);
+        Buy.data._stock = Buy.data.show_stock_ = stock;
+
+        var BuyDialog = dialog.auto(Buy.node, null, {
+            cs: 'offset:0 [0] 0 0;inner:0 0 0 103 .room true;show: +=80 -=30'.format([10]),
+            last: function () {
+                var host = this;
+                host.addClass('buytips')
+                host.proxy(host.bg[0], function () {
+                    host.remove();
+                });
+                host.onclose(function(){
+                    _ARGS.tobuy = false;
+                    BACK.show();
+                    location.hash = Strings.kv2url(_ARGS)
+                })
+            },
+            end: true,
+            destroy: {
+                css: {
+                    top: '+=15px',
+                    opacity: .5
+                },
+                speed: 100
+            }
+        })
+        BuyDialog.onresize(function() {
+            Buy.data.oninputing = false;
+        })
+    }
+    var detail = dialog.auto(DetailRender.node, null, {
+        cs: 'offset:0 0 0 0;inner:0 0 0 53 .room true',//;show:+=50 -=60
+        last: function () {
+            DetailRender.data.loading && (DetailRender.data.lh = dialog.screen().height - 80);
+            // alert(1)
+        },
+        destroy: {
+            css: {
+                top: '+=15px',
+                opacity: .5
+            },
+            speed: {
+                speed: 300,
+                easing: 1
+            }
+        }
+    })
+    _Request('./detail.json', function (json) {
+        // 显示开关
+        // setTimeout(() => {
+        DetailRender.data.loading = false;
+        // }, 3 * 1000)
+
+        var data = json.data;
+        data.desc = data.desc.replace(/^\s*|\s*$/g, '').split(';')
+        dialog.each(dialog.picker(data, 'image_list_url=>focus,name=>title,express_desc=>logistics,rec_desc=>recommon,*'), function (k, v) {
+            this[k] = v
+        }, DetailRender.data);
+
+        _ARGS.tobuy && ToBuy(DetailRender.data);
+    }, function () {
+        // console.log({});
+    })
+    
+    function Goto() {
+        // PayData.paying = false;
+        var BuyDialog = dialog.confirm('支付成功', '请在我的-我的订单查看', function() {
+
+        }, {
+            last: function() {
+                this.addClass('paysuccess');
+                var room = this.room;
+                room.find('.confirm-cancel').click(function() {
+                    RunOSfx('seeOrder', true);
+                    RunOSfx('closeWeb', true);
+                }).html('查看')
+                room.find('.confirm-submit').click(function() {
+                    RunOSfx('closeWeb', true);
+                }).html('关闭')
+                room.find('.confirm-cancel.close').remove()
+
+            } 
+        })
+    }
+    // Goto();
+    
+    DetailRender.data.loading = false;
+
+</script>
+
+</html>
