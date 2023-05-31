@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="disabled-adaptations" content="watch">
+    <link rel="shortcut icon" href="" />
+    <title>DeepLink Test</title>
+    <style>
+      body {
+        padding: 0 0;
+      }
+      pre {
+          word-wrap: break-word;
+          word-break: break-all;
+          white-space: pre-wrap;
+          margin: 0;
+      }
+      html .windows.dialog-tips .bg{
+        display:block;
+      }
+      .loading:not(.dialog-tips) {
+        display: inline-block;
+      }
+      .loading:not(.dialog-tips)::before {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        width: 40px;
+        height: 40px;
+        margin-top: -15px;
+        margin-left: -15px;
+        border-top: 2px solid #ff5721;
+        border-right: 2px solid transparent;
+        border-radius: 50%;
+        -webkit-animation: loading 0.6s linear infinite;
+        animation: loading 0.6s linear infinite;
+        content: "";
+      }
+
+      @keyframes loading {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      @keyframes markMove {
+        0%, 65% {
+          transform: rotate(0deg);
+        }
+        70% {
+          transform: rotate(10deg);
+        }
+        75% {
+          transform: rotate(-10deg);
+        }
+        80% {
+          transform: rotate(10deg);
+        }
+        85% {
+          transform: rotate(-10deg);
+        }
+        90% {
+          transform: rotate(10deg);
+        }
+        95% {
+          transform: rotate(-10deg);
+        }
+        100% {
+          transform: rotate(0deg);
+        }
+      }
+      body {
+          background: #333333;
+      }
+
+      .day-box > div > span:nth-child(2n+1){
+        font-size: 20px;
+        font-weight: bold;
+      }
+      .day-box > div > span:nth-child(2n){
+        word-wrap: break-word;
+        word-break: break-all;
+        white-space: pre-wrap;
+        margin: 0;
+      }
+    </style>
+    <script type="text/javascript">
+      var _Qma = {
+          v: '1.3.1',
+          alias: {
+              'um': '//g.alicdn.com/jssdk/u-link/index.min.js',
+              'dialog': './tools#dialog',
+              'sim-css': './simply.css'
+          },
+          depends: {
+            dialog: {
+                deps: ['sim-css']
+            }
+          },
+      }
+      DEBUG = true
+  </script>
+  </head>
+  <body>
+    <button id="apprun" style="display:none">测试</button>
+    <div class="loading">
+    </div>
+  </body>
+  <script src="./runjs.js?last-none">
+    define.amd = true;
+    var Ulink = require('um');
+    var dialog = require('dialog');
+
+    var render = dialog.render('.color-box.color-box-yellow{测试}[:onclick="click"]', {
+      data: {
+        loading: true
+      },
+      events: {
+        click: function() {
+          dialog.query('#apprun').trigger('click')
+        }
+      }
+    })
+    console.log(ULink, dialog.query(render.node)); 
+    function proxyOpenDownloadfn(defaultAction, cctx) {
+      if (data.popup === 'true') {
+          defaultAction();
+      } else {
+          if (cctx.solution.type === 'scheme') {
+              if (ULink.isWechat || ULink.isQQ) {
+                  defaultAction();
+              } else {
+                  location.href = cctx.solution.downloadUrl;
+              }
+          }
+      }
+    }
+    var oid = '';
+    if (localStorage && localStorage.setItem && localStorage.getItem) {
+        oid = localStorage.getItem('_umeng_oid') || (+new Date()).toString(36) + Math.random().toString(36).substr(2, 6);
+        localStorage.setItem('_umeng_oid', oid);
+    }
+
+    var data = ULink.getUriDecodeParams();
+    var tm = parseInt(data.timeout);
+    var lazy = data.lazy === 'true' ? true : false;
+    if (Object.is(tm, NaN)) {
+        tm = undefined;
+    }
+    var auto = data.auto === 'true' ? true : false;
+    var tip = data.tip;
+    var tipitem;
+    if (tip === 'default') {
+        tipitem = tip;
+    } else if (tip === 'function') {
+        tipitem = function (ctx) {
+            return `<div style="position:fixed;left:0;top:0;background:rgba(0,0,0,0.5);width:100%;height:100%;z-index:19910324;">${ctx.solution.downloadUrl}</div>`;
+        };
+    }
+    var clp = data.clp;
+    ULink({
+        id: data.ukey || 'xxx',
+        data: data,
+        selector: '#apprun',
+        timeout: tm,
+        useOpenInBrowerTips: tipitem || 'default',
+        lazy: lazy,
+        auto: auto,
+        useClipboard: clp,
+        proxyOpenDownload: proxyOpenDownloadfn,
+        onready: function (ctx) {
+            console.log('ready', ctx);
+
+            dialog.query(render.node).insert('#apprun');
+            dialog.query('.loading').remove();
+            
+            var autoBox = dialog.auto({
+              mode: `
+              <div class="days" style="min-width: 300px;">
+                <div class="day-box yu">
+                  <div class="day">
+                    <span class="t">appkey</span><span>{json.appkey}</span>
+                    <span class="t">type</span><span>{json.type}</span>
+                    <span class="t">downloadUrl</span><span>{json.downloadUrl}</span>
+                    ((span>div.color-box.color-box-yellow{关闭Tips}[:onclick="click" style="font-size:12px;margin-top:100px;margin-left: 200px;"]))
+                  </div>
+                  <div class="back">
+                    <span class="t">wakeupUrl</span><span>{json.wakeupUrl}</span>
+                    <span class="t">clipboardToken</span><span>{json.clipboardToken}</span>
+                    ((span>div.color-box.color-box-green{测试调起或下载}[:onclick="runapp" style="font-size:12px;margin-top:100px;margin-left: 160px;"]))
+                  </div>
+                </div>
+
+              </div>
+              `,
+              data: {
+                json: ctx.solution
+              },
+              events: {
+                click() {
+                  autoBox.remove()
+                },
+                runapp() {
+                  dialog.query('#apprun').trigger('click')
+                }
+              }
+            }, {
+              last: function() {
+                this.proxy('bg', () => {
+                  // this.remove();
+                })
+              },
+              center: false,
+              position: {
+                target: dialog.query('.color-box', render.node),
+                position: 'bottom'
+              }
+            });
+        },
+    });
+  </script>
+</html>
