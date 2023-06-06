@@ -1,0 +1,375 @@
+@charset "UTF-8";
+body {
+  padding: 0 0;
+  margin: 0;
+  height: 100%;
+}
+
+@media (width: 320px) {
+  html {
+    zoom: 0.915;
+  }
+}
+@media (min-width: 321px) and (max-width: 330px) {
+  html {
+    zoom: 0.94;
+  }
+}
+@media (min-width: 331px) and (max-width: 340px) {
+  html {
+    zoom: 0.97;
+  }
+}
+@media (min-width: 341px) and (max-width: 350px) {
+  html {
+    zoom: 1;
+  }
+}
+@media (min-width: 351px) and (max-width: 360px) {
+  html {
+    zoom: 1.02;
+  }
+}
+@media (min-width: 361px) and (max-width: 370px) {
+  html {
+    zoom: 1.04;
+  }
+}
+@media (min-width: 371px) and (max-width: 380px) {
+  html {
+    zoom: 1.07;
+  }
+}
+@media (min-width: 381px) and (max-width: 390px) {
+  html {
+    zoom: 1.09;
+  }
+}
+@media (min-width: 391px) and (max-width: 400px) {
+  html {
+    zoom: 1.13;
+  }
+}
+@media (min-width: 401px) and (max-width: 410px) {
+  html {
+    zoom: 1.16;
+  }
+}
+@media (min-width: 411px) and (max-width: 420px) {
+  html {
+    zoom: 1.18;
+  }
+}
+@media (min-width: 421px) and (max-width: 430px) {
+  html {
+    zoom: 1.22;
+  }
+}
+@media (min-width: 431px) and (max-width: 440px) {
+  html {
+    zoom: 1.24;
+  }
+}
+@media (min-width: 441px) and (max-width: 450px) {
+  html {
+    zoom: 1.26;
+  }
+}
+@media (min-width: 451px) and (max-width: 460px) {
+  html {
+    zoom: 1.28;
+  }
+}
+@media (min-width: 461px) and (max-width: 470px) {
+  html {
+    zoom: 1.3;
+  }
+}
+@media (min-width: 471px) and (max-width: 480px) {
+  html {
+    zoom: 1.32;
+  }
+}
+@media (min-width: 481px) and (max-width: 490px) {
+  html {
+    zoom: 1.34;
+  }
+}
+@media (min-width: 491px) and (max-width: 600px) {
+  html {
+    zoom: 1.36;
+  }
+}
+@media (min-width: 501px) and (max-width: 510px) {
+  html {
+    zoom: 1.38;
+  }
+}
+@media (min-width: 511px) and (max-width: 520px) {
+  html {
+    zoom: 1.4;
+  }
+}
+@media (min-width: 521px) and (max-width: 530px) {
+  html {
+    zoom: 1.42;
+  }
+}
+@media (min-width: 531px) and (max-width: 540px) {
+  html {
+    zoom: 1.44;
+  }
+}
+@media (min-width: 541px) and (max-width: 550px) {
+  html {
+    zoom: 1.46;
+  }
+}
+@media (min-width: 551px) and (max-width: 560px) {
+  html {
+    zoom: 1.56;
+  }
+}
+@media (min-width: 561px) and (max-width: 570px) {
+  html {
+    zoom: 1.6;
+  }
+}
+@media (min-width: 571px) and (max-width: 580px) {
+  html {
+    zoom: 1.64;
+  }
+}
+@media (min-width: 581px) and (max-width: 590px) {
+  html {
+    zoom: 1.68;
+  }
+}
+@media (min-width: 591px) and (max-width: 600px) {
+  html {
+    zoom: 1.7;
+  }
+}
+@media (min-width: 601px) and (max-width: 610px) {
+  html {
+    zoom: 1.72;
+  }
+}
+@media (min-width: 611px) and (max-width: 620px) {
+  html {
+    zoom: 1.74;
+  }
+}
+@media (min-width: 621px) and (max-width: 630px) {
+  html {
+    zoom: 1.76;
+  }
+}
+@media (min-width: 631px) and (max-width: 640px) {
+  html {
+    zoom: 1.78;
+  }
+}
+@media (min-width: 641px) and (max-width: 650px) {
+  html {
+    zoom: 1.8;
+  }
+}
+@media (min-width: 651px) and (max-width: 660px) {
+  html {
+    zoom: 1.68;
+  }
+}
+@media (min-width: 661px) and (max-width: 670px) {
+  html {
+    zoom: 1.7;
+  }
+}
+@media (min-width: 671px) and (max-width: 680px) {
+  html {
+    zoom: 1.72;
+  }
+}
+@media (min-width: 681px) and (max-width: 690px) {
+  html {
+    zoom: 1.74;
+  }
+}
+@media (min-width: 691px) and (max-width: 700px) {
+  html {
+    zoom: 1.76;
+  }
+}
+@media (min-width: 701px) and (max-width: 900px) {
+  html {
+    zoom: 2.2;
+  }
+}
+@media (min-width: 900px) {
+  html {
+    zoom: 2.6;
+  }
+}
+@media (min-width: 1900px) {
+  html {
+    zoom: 3;
+  }
+}
+.App {
+  height: 100%;
+  color: #000;
+  background: #F9F9F9;
+  font-size: 12px;
+}
+.App .mine {
+  height: inherit;
+  background-image: url("../images/mine/bar-background.png");
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  color: #fff;
+}
+.App .mine .goback::before {
+  background-image: url(../images/mine/goback.png);
+}
+.App .mine .feedback {
+  font-size: 12px;
+  height: 30px;
+  display: block;
+  position: absolute;
+  right: 10px;
+  bottom: 0;
+  line-height: 30px;
+}
+.App .mine .block {
+  background: #FFFFFF;
+  margin: auto 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  min-height: 300px;
+}
+.App .mine .info {
+  height: 80px;
+  display: flex;
+  margin-top: 50px;
+}
+.App .mine .info > div {
+  display: block;
+}
+.App .mine .info > div:first-child {
+  width: 80%;
+  display: flex;
+  padding-left: 24px;
+}
+.App .mine .info > div:last-child {
+  width: 20%;
+}
+.App .mine .info .icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  background-color: #fff6eb;
+  margin: 8px;
+  margin-left: 0;
+}
+.App .mine .info .text-name-box {
+  font-weight: 500;
+  color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  padding-top: 16px;
+}
+.App .mine .info .text-name-box > span {
+  display: block;
+  justify-content: flex-start;
+}
+.App .mine .info .text-name-box > span:first-child {
+  font-size: 16px;
+  font-weight: 500;
+}
+.App .mine .info .text-name-box > span:nth-child(2) {
+  font-size: 11px;
+  background: rgba(255, 255, 255, 0.1294117647);
+  border-radius: 3px;
+  padding: 1px;
+}
+.App .mine .info .r-box {
+  width: 30%;
+}
+.App .mine .info .r-box > .qc {
+  width: 77px;
+  height: 28px;
+  line-height: 28px;
+  background: linear-gradient(180deg, #FFFFFF 0%, #FFE5CE 100%);
+  margin-top: 20px;
+  border-radius: 15px;
+}
+.App .mine .info .r-box > .qc::before, .App .mine .info .r-box > .qc::after {
+  content: "";
+  display: block;
+  height: 16px;
+  display: inline-block;
+}
+.App .mine .info .r-box > .qc::before {
+  width: 16px;
+  background-image: url(../images/mine/qc.png);
+  background-size: 100%;
+  vertical-align: sub;
+  margin: 0 5px 0 8px;
+}
+.App .mine .info .r-box > .qc::after {
+  width: 46px;
+  height: 16px;
+  content: "邀请码";
+  font-size: 11px;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: #FE8402;
+}
+.App .goback::before {
+  background-image: url(../images/goback-black.png);
+}
+.App .bar {
+  padding-top: 30px;
+}
+.App .bar > div {
+  width: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+.App .bar > div:first-child {
+  height: 30px;
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  padding-top: 30px;
+  /* background-color: yellowgreen; */
+  background-image: url("../images/mine/bar-background.png");
+  background-size: cover;
+}
+.App .bar .goback {
+  padding-top: 5px;
+  width: 30px;
+  height: 30px;
+  display: block;
+  position: absolute;
+}
+.App .bar .goback::before {
+  content: "";
+  width: 10px;
+  height: 18px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: block;
+  margin: auto;
+}
+.App .bar .title {
+  text-align: center;
+  width: 80%;
+  margin: 0 auto;
+  font-size: 17px;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  line-height: 30px;
+}
