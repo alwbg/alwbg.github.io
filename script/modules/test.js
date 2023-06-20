@@ -56,8 +56,12 @@ define('di', ['dialog'], function (dialog) {
             ((span.color-box[:class=" theme ? 'color-box-green' : ''"]{{!theme?"暗色":"亮色"}}))
             ((br+br+br))((div.line>{时间插件测试项}+Timebox[:tips="请选择区间日期"]))
             ((
+                div.line.clock
+            ))
+            ((
                 div.line.wea>
-                div.inline-block>span[:class="showtq ? '_open': '_close'" class="i-state" :onclick="showtq"]+span.color-box[:class=" showtq ? 'color-box-green' : 'color-box-gray'"]{{showtq ? "天气模块状态为打开" : "已隐藏天气模块"}}+div[:if="showtq"]>Wea[:value="searchcity" :showday="showday" :fly="inputs"]))
+                div.inline-block>span[:class="showtq ? '_open': '_close'" class="i-state" :onclick="showtq"]+span.color-box[:class=" showtq ? 'color-box-green' : 'color-box-gray'"]{{showtq ? "天气模块状态为打开" : "已隐藏天气模块"}}+div[:if="showtq"]>Wea[:value="searchcity" :showday="showday" :fly="inputs"]
+            ))
 ((
     (div.line>(
         +div{测试Array.length}+
@@ -222,17 +226,57 @@ define('di', ['dialog'], function (dialog) {
             }
         });
         console.log(worker);
-        arguments.callee.toString().colors()
+        arguments.callee.toString().colors();
+        var T = require('time');
+        var TS = new T('hh:mm:ss');
         return {
             run() {
                 dialog.auto(worker.node, {
                     // cs: 'offset:2 2 33 2;inner: 0 0 0 0 .rainbox',
                     cs: 'offset:2 2 2 2;inner: 0 0 0 0 .rainbox',
+                    scroll: () => {
+                        if (dialog.current() != this.confirm) dialog.resize();
+                    },
                     last(...args) {
                         // console.log(this)
                         // worker.data.searchcity = '';
                         // setTimeout(() => {
                         //     worker.data.searchcity = ''
+                        // }, 1000)
+                        // worker.data.hx = 10
+                        // setTimeout(() => {
+
+                            dialog.auto({
+                                mode: `
+                                ((
+                                    div.clockbox>.h[:style.backgroundPositionY="hx * -100+"px""]+.m[:style.backgroundPositionY="mx * -100+"px""]+.s[:style.backgroundPositionY="sx * -100+"px""]
+                                    )
+                                ))`,
+                                data: {
+
+                                    hx: 0,
+                                    mx: 0,
+                                    sx: 0,
+                                }
+                            }, {
+                                position: {
+                                    // target: this.room.find('.clock'),
+                                    position: 'top,bottom'
+                                },
+                                cs: 'offset: auto 10 10 auto',
+                                center: false,
+                                last() {
+                                    // console.log(this)
+                                    setInterval(() => {
+                                        var a = TS.fire(Date.now());
+                                        var t = dialog.picker(a.split(':'), '0=>hx,1=>mx,2=>sx', true)
+                                        console.log(t)
+                                        dialog.merge(this.render.data, t, true);
+                                        // worker.data.searchcity = ''
+                                    }, 1000)
+                                    this.bg.remove()
+                                }
+                            })
                         // }, 1000)
                         worker.data.theme = true
                         this.addClass('ios');
