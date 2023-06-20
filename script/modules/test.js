@@ -249,7 +249,7 @@ define('di', ['dialog'], function (dialog) {
                             dialog.auto({
                                 mode: `
                                 ((
-                                    div.clockbox>.h[:style.backgroundPositionY="hx * -100+"px""]+.m[:style.backgroundPositionY="mx * -100+"px""]+.s[:style.backgroundPositionY="sx * -100+"px""]
+                                    div.clockbox[:onclick="show"]>.h[:style.backgroundPositionY="hx * -100+"px""]+.m[:style.backgroundPositionY="mx * -100+"px""]+.s[:style.backgroundPositionY="sx * -100+"px""]
                                     )
                                 ))`,
                                 data: {
@@ -257,13 +257,21 @@ define('di', ['dialog'], function (dialog) {
                                     hx: 0,
                                     mx: 0,
                                     sx: 0,
+                                },
+                                events: {
+                                    show() {
+                                        dialog.notice('((div.clocktipstitle{表}))复刻2007年左右写的表盘((br))((div.mark|测试))', 100, {
+                                            target: this._el,
+                                            position: 'bottom,left'
+                                        })//.addClass('black')
+                                    }
                                 }
                             }, {
                                 position: {
                                     // target: this.room.find('.clock'),
                                     position: 'top,bottom'
                                 },
-                                cs: 'offset: auto 10 10 auto',
+                                cs: 'offset: auto 20 20 auto',
                                 center: false,
                                 last() {
                                     // console.log(this)
