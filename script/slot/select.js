@@ -300,10 +300,10 @@ define('tq', ['dialog'], (dialog) => {
                         div.day[:t="day?day:date_nl"]>
                         (
                             img[:src="'./images/icons/'+wea_day_img+'.png'"]+
-                            .day-title{{day}}
+                            .day-title{{day||date_nl}}
                             +div.date{{date}}
-                            +div.rain>(span.t{降雨概率}+span{{rain}})
-                            +div.tem>(span.t{实时温度}+span{{tem}℃})
+                            +div.rain>(span.t{天气}+span{{wea}})
+                            +div.tem>(span.t{实时温度}+span{{tem?tem +"℃" : "-"}})
                             +div.tem1>(span.t{高温}+span{{tem1}℃})
                             +div.tem2>(span.t{低温}+span{{tem2}}℃)
                             +div.humidity>(span.t{湿度}+span{{humidity||'-'}})
@@ -319,7 +319,7 @@ define('tq', ['dialog'], (dialog) => {
                                 +div.sunrise>(span.t{日出}+span{{sunrise||'-'}})
                                 +div.sunset>(span.t{日落}+span{{sunset||'-'}})
                                 +div.visibility>(span.t{能见度}+span{{visibility||'-'}})
-                                +div.narrative{{narrative||air_tips}}
+                                +div.narrative{{narrative||air_tips||win}}
                             )
                 )
                 +div.tip-msg.empty-search[:if="!data.length"]{{error}}
