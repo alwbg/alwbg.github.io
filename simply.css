@@ -2528,6 +2528,7 @@ body {
 
 .clockbox {
   backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
   position: relative;
   height: 100px;
   width: 100px;
@@ -2556,6 +2557,332 @@ body {
 .clockbox .s {
   background-image: url(./static/S.png);
   z-index: 1;
+}
+
+.clockboxnew {
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  position: relative;
+  height: 100px;
+  width: 100px;
+  border-radius: 52px;
+  border: 2px solid #7f7f7f;
+  background-color: rgba(0, 0, 0, 0.5764705882);
+}
+.clockboxnew > span {
+  height: 100px;
+  width: 100px;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-origin: center;
+}
+.clockboxnew > .time-text {
+  position: absolute;
+  width: 100%;
+  top: 47px;
+  height: 6px;
+  line-height: 3px;
+  color: #7f7f7f;
+  transform-origin: center;
+}
+.clockboxnew > .time-text::after {
+  position: absolute;
+  content: attr(data-v);
+  width: auto;
+  height: 10px;
+  line-height: 10px;
+  left: 13px;
+  font-weight: bold;
+  top: 0px;
+  font-size: 10px;
+  zoom: 0.6;
+  transform-origin: center;
+}
+.clockboxnew > .time-text:nth-child(4) {
+  transform: rotate(-271deg);
+  color: #cddc39;
+}
+.clockboxnew > .time-text:nth-child(4)::after {
+  transform: rotate(-90deg);
+}
+.clockboxnew > .time-text:nth-child(5) {
+  transform: rotate(-265deg);
+}
+.clockboxnew > .time-text:nth-child(6) {
+  transform: rotate(-259deg);
+}
+.clockboxnew > .time-text:nth-child(7) {
+  transform: rotate(-253deg);
+}
+.clockboxnew > .time-text:nth-child(8) {
+  transform: rotate(-247deg);
+}
+.clockboxnew > .time-text:nth-child(9) {
+  transform: rotate(-241deg);
+  color: #cddc39;
+}
+.clockboxnew > .time-text:nth-child(9)::after {
+  transform: rotate(-120deg);
+}
+.clockboxnew > .time-text:nth-child(10) {
+  transform: rotate(-235deg);
+}
+.clockboxnew > .time-text:nth-child(11) {
+  transform: rotate(-229deg);
+}
+.clockboxnew > .time-text:nth-child(12) {
+  transform: rotate(-223deg);
+}
+.clockboxnew > .time-text:nth-child(13) {
+  transform: rotate(-217deg);
+}
+.clockboxnew > .time-text:nth-child(14) {
+  transform: rotate(-211deg);
+  color: #cddc39;
+}
+.clockboxnew > .time-text:nth-child(14)::after {
+  transform: rotate(-150deg);
+}
+.clockboxnew > .time-text:nth-child(15) {
+  transform: rotate(-205deg);
+}
+.clockboxnew > .time-text:nth-child(16) {
+  transform: rotate(-199deg);
+}
+.clockboxnew > .time-text:nth-child(17) {
+  transform: rotate(-193deg);
+}
+.clockboxnew > .time-text:nth-child(18) {
+  transform: rotate(-187deg);
+}
+.clockboxnew > .time-text:nth-child(19) {
+  transform: rotate(-181deg);
+  color: #cddc39;
+}
+.clockboxnew > .time-text:nth-child(19)::after {
+  transform: rotate(-180deg);
+}
+.clockboxnew > .time-text:nth-child(20) {
+  transform: rotate(-175deg);
+}
+.clockboxnew > .time-text:nth-child(21) {
+  transform: rotate(-169deg);
+}
+.clockboxnew > .time-text:nth-child(22) {
+  transform: rotate(-163deg);
+}
+.clockboxnew > .time-text:nth-child(23) {
+  transform: rotate(-157deg);
+}
+.clockboxnew > .time-text:nth-child(24) {
+  transform: rotate(-151deg);
+  color: #cddc39;
+}
+.clockboxnew > .time-text:nth-child(24)::after {
+  transform: rotate(-210deg);
+}
+.clockboxnew > .time-text:nth-child(25) {
+  transform: rotate(-145deg);
+}
+.clockboxnew > .time-text:nth-child(26) {
+  transform: rotate(-139deg);
+}
+.clockboxnew > .time-text:nth-child(27) {
+  transform: rotate(-133deg);
+}
+.clockboxnew > .time-text:nth-child(28) {
+  transform: rotate(-127deg);
+}
+.clockboxnew > .time-text:nth-child(29) {
+  transform: rotate(-121deg);
+  color: #cddc39;
+}
+.clockboxnew > .time-text:nth-child(29)::after {
+  transform: rotate(-240deg);
+}
+.clockboxnew > .time-text:nth-child(30) {
+  transform: rotate(-115deg);
+}
+.clockboxnew > .time-text:nth-child(31) {
+  transform: rotate(-109deg);
+}
+.clockboxnew > .time-text:nth-child(32) {
+  transform: rotate(-103deg);
+}
+.clockboxnew > .time-text:nth-child(33) {
+  transform: rotate(-97deg);
+}
+.clockboxnew > .time-text:nth-child(34) {
+  transform: rotate(-91deg);
+  color: #cddc39;
+}
+.clockboxnew > .time-text:nth-child(34)::after {
+  transform: rotate(-270deg);
+}
+.clockboxnew > .time-text:nth-child(35) {
+  transform: rotate(-85deg);
+}
+.clockboxnew > .time-text:nth-child(36) {
+  transform: rotate(-79deg);
+}
+.clockboxnew > .time-text:nth-child(37) {
+  transform: rotate(-73deg);
+}
+.clockboxnew > .time-text:nth-child(38) {
+  transform: rotate(-67deg);
+}
+.clockboxnew > .time-text:nth-child(39) {
+  transform: rotate(-61deg);
+  color: #cddc39;
+}
+.clockboxnew > .time-text:nth-child(39)::after {
+  transform: rotate(-300deg);
+}
+.clockboxnew > .time-text:nth-child(40) {
+  transform: rotate(-55deg);
+}
+.clockboxnew > .time-text:nth-child(41) {
+  transform: rotate(-49deg);
+}
+.clockboxnew > .time-text:nth-child(42) {
+  transform: rotate(-43deg);
+}
+.clockboxnew > .time-text:nth-child(43) {
+  transform: rotate(-37deg);
+}
+.clockboxnew > .time-text:nth-child(44) {
+  transform: rotate(-31deg);
+  color: #cddc39;
+}
+.clockboxnew > .time-text:nth-child(44)::after {
+  transform: rotate(-330deg);
+}
+.clockboxnew > .time-text:nth-child(45) {
+  transform: rotate(-25deg);
+}
+.clockboxnew > .time-text:nth-child(46) {
+  transform: rotate(-19deg);
+}
+.clockboxnew > .time-text:nth-child(47) {
+  transform: rotate(-13deg);
+}
+.clockboxnew > .time-text:nth-child(48) {
+  transform: rotate(-7deg);
+}
+.clockboxnew > .time-text:nth-child(49) {
+  transform: rotate(-1deg);
+  color: #cddc39;
+}
+.clockboxnew > .time-text:nth-child(49)::after {
+  transform: rotate(-360deg);
+}
+.clockboxnew > .time-text:nth-child(50) {
+  transform: rotate(5deg);
+}
+.clockboxnew > .time-text:nth-child(51) {
+  transform: rotate(11deg);
+}
+.clockboxnew > .time-text:nth-child(52) {
+  transform: rotate(17deg);
+}
+.clockboxnew > .time-text:nth-child(53) {
+  transform: rotate(23deg);
+}
+.clockboxnew > .time-text:nth-child(54) {
+  transform: rotate(29deg);
+  color: #cddc39;
+}
+.clockboxnew > .time-text:nth-child(54)::after {
+  transform: rotate(-390deg);
+}
+.clockboxnew > .time-text:nth-child(55) {
+  transform: rotate(35deg);
+}
+.clockboxnew > .time-text:nth-child(56) {
+  transform: rotate(41deg);
+}
+.clockboxnew > .time-text:nth-child(57) {
+  transform: rotate(47deg);
+}
+.clockboxnew > .time-text:nth-child(58) {
+  transform: rotate(53deg);
+}
+.clockboxnew > .time-text:nth-child(59) {
+  transform: rotate(59deg);
+  color: #cddc39;
+}
+.clockboxnew > .time-text:nth-child(59)::after {
+  transform: rotate(-420deg);
+}
+.clockboxnew > .time-text:nth-child(60) {
+  transform: rotate(65deg);
+}
+.clockboxnew > .time-text:nth-child(61) {
+  transform: rotate(71deg);
+}
+.clockboxnew > .time-text:nth-child(62) {
+  transform: rotate(77deg);
+}
+.clockboxnew > .time-text:nth-child(63) {
+  transform: rotate(83deg);
+}
+.clockboxnew > .time-text:nth-child(64) {
+  transform: rotate(89deg);
+  color: #cddc39;
+}
+.clockboxnew > .time-text:nth-child(64)::after {
+  transform: rotate(-450deg);
+}
+.clockboxnew > span::before, .clockboxnew > span::after {
+  content: "";
+  display: inline-block;
+  vertical-align: middle;
+  border-radius: 4px;
+  margin-top: calc(100% - 100px / 2 - 6px / 2 - 1px);
+}
+.clockboxnew > span::before {
+  margin-left: calc(100% - 100px / 2 - 6px / 2 - 1px);
+  width: 6px;
+  height: 6px;
+}
+.clockboxnew > span::after {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.clockboxnew .h {
+  z-index: 8;
+}
+.clockboxnew .h::before {
+  border: 1px solid #FFC107;
+}
+.clockboxnew .h::after {
+  height: 6px;
+  width: calc(100% - 100px / 2 - 30%);
+  background-color: #FFC107;
+}
+.clockboxnew .m {
+  z-index: 9;
+}
+.clockboxnew .m::before {
+  border: 1px solid #b1d400;
+}
+.clockboxnew .m::after {
+  height: 4px;
+  width: calc(100% - 100px / 2 - 6px - 5%);
+  background-color: #b1d400;
+}
+.clockboxnew .s {
+  z-index: 10;
+}
+.clockboxnew .s::before {
+  border: 1px solid #00bcd4;
+}
+.clockboxnew .s::after {
+  height: 2px;
+  width: calc(100% - 100px / 2 - 6px);
+  background-color: #00bcd4;
 }
 
 .windows.ios .dialog-confirm {

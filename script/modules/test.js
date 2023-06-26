@@ -245,7 +245,6 @@ define('di', ['dialog'], function (dialog) {
                         // }, 1000)
                         // worker.data.hx = 10
                         // setTimeout(() => {
-
                             dialog.auto({
                                 mode: `
                                 ((
@@ -278,9 +277,59 @@ define('di', ['dialog'], function (dialog) {
                                     setInterval(() => {
                                         var a = TS.fire(Date.now());
                                         var t = dialog.picker(a.split(':'), '0=>hx,1=>mx,2=>sx', true)
-                                        console.log(t)
+                                        // console.log(t)
                                         dialog.merge(this.render.data, t, true);
                                         // worker.data.searchcity = ''
+                                    }, 1000)
+                                    this.bg.remove()
+                                }
+                            })
+                            var ts = [], tms;
+                            dialog.between(0, 59, (i, f) => {
+                                tms = (f - i) % 5 == 0 ? ((f - i) / 5) || 12 : '';
+                                tms = /^(3|6|9|12)$/.test(tms) ? tms : '';
+                                ts.push({name: tms, k: '-'})
+                            })
+
+                            var ROOM;
+                            dialog.auto({
+                                mode: `
+                                ((
+                                    div.clockboxnew[:onclick="show"]>
+                                    .h[:style.transform=""rotate\\("+(hx*360/12-90)+"deg\\)""]+
+                                    .m[:style.transform=""rotate\\("+(mx*360/60-90)+"deg\\)""]+
+                                    .s[:style.transform=""rotate\\("+(sx*360/60-90)+"deg\\)""]+
+                                    div.time-text[:for="t" :data-v="name"]{{k}}+
+                                    )
+                                ))`,
+                                data: {
+                                    hx: 0,
+                                    mx: 0,
+                                    sx: 0,
+                                    t: ts,
+                                    state: true
+                                },
+                                events: {
+                                    show() {
+                                        this.state = !this.state
+                                        dialog.query('.clockboxnew', this._el).stop(true, true).animate({
+                                            'zoom': this.state ? 2 : 0.6
+                                        })
+                                        ROOM.find('.content').stop(true, true).animate({
+                                            right: 180,
+                                            width: 'auto'
+                                        })
+                                    }
+                                }
+                            }, {
+                                cs: 'offset: auto 20 180 auto',
+                                // center: false,
+                                last() {
+                                    ROOM = this.root;
+                                    setInterval(() => {
+                                        var a = TS.fire(Date.now());
+                                        var t = dialog.picker(a.split(':'), '0=>hx,1=>mx,2=>sx', true);
+                                        dialog.merge(this.render.data, t, true);
                                     }, 1000)
                                     this.bg.remove()
                                 }
