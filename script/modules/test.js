@@ -178,14 +178,14 @@ define('di', ['dialog'], function (dialog) {
                     cur || (this.sele.data.id = (this.sele.data.id + '').replace(/^.*,([^,]+)$/, '$1'))
                 },
                 theme(data) {
-                    if(this.themeState) {
-                        if(!data){
+                    if (this.themeState) {
+                        if (!data) {
                             this.themeState.remove()
                         }
                     }
                     var _this = this;
                     if (data) {
-                        require('./css/white.css', function() {
+                        require('./css/white.css', function () {
                             _this.themeState = this;
                         });
                     }
@@ -212,7 +212,7 @@ define('di', ['dialog'], function (dialog) {
                     // this.message2 += 1;
                     dialog.resize()
                 },
-                showtq:function(){
+                showtq: function () {
                     this.showtq = !this.showtq
                     dialog.resize()
                 },
@@ -245,55 +245,55 @@ define('di', ['dialog'], function (dialog) {
                         // }, 1000)
                         // worker.data.hx = 10
                         // setTimeout(() => {
-                            dialog.auto({
-                                mode: `
+                        dialog.auto({
+                            mode: `
                                 ((
                                     div.clockbox[:onclick="show"]>.h[:style.backgroundPositionY="hx * -100+"px""]+.m[:style.backgroundPositionY="mx * -100+"px""]+.s[:style.backgroundPositionY="sx * -100+"px""]
                                     )
                                 ))`,
-                                data: {
+                            data: {
 
-                                    hx: 0,
-                                    mx: 0,
-                                    sx: 0,
-                                },
-                                events: {
-                                    show() {
-                                        dialog.notice('((div.clocktipstitle{表}))复刻2007年左右写的表盘((br))((div.mark|测试))', 100, {
-                                            target: this._el,
-                                            position: 'bottom,left'
-                                        })//.addClass('black')
-                                    }
+                                hx: 0,
+                                mx: 0,
+                                sx: 0,
+                            },
+                            events: {
+                                show() {
+                                    dialog.notice('((div.clocktipstitle{表}))复刻2007年左右写的表盘((br))((div.mark|测试))', 100, {
+                                        target: this._el,
+                                        position: 'bottom,left'
+                                    })//.addClass('black')
                                 }
-                            }, {
-                                position: {
-                                    // target: this.room.find('.clock'),
-                                    position: 'top,bottom'
-                                },
-                                cs: 'offset: auto 20 20 auto',
-                                center: false,
-                                last() {
-                                    // console.log(this)
-                                    setInterval(() => {
-                                        var a = TS.fire(Date.now());
-                                        var t = dialog.picker(a.split(':'), '0=>hx,1=>mx,2=>sx', true)
-                                        // console.log(t)
-                                        dialog.merge(this.render.data, t, true);
-                                        // worker.data.searchcity = ''
-                                    }, 1000)
-                                    this.bg.remove()
-                                }
-                            })
-                            var ts = [], tms;
-                            dialog.between(0, 59, (i, f) => {
-                                tms = (f - i) % 5 == 0 ? ((f - i) / 5) || 12 : '';
-                                tms = /^(3|6|9|12)$/.test(tms) ? tms : '';
-                                ts.push({name: tms, k: '-'})
-                            })
+                            }
+                        }, {
+                            position: {
+                                // target: this.room.find('.clock'),
+                                position: 'top,bottom'
+                            },
+                            cs: 'offset: auto 20 20 auto',
+                            center: false,
+                            last() {
+                                // console.log(this)
+                                setInterval(() => {
+                                    var a = TS.fire(Date.now());
+                                    var t = dialog.picker(a.split(':'), '0=>hx,1=>mx,2=>sx', true)
+                                    // console.log(t)
+                                    dialog.merge(this.render.data, t, true);
+                                    // worker.data.searchcity = ''
+                                }, 1000)
+                                this.bg.remove()
+                            }
+                        })
+                        var ts = [], tms;
+                        dialog.between(0, 59, (i, f) => {
+                            tms = (f - i) % 5 == 0 ? ((f - i) / 5) || 12 : '';
+                            tms = /^(3|6|9|12)$/.test(tms) ? tms : '';
+                            ts.push({ name: tms, k: '-' })
+                        })
 
-                            var ROOM;
-                            dialog.auto({
-                                mode: `
+                        var ROOM;
+                        dialog.auto({
+                            mode: `
                                 ((
                                     div.clockboxnew[:onclick="show"]>
                                     .h[:style.transform=""rotate\\("+(hx*360/12-90)+"deg\\)""]+
@@ -302,38 +302,40 @@ define('di', ['dialog'], function (dialog) {
                                     div.time-text[:for="t" :data-v="name"]{{k}}+
                                     )
                                 ))`,
-                                data: {
-                                    hx: 0,
-                                    mx: 0,
-                                    sx: 0,
-                                    t: ts,
-                                    state: true
-                                },
-                                events: {
-                                    show() {
-                                        this.state = !this.state
-                                        dialog.query('.clockboxnew', this._el).stop(true, true).animate({
-                                            'zoom': this.state ? 2 : 0.6
-                                        })
-                                        ROOM.find('.content').stop(true, true).animate({
-                                            right: 180,
-                                            width: 'auto'
-                                        })
-                                    }
+                            data: {
+                                hx: 0,
+                                mx: 0,
+                                sx: 0,
+                                t: ts,
+                                state: true,
+                                el: null
+                            },
+                            events: {
+                                show() {
+                                    this.state = !this.state;
+                                    var el = this.el || (this.el = dialog.query('.clockboxnew', this._el));
+                                    el.stop(true, true).animate({
+                                        'zoom': this.state ? 2 : 0.6
+                                    })
+                                    ROOM.find('.content').stop(true, true).animate({
+                                        right: 180,
+                                        width: 'auto'
+                                    })
                                 }
-                            }, {
-                                cs: 'offset: auto 20 180 auto',
-                                // center: false,
-                                last() {
-                                    ROOM = this.root;
-                                    setInterval(() => {
-                                        var a = TS.fire(Date.now());
-                                        var t = dialog.picker(a.split(':'), '0=>hx,1=>mx,2=>sx', true);
-                                        dialog.merge(this.render.data, t, true);
-                                    }, 1000)
-                                    this.bg.remove()
-                                }
-                            })
+                            }
+                        }, {
+                            cs: 'offset: auto 20 180 auto',
+                            // center: false,
+                            last() {
+                                ROOM = this.root;
+                                setInterval(() => {
+                                    var a = TS.fire(Date.now());
+                                    var t = dialog.picker(a.split(':'), '0=>hx,1=>mx,2=>sx', true);
+                                    dialog.merge(this.render.data, t, true);
+                                }, 1000)
+                                this.bg.remove()
+                            }
+                        })
                         // }, 1000)
                         worker.data.theme = true
                         this.addClass('ios');
