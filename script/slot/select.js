@@ -258,7 +258,7 @@ define('button', ['dialog'], (dialog) => {
     })
 })
 
-define('tq', ['dialog'], (dialog) => {
+define('tq', ['dialog', 'flash'], (dialog, flash) => {
 
     function trigger(root, city = root.city, showday = root.showday) {
         clearTimeout(root.t);
@@ -296,7 +296,7 @@ define('tq', ['dialog'], (dialog) => {
             div.city{城市:{city}}
             +div.days>
                 (
-                    div.day-box[:for="data" :class="wea_day_img+''"]>
+                    div.day-box[:for="data" :class="wea_day_img+''" :onclick="click"]>
                         div.day[:t="day?day:date_nl"]>
                         (
                             img[:src="'./images/icons/'+wea_day_img+'.png'"]+
@@ -359,6 +359,36 @@ define('tq', ['dialog'], (dialog) => {
             },
             showday(v) {
                 trigger(this, this.city, v)
+            }
+        },
+        events: {
+            click() {
+                flash.run(this._el, {
+                    selector: 'daysinfo',
+                    mode: `div.day-box[:class="wea_day_img+''" :onclick="click"]>
+                    div.day[:t="day?day:date_nl"]>
+                        (
+                            img[:src="'./images/icons/'+wea_day_img+'.png'"]+
+                            .day-title{{day||date_nl}}
+                            +div.date{{date}}
+                            +div.rain>(span.t{天气}+span{{wea}})
+                            +div.tem>(span.t{实时温度}+span{{tem?tem +"℃" : "-"}})
+                            +div.tem1>(span.t{高温}+span{{tem1}℃})
+                            +div.tem2>(span.t{低温}+span{{tem2}}℃)
+                            +div.humidity>(span.t{湿度}+span{{humidity||'-'}})
+                            +div.air>(span.t{空气质量}+span{{air||'-'}})
+                            +div.win_speed>(span.t{风速}+span{{win_speed}})
+                            +div.air_level>(span.t{空气等级}+span{{air_level||'-'}})
+                            +div.wea_day>(span.t{白天天气情况}+span{{wea_day}})
+                            +div.wea_night>(span.t{夜间天气情况}+span{{wea_night||'-'}})
+                            +div.sunrise>(span.t{日出}+span{{sunrise||'-'}})
+                            +div.sunset>(span.t{日落}+span{{sunset||'-'}})
+                            +div.visibility>(span.t{能见度}+span{{visibility||'-'}})
+                            +div.narrative{{narrative||air_tips||win}}
+                        )`,
+                    data: dialog.picker(this, '$idx,*'),
+                    top: '[auto,150px,200px,80px]'.on()//150//
+                });
             }
         }
     });

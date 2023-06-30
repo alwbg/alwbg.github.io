@@ -1688,7 +1688,7 @@ input.hover-show-hand[readonly],
   /*background-color: #CDDC39!important;*/
 }
 
-.times {
+.times, .windows.fade .content {
   /* background-color: #242424; */
   width: 217px;
   width: 217px;
@@ -1705,29 +1705,29 @@ input.hover-show-hand[readonly],
   position: relative;
   /* 年月 */
 }
-.times .title {
+.times .title, .windows.fade .content .title {
   position: relative;
   color: #fff;
 }
-.times.hms .title, .times.ym .title {
+.times.hms .title, .windows.fade .hms.content .title, .times.ym .title, .windows.fade .ym.content .title {
   display: flex;
   justify-content: space-between;
   margin-bottom: 7px;
   font-size: 16px;
   font-weight: 100;
 }
-.times.hms .title .time-hms, .times.ym .title .time-hms {
+.times.hms .title .time-hms, .windows.fade .hms.content .title .time-hms, .times.ym .title .time-hms, .windows.fade .ym.content .title .time-hms {
   font-weight: bold;
 }
-.times.ym .yearsormonth {
+.times.ym .yearsormonth, .windows.fade .ym.content .yearsormonth {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
 }
-.times.ym .yearsormonth > span {
+.times.ym .yearsormonth > span, .windows.fade .ym.content .yearsormonth > span {
   width: 30%;
 }
-html .windows .content .times > .current-month:not(.forbidden):hover, html .windows .content .times > .prev-month:not(.forbidden):hover, html .windows .content .times > .next-month:not(.forbidden):hover {
+html .windows .content .times > .current-month:not(.forbidden):hover, html .windows.fade .content .content > .current-month:not(.forbidden):hover, html .windows .content .times > .prev-month:not(.forbidden):hover, html .windows.fade .content .content > .prev-month:not(.forbidden):hover, html .windows .content .times > .next-month:not(.forbidden):hover, html .windows.fade .content .content > .next-month:not(.forbidden):hover {
   overflow: hidden;
   position: relative;
   background-color: transparent !important;
@@ -1738,7 +1738,7 @@ html .windows .content .times > .current-month:not(.forbidden):hover, html .wind
   line-height: 27px;
   z-index: 10;
 }
-html .windows .content .times > .current-month:not(.forbidden):hover:before, html .windows .content .times > .prev-month:not(.forbidden):hover:before, html .windows .content .times > .next-month:not(.forbidden):hover:before {
+html .windows .content .times > .current-month:not(.forbidden):hover:before, html .windows.fade .content .content > .current-month:not(.forbidden):hover:before, html .windows .content .times > .prev-month:not(.forbidden):hover:before, html .windows.fade .content .content > .prev-month:not(.forbidden):hover:before, html .windows .content .times > .next-month:not(.forbidden):hover:before, html .windows.fade .content .content > .next-month:not(.forbidden):hover:before {
   content: "";
   position: absolute;
   width: 200%;
@@ -1750,7 +1750,7 @@ html .windows .content .times > .current-month:not(.forbidden):hover:before, htm
   top: 50%;
   z-index: -1;
 }
-html .windows .content .times > .current-month:not(.forbidden):hover:after, html .windows .content .times > .prev-month:not(.forbidden):hover:after, html .windows .content .times > .next-month:not(.forbidden):hover:after {
+html .windows .content .times > .current-month:not(.forbidden):hover:after, html .windows.fade .content .content > .current-month:not(.forbidden):hover:after, html .windows .content .times > .prev-month:not(.forbidden):hover:after, html .windows.fade .content .content > .prev-month:not(.forbidden):hover:after, html .windows .content .times > .next-month:not(.forbidden):hover:after, html .windows.fade .content .content > .next-month:not(.forbidden):hover:after {
   content: "";
   position: absolute;
   z-index: 0;
@@ -1767,31 +1767,31 @@ html .windows .content .times > .current-month:not(.forbidden):hover:after, html
     transform: rotate(1turn);
   }
 }
-.times .timea-show-hms-box {
+.times .timea-show-hms-box, .windows.fade .content .timea-show-hms-box {
   margin-top: 5px;
   color: #fff;
   background-color: rgba(48, 48, 48, 0.2901960784);
   padding: 3px;
   border-radius: 5px;
 }
-.times .timea-show-hms-box .timea-show-hms {
+.times .timea-show-hms-box .timea-show-hms, .windows.fade .content .timea-show-hms-box .timea-show-hms {
   margin-left: 5px;
   display: inline-block;
 }
-.times .timea-show-hms-box .timea-show-hms > span {
+.times .timea-show-hms-box .timea-show-hms > span, .windows.fade .content .timea-show-hms-box .timea-show-hms > span {
   margin: 3px;
   display: inline-block;
   background-color: rgba(0, 0, 0, 0.4196078431);
   padding: 6px;
   border-radius: 5px;
 }
-.times .forbidden.current-month, .times .forbidden.next-month, .times .forbidden.prev-month {
+.times .forbidden.current-month, .windows.fade .content .forbidden.current-month, .times .forbidden.next-month, .windows.fade .content .forbidden.next-month, .times .forbidden.prev-month, .windows.fade .content .forbidden.prev-month {
   background-color: rgba(167, 167, 167, 0.2392156863);
   color: #747474;
   cursor: default;
   font-weight: initial;
 }
-.times .forbidden.current-month:hover, .times .forbidden.next-month:hover, .times .forbidden.prev-month:hover {
+.times .forbidden.current-month:hover, .windows.fade .content .forbidden.current-month:hover, .times .forbidden.next-month:hover, .windows.fade .content .forbidden.next-month:hover, .times .forbidden.prev-month:hover, .windows.fade .content .forbidden.prev-month:hover {
   background-color: rgba(167, 167, 167, 0.2392156863);
   color: #747474;
   cursor: default;
@@ -1801,7 +1801,9 @@ html .windows .content .times > .current-month:not(.forbidden):hover:after, html
 .title-month,
 .current-month,
 .times .prev-month:hover,
+.windows.fade .content .prev-month:hover,
 .times .next-month:hover,
+.windows.fade .content .next-month:hover,
 .prev-month,
 .next-month {
   cursor: pointer;
@@ -1820,7 +1822,7 @@ html .windows .content .times > .current-month:not(.forbidden):hover:after, html
   margin: 1px;
 }
 
-.times .i-mark {
+.times .i-mark, .windows.fade .content .i-mark {
   background-color: #242424;
 }
 
@@ -1836,7 +1838,7 @@ html .windows .content .times > .current-month:not(.forbidden):hover:after, html
   font-weight: 700;
 }
 
-.current-month:hover, .times .prev-month:hover, .times .next-month:hover {
+.current-month:hover, .times .prev-month:hover, .windows.fade .content .prev-month:hover, .times .next-month:hover, .windows.fade .content .next-month:hover {
   background-color: #2c7be5;
   color: #fff;
   font-weight: 700;
@@ -2360,33 +2362,37 @@ body {
   color: #fff;
 }
 
-.days {
+.days, .windows.daysinfo, .windows.fade {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
 }
-.days .tip-msg,
+.days .tip-msg, .windows.daysinfo .tip-msg, .windows.fade .tip-msg,
 .days .error-tips,
-.days .city-items {
+.windows.daysinfo .error-tips,
+.windows.fade .error-tips,
+.days .city-items,
+.windows.daysinfo .city-items,
+.windows.fade .city-items {
   padding: 0 10px;
 }
-.days .day-box {
+.days .day-box, .windows.daysinfo .day-box, .windows.fade .day-box {
   perspective: 700px;
   position: relative;
   margin: 1px;
   height: 260px;
   width: calc(14.2857142857% - 2px);
 }
-.days .day-box .narrative {
+.days .day-box .narrative, .windows.daysinfo .day-box .narrative, .windows.fade .day-box .narrative {
   font-size: 10px;
   zoom: 0.9;
   color: #00bcd4;
 }
-.days .day-box .day {
+.days .day-box .day, .windows.daysinfo .day-box .day, .windows.fade .day-box .day {
   z-index: 20;
   transform: rotateY(0deg);
 }
-.days .day-box .day img {
+.days .day-box .day img, .windows.daysinfo .day-box .day img, .windows.fade .day-box .day img {
   position: absolute;
   top: -30px;
   right: -30px;
@@ -2395,7 +2401,7 @@ body {
   opacity: 1;
   transition: 1s ease-in-out;
 }
-.days .day-box .back {
+.days .day-box .back, .windows.daysinfo .day-box .back, .windows.fade .day-box .back {
   height: 100%;
   width: 100%;
   top: 0;
@@ -2404,67 +2410,67 @@ body {
   z-index: 1;
   background-image: linear-gradient(320deg, rgb(255, 255, 255), #cddc39);
 }
-.days .day-box .back img {
+.days .day-box .back img, .windows.daysinfo .day-box .back img, .windows.fade .day-box .back img {
   transition: 1s ease-in-out;
   margin-top: 0px;
 }
-.days .day-box.qing > .day {
+.days .day-box.qing > .day, .windows.daysinfo .day-box.qing > .day, .windows.fade .day-box.qing > .day {
   background-image: linear-gradient(34deg, rgb(255, 255, 255), #ebe5ad);
 }
-.days .day-box.qing > .back {
+.days .day-box.qing > .back, .windows.daysinfo .day-box.qing > .back, .windows.fade .day-box.qing > .back {
   background-image: linear-gradient(320deg, rgb(255, 255, 255), #ebe5ad);
 }
-.days .day-box.yin > .day {
+.days .day-box.yin > .day, .windows.daysinfo .day-box.yin > .day, .windows.fade .day-box.yin > .day {
   background-image: linear-gradient(34deg, rgb(255, 255, 255), #9e9e9e);
 }
-.days .day-box.yin > .back {
+.days .day-box.yin > .back, .windows.daysinfo .day-box.yin > .back, .windows.fade .day-box.yin > .back {
   background-image: linear-gradient(320deg, rgb(255, 255, 255), #9e9e9e);
 }
-.days .day-box.yun > .day {
+.days .day-box.yun > .day, .windows.daysinfo .day-box.yun > .day, .windows.fade .day-box.yun > .day {
   background-image: linear-gradient(34deg, rgb(255, 255, 255), #ffefc4);
 }
-.days .day-box.yun > .back {
+.days .day-box.yun > .back, .windows.daysinfo .day-box.yun > .back, .windows.fade .day-box.yun > .back {
   background-image: linear-gradient(320deg, rgb(255, 255, 255), #ffefc4);
 }
-.days .day-box.yu > .day {
+.days .day-box.yu > .day, .windows.daysinfo .day-box.yu > .day, .windows.fade .day-box.yu > .day {
   background-image: linear-gradient(34deg, rgb(255, 255, 255), #bed1ff);
 }
-.days .day-box.yu > .back {
+.days .day-box.yu > .back, .windows.daysinfo .day-box.yu > .back, .windows.fade .day-box.yu > .back {
   background-image: linear-gradient(320deg, rgb(255, 255, 255), #bed1ff);
 }
-.days .day-box.lei > .day {
+.days .day-box.lei > .day, .windows.daysinfo .day-box.lei > .day, .windows.fade .day-box.lei > .day {
   background-image: linear-gradient(34deg, rgb(255, 255, 255), #cac3ff);
 }
-.days .day-box.lei > .back {
+.days .day-box.lei > .back, .windows.daysinfo .day-box.lei > .back, .windows.fade .day-box.lei > .back {
   background-image: linear-gradient(320deg, rgb(255, 255, 255), #cac3ff);
 }
-.days .day-box.shachen > .day {
+.days .day-box.shachen > .day, .windows.daysinfo .day-box.shachen > .day, .windows.fade .day-box.shachen > .day {
   background-image: linear-gradient(34deg, rgb(255, 255, 255), #9cb54c);
 }
-.days .day-box.shachen > .back {
+.days .day-box.shachen > .back, .windows.daysinfo .day-box.shachen > .back, .windows.fade .day-box.shachen > .back {
   background-image: linear-gradient(320deg, rgb(255, 255, 255), #9cb54c);
 }
-.days .day-box.xue > .day {
+.days .day-box.xue > .day, .windows.daysinfo .day-box.xue > .day, .windows.fade .day-box.xue > .day {
   background-image: linear-gradient(34deg, rgb(255, 255, 255), #dedede);
 }
-.days .day-box.xue > .back {
+.days .day-box.xue > .back, .windows.daysinfo .day-box.xue > .back, .windows.fade .day-box.xue > .back {
   background-image: linear-gradient(320deg, rgb(255, 255, 255), #dedede);
 }
-.days .day-box:hover .day {
+.days .day-box:hover .day, .windows.daysinfo .day-box:hover .day, .windows.fade .day-box:hover .day {
   transform: rotateY(180deg);
 }
-.days .day-box:hover .day img {
+.days .day-box:hover .day img, .windows.daysinfo .day-box:hover .day img, .windows.fade .day-box:hover .day img {
   opacity: 0;
   top: 0;
   right: 0;
 }
-.days .day-box:hover .back {
+.days .day-box:hover .back, .windows.daysinfo .day-box:hover .back, .windows.fade .day-box:hover .back {
   transform: rotateY(0deg);
 }
-.days .day-box:hover .back img {
+.days .day-box:hover .back img, .windows.daysinfo .day-box:hover .back img, .windows.fade .day-box:hover .back img {
   margin-top: -60px;
 }
-.days .day-box > div {
+.days .day-box > div, .windows.daysinfo .day-box > div, .windows.fade .day-box > div {
   border-radius: 10px;
   padding: 6px;
   font-weight: 300;
@@ -2477,38 +2483,38 @@ body {
   backface-visibility: hidden;
   transform-style: preserve-3d;
 }
-.days .day-box > div > * {
+.days .day-box > div > *, .windows.daysinfo .day-box > div > *, .windows.fade .day-box > div > * {
   display: flex;
 }
-.days .day-box > div > * > span {
+.days .day-box > div > * > span, .windows.daysinfo .day-box > div > * > span, .windows.fade .day-box > div > * > span {
   width: 100%;
 }
-.days .day-box > div > * > span:not(.t) {
+.days .day-box > div > * > span:not(.t), .windows.daysinfo .day-box > div > * > span:not(.t), .windows.fade .day-box > div > * > span:not(.t) {
   color: #F44336;
   text-align: right;
 }
-.days .day-box > div > * {
+.days .day-box > div > *, .windows.daysinfo .day-box > div > *, .windows.fade .day-box > div > * {
   margin: 7px;
 }
-.days .day-box > div .t {
+.days .day-box > div .t, .windows.daysinfo .day-box > div .t, .windows.fade .day-box > div .t {
   display: inline-block;
   width: 100%;
 }
-.days .day {
+.days .day, .windows.daysinfo .day, .windows.fade .day {
   background-image: linear-gradient(34deg, rgb(255, 255, 255), #ebe5ad);
   background-color: #000;
 }
-.days .day:hover img {
+.days .day:hover img, .windows.daysinfo .day:hover img, .windows.fade .day:hover img {
   animation: markMove 2s infinite ease-in;
 }
-.days .day > .date {
+.days .day > .date, .windows.daysinfo .day > .date, .windows.fade .day > .date {
   font-size: 16px;
   zoom: 0.9;
   color: #000000;
   font-weight: bold;
   font-family: fantasy;
 }
-.days .empty-search {
+.days .empty-search, .windows.daysinfo .empty-search, .windows.fade .empty-search {
   display: block;
   width: 100%;
   text-align: center;
@@ -2516,7 +2522,7 @@ body {
   height: 100px;
   line-height: 100px;
 }
-.days .day-title {
+.days .day-title, .windows.daysinfo .day-title, .windows.fade .day-title {
   font-size: 15px;
   font-weight: 700;
 }
@@ -2559,6 +2565,10 @@ body {
   z-index: 1;
 }
 
+.windows .color-box {
+  transition: 1s ease-out;
+}
+
 .clockboxnew {
   backdrop-filter: saturate(180%) blur(20px);
   -webkit-backdrop-filter: saturate(180%) blur(20px);
@@ -2568,6 +2578,9 @@ body {
   border-radius: 52px;
   border: 2px solid #7f7f7f;
   background-color: rgba(0, 0, 0, 0.5764705882);
+}
+.clockboxnew.initshow > span {
+  transition: 1s ease-in-out;
 }
 .clockboxnew > span {
   height: 100px;
@@ -2892,39 +2905,103 @@ body {
   overflow-x: hidden !important;
 }
 
+.model, .windows.fade .content .prev-month:hover, .windows.fade .content .next-month:hover, .windows.fade .content .current-month:not(.cur), .windows.fade .content .title-month:not(.cur), .windows.fade .content > div > span.prev-month:hover, .windows.fade .content > div > span {
+  width: calc(14.2857142857% - 7px);
+  height: 50px;
+  line-height: 50px;
+  background-color: transparent;
+}
+
+.windows.daysinfo .bg, .windows.fade .bg {
+  background-color: #000000;
+  opacity: 0.7;
+}
+.windows.daysinfo .day-box:hover .day img, .windows.fade .day-box:hover .day img {
+  opacity: 1;
+  top: -70px;
+  right: 0;
+}
+.windows.daysinfo .day-box, .windows.fade .day-box {
+  min-height: 400px;
+  min-width: 400px;
+  height: 100%;
+  width: 100%;
+}
+.windows.daysinfo .day-box:hover .day, .windows.fade .day-box:hover .day {
+  transform: inherit;
+}
+.windows.daysinfo .day-box .day, .windows.fade .day-box .day {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.windows.daysinfo .day-box .day img, .windows.fade .day-box .day img {
+  width: 200px;
+  top: -50px;
+  right: 0px;
+}
+.windows.fade .content {
+  background-color: #fff;
+  height: 360px;
+  min-width: 300px;
+  background-image: linear-gradient(238deg, rgb(255, 255, 255), #e5fec8);
+}
+.windows.fade .content > div > span.cur {
+  border-radius: 25px;
+}
+.windows.fade .content .current-month:not(.cur), .windows.fade .content .title-month:not(.cur) {
+  color: #000;
+  background-color: transparent;
+}
+.windows.fade .content .prev-month, .windows.fade .content .next-month {
+  color: #dbdbdb;
+}
+.windows.fade .content .month-bg {
+  font-size: 150px;
+  position: absolute;
+  z-index: -1;
+  color: #e5fec8;
+  right: 0;
+  bottom: 0;
+  font-family: fantasy;
+}
+.windows.fade .content .month-bg::after {
+  content: attr(data-txt);
+  font-size: 40px;
+}
+
 @media (max-width: 900px) {
   body > img {
     width: 100% !important;
   }
-  .days {
+  .days, .windows.daysinfo, .windows.fade {
     display: block;
   }
-  .days .day-box:first-child {
+  .days .day-box:first-child, .windows.daysinfo .day-box:first-child, .windows.fade .day-box:first-child {
     width: 100%;
   }
-  .days .day-box:not(:first-child) {
+  .days .day-box:not(:first-child), .windows.daysinfo .day-box:not(:first-child), .windows.fade .day-box:not(:first-child) {
     display: inline-block;
     width: calc(33.3333333333% - 2px);
   }
-  .days .day-box:nth-child(3n):not(:first-child) {
+  .days .day-box:nth-child(3n):not(:first-child), .windows.daysinfo .day-box:nth-child(3n):not(:first-child), .windows.fade .day-box:nth-child(3n):not(:first-child) {
     margin-top: 2px;
     margin-left: 1px;
     margin-right: 1px;
   }
 }
 @media (max-width: 500px) {
-  .days .day-box:first-child {
+  .days .day-box:first-child, .windows.daysinfo .day-box:first-child, .windows.fade .day-box:first-child {
     width: 100%;
   }
-  .days .day-box:not(:first-child) {
+  .days .day-box:not(:first-child), .windows.daysinfo .day-box:not(:first-child), .windows.fade .day-box:not(:first-child) {
     display: inline-block;
     width: calc(50% - 2px);
   }
-  .days .day-box:nth-child(2n+1):not(:first-child) {
+  .days .day-box:nth-child(2n+1):not(:first-child), .windows.daysinfo .day-box:nth-child(2n+1):not(:first-child), .windows.fade .day-box:nth-child(2n+1):not(:first-child) {
     margin-top: 2px;
     margin-left: 1px;
   }
-  .days .day-box:nth-child(2n):not(:first-child) {
+  .days .day-box:nth-child(2n):not(:first-child), .windows.daysinfo .day-box:nth-child(2n):not(:first-child), .windows.fade .day-box:nth-child(2n):not(:first-child) {
     margin-top: 2px;
     margin-right: 1px;
   }

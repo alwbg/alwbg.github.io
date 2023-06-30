@@ -56,11 +56,11 @@ define('di', ['dialog'], function (dialog) {
             ((span.color-box[:class=" theme ? 'color-box-green' : ''"]{{!theme?"暗色":"亮色"}}))
             ((br+br+br))((div.line>{时间插件测试项}+Timebox[:tips="请选择区间日期"]))
             ((
-                div.line.clock
+                div.line.clock[:onclick="showtime"]{日期}
             ))
             ((
                 div.line.wea>
-                div.inline-block>span[:class="showtq ? '_open': '_close'" class="i-state" :onclick="showtq"]+span.color-box[:class=" showtq ? 'color-box-green' : 'color-box-gray'"]{{showtq ? "天气模块状态为打开" : "已隐藏天气模块"}}+div[:if="showtq"]>Wea[:value="searchcity" :showday="showday" :fly="inputs"]
+                div.inline-block>span[:class="showtq ? '_open': '_close'" class="i-state" :onclick="showtq"]+span.color-box[:class=" showtq ? 'color-box-green' : 'color-box-gray'"]{{showtq ? "天气模块状态为打开" : "已隐藏天气模块"}}+div[:if="showtq"]>Wea[:value="searchcity" :showday="showday" :fly="inputs" :onclick="showinfo"]
             ))
 ((
     (div.line>(
@@ -112,6 +112,8 @@ define('di', ['dialog'], function (dialog) {
     )
 ))
 `;
+        var flash = require('flash');
+        var times = require('time');
         var worker = render(modeString, {
             selector: 'rainbox',
             slot: {
@@ -192,6 +194,18 @@ define('di', ['dialog'], function (dialog) {
                 }
             },
             events: {
+                showtime(){
+                    var TR = new times('MM');
+                    // console.log(TR, TR.days(1/* 星期一显示的偏移量 */, 0/* 0:中文, 1:英文, 2:日文 *//* 标记start所在年月,默认显示 */))
+                    flash.run(this._el, {
+                        data: {
+                            times: TR.days(1/* 星期一显示的偏移量 */, 0/* 0:中文, 1:英文, 2:日文 *//* 标记start所在年月,默认显示 */),
+                            day: +TR.fire()
+                        },
+                        mode: '((div.month-bg[data-txt="月"]{{day}}))<span :for="times" :class="title + "-month"" :onclick="trigger" :class="$1 = start && start.year==year && start.month==month && start.day==day, $2 = end && end.year==year && end.month==month && end.day==day, $1 == $2 && $1 == true || $2 ? "hover cur": $1 ? "cur":""" :class.beteen.hover="bh" :class.cur="select" :class.beteen="show && title!="title"" :class.hover="hover" :class.cur="cur==true" :onmouseover="hover" :onmouseout="out" :class.forbidden="forbidden">{day}</span>',
+                        top: 'auto'
+                    })
+                },
                 fillTestList() {
                     this.testlist.push({ name: '{100-2000}'.format(), shows: true })
                     dialog.resize();
@@ -237,6 +251,7 @@ define('di', ['dialog'], function (dialog) {
                     scroll: () => {
                         if (dialog.current() != this.confirm) dialog.resize();
                     },
+                    center: false,
                     last(...args) {
                         // console.log(this)
                         // worker.data.searchcity = '';
@@ -295,7 +310,7 @@ define('di', ['dialog'], function (dialog) {
                         dialog.auto({
                             mode: `
                                 ((
-                                    div.clockboxnew[:onclick="show"]>
+                                    div.clockboxnew[:class.initshow="initshow" :onclick="show"]>
                                     .h[:style.transform=""rotate\\("+(hx*360/12-90)+"deg\\)""]+
                                     .m[:style.transform=""rotate\\("+(mx*360/60-90)+"deg\\)""]+
                                     .s[:style.transform=""rotate\\("+(sx*360/60-90)+"deg\\)""]+
@@ -308,7 +323,8 @@ define('di', ['dialog'], function (dialog) {
                                 sx: 0,
                                 t: ts,
                                 state: true,
-                                el: null
+                                el: null,
+                                initshow: true
                             },
                             events: {
                                 show() {
@@ -333,6 +349,9 @@ define('di', ['dialog'], function (dialog) {
                                     var t = dialog.picker(a.split(':'), '0=>hx,1=>mx,2=>sx', true);
                                     dialog.merge(this.render.data, t, true);
                                 }, 1000)
+                                setTimeout(() => {
+                                    this.render.data.initshow = false;
+                                }, 3200);
                                 this.bg.remove()
                             }
                         })
@@ -354,7 +373,6 @@ define('di', ['dialog'], function (dialog) {
                         this.onclose(() => {
                             this.room.find('.content').html('')
                         })
-
                     }
                 })
             }
