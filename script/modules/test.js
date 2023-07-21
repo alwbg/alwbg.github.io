@@ -549,7 +549,7 @@ define('showlocalip', ['dialog', 'notice'], function (dialog, Notice) {
                             host.autonotice = Notice({
                                 mode: '(div[:onclick="go"]>(div.tips-title{通知!}+div{点击打开地址}+div{{url}}))+.close[:onclick="close"]{x}',
                                 data: {
-                                    url: '/app/#model=mine&local=true'
+                                    url: '/app/#bg=mine&local=true'
                                 },
                                 events: {
                                     close() {
