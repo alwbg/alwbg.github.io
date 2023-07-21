@@ -59,7 +59,7 @@ define(['dialog'], function (dialog) {
             auto: {
                 /* 参见参数cs */
                 offset(data) {
-                    data[2] = this._top || 2;
+                    data[2] = this._top;
                 }
             },
             cs: 'offset: ? 4 ? auto'.on(offsetlr),
