@@ -80,16 +80,27 @@ define(['dialog'], function (dialog) {
         isDeskTop = screen.width > 600;
         toGoIn(host, OLD);
         // alert(screen.width)
-        dialog.auto(SET, {
-            cs: (isDeskTop ? 'in: +=40 -=40' : 'offset:2 ? 2 0;in: +=40 -=40 ?;inner: 0 0 0 0 .content').on(OffsetTop),
+        return dialog.auto(SET, {
+            cs: (isDeskTop ? 'in: +=40 -=40' : '?;offset:2 ? 2 0;in: +=40 -=40 ?').on(config.inner || 'inner:0 0 0 0 .content', OffsetTop),
             last: function () {
                 var tips = null;
                 isDeskTop || setTimeout(() => {
-                    tips = dialog.notice('((div>div{点击头部空间关闭~}+[text="{top}"]+div{所在容器距离头部空间}))'.on(config), 8, {
-                        target: this.room,//.find('img'),
-                        position: 'top'
-                    })
+                    // tips = dialog.notice('((div>div{点击头部空间关闭~}+[text="{top}"]+div{所在容器距离头部空间}))'.on(config), null, {
+                    //     target: this.room,//.find('img'),
+                    //     position: 'top'
+                    // }).addClass('white');
+                    // tips.proxy('room', function () {
+                    //     tips.remove();
+                    // })
                 }, 300)
+                if (isDeskTop) {
+                    setTimeout(() => {
+                        tips = dialog.notice('((div>div{手机端查看不一样的效果~}+[text="{top}"]+div{所在容器距离头部空间}))'.on(config), null, {
+                            target: this.room,//.find('img'),
+                            position: 'top'
+                        })
+                    }, 1000);
+                }
                 this.addClass(config.selector || 'fade')
 
                 this.onresize(() => {

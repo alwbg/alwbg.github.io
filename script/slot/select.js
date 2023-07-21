@@ -258,7 +258,7 @@ define('button', ['dialog'], (dialog) => {
     })
 })
 
-define('tq', ['dialog', 'flash'], (dialog, flash) => {
+define('tq', ['dialog'], (dialog) => {
 
     function trigger(root, city = root.city, showday = root.showday) {
         clearTimeout(root.t);
@@ -283,7 +283,7 @@ define('tq', ['dialog', 'flash'], (dialog, flash) => {
     }
     var tq = dialog.render(`
     div>(div.error-tips{天气搜索免责声明,如有侵权,联系删除...(alwbg@163.com)})+
-    +(div.tip-msg{调用接口测试(接口,ICON来源来源www.tianqiapi.com)}+
+    +(div.tip-msg.tips{调用接口测试(接口,ICON来源来源www.tianqiapi.com)}+
         Select.city-items[:trigger="name" :data="citys" :current="citycur"]
     )+
     (
@@ -363,9 +363,11 @@ define('tq', ['dialog', 'flash'], (dialog, flash) => {
         },
         events: {
             click() {
-                flash.run(this._el, {
-                    selector: 'daysinfo',
-                    mode: `div.day-box[:class="wea_day_img+''" :onclick="click"]>
+                require('flash', (flash) => {
+
+                    flash.run(this._el, {
+                        selector: 'daysinfo',
+                        mode: `div.day-box[:class="wea_day_img+''" :onclick="click"]>
                     div.day[:t="day?day:date_nl"]>
                         (
                             img[:src="'./images/icons/'+wea_day_img+'.png'"]+
@@ -386,9 +388,10 @@ define('tq', ['dialog', 'flash'], (dialog, flash) => {
                             +div.visibility>(span.t{能见度}+span{{visibility||'-'}})
                             +div.narrative{{narrative||air_tips||win}}
                         )`,
-                    data: dialog.picker(this, '$idx,*'),
-                    top: '[auto,150px,200px,80px]'.on()//150//
-                });
+                        data: dialog.picker(this, '$idx,*'),
+                        top: '[auto,250px,200px,300px]'.on()//150//
+                    });
+                })
             }
         }
     });

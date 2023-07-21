@@ -296,7 +296,7 @@ html {
 }
 
 /*模式窗口样式*/
-.windows .dialog-confirm {
+.windows .dialog-confirm, .windows.simply .content {
   padding: 10px;
   padding-left: 30px;
   padding-right: 30px;
@@ -308,7 +308,7 @@ html {
   background: #e5e5e5;
   min-width: 250px;
 }
-.windows.black .dialog-confirm {
+.windows.black .dialog-confirm, .windows.black .windows.simply .content, .windows.simply .windows.black .content {
   color: #969696;
   background: #282d30;
 }
@@ -334,11 +334,11 @@ html {
   padding-right: 0;
   margin-right: 0;
 }
-.windows.notice .dialog-confirm .confirm-submit, .windows.ios.notice .dialog-confirm .confirm-submit {
+.windows.notice .dialog-confirm .confirm-submit, .windows.notice .windows.simply .content .confirm-submit, .windows.simply .windows.notice .content .confirm-submit, .windows.ios.notice .dialog-confirm .confirm-submit {
   background: #942b4f;
   color: #000000;
 }
-.windows.notice .dialog-confirm .confirm-submit:hover, .windows.ios.notice .dialog-confirm .confirm-submit:hover {
+.windows.notice .dialog-confirm .confirm-submit:hover, .windows.notice .windows.simply .content .confirm-submit:hover, .windows.simply .windows.notice .content .confirm-submit:hover, .windows.ios.notice .dialog-confirm .confirm-submit:hover {
   background: #E91E63;
 }
 .windows .confirm-submit {
@@ -486,20 +486,7 @@ html {
 }
 .windows.dialog-tips.black .content .close {
   color: #828282;
-  font-size: 15px;
   background-color: #353535;
-  display: block;
-  line-height: 35px;
-  text-align: center;
-  right: -10px;
-  top: 0;
-  overflow: hidden;
-  border-radius: 0 10px 10px 0;
-  height: 40px;
-  width: auto;
-}
-.windows.dialog-tips.black .content .close {
-  right: 0;
 }
 .windows.dialog-tips.black .i-s-left .i-mark {
   border-left-color: #2b2b2b;
@@ -522,22 +509,6 @@ html {
 .windows.dialog-tips.white .content .close {
   color: #b12424;
   background-color: #FF5722;
-  font-size: 15px;
-  display: block;
-  /* width: 25px; */
-  /* height: 100%; */
-  /* border-radius: 10px; */
-  line-height: 35px;
-  text-align: center;
-  right: -10px;
-  top: 0;
-  overflow: hidden;
-  border-radius: 0 10px 10px 0;
-  height: 40px;
-  width: auto;
-  right: 0px;
-  top: -8px;
-  min-height: calc(100% - 4px);
 }
 .windows.dialog-tips.white .i-s-left .i-mark {
   border-left-color: #e6e6e6;
@@ -641,7 +612,7 @@ html {
 .windows.login .input:focus, .windows.login .input:focus-within {
   border: 1px solid #b3b1b1;
 }
-.windows .dialog-confirm ~ .bg {
+.windows .dialog-confirm ~ .bg, .windows.simply .content ~ .bg {
   background-color: #000;
   opacity: 0.7;
 }
@@ -654,7 +625,7 @@ html {
   font-weight: inherit;
   color: #ccc;
 }
-.windows.login .dialog-confirm {
+.windows.login .dialog-confirm, .windows.login .windows.simply .content, .windows.simply .windows.login .content {
   background-color: #eee;
 }
 .windows .windows-freely {
@@ -671,7 +642,7 @@ html {
   height: 50px;
   width: 100%;
 }
-.windows.ios .dialog-confirm {
+.windows.ios .dialog-confirm, .windows.ios .windows.simply .content, .windows.simply .windows.ios .content {
   border-radius: 0.7rem 0.7rem 0 0;
   background-color: rgba(54, 54, 54, 0.7490196078);
   /* #505050; */
@@ -680,8 +651,10 @@ html {
   -webkit-backdrop-filter: saturate(180%) blur(20px);
   overflow: visible;
 }
-.windows.ios .dialog-confirm .confirm-cancel,
-.windows.ios .dialog-confirm .confirm-submit {
+.windows.ios .dialog-confirm .confirm-cancel, .windows.ios .windows.simply .content .confirm-cancel, .windows.simply .windows.ios .content .confirm-cancel,
+.windows.ios .dialog-confirm .confirm-submit,
+.windows.ios .windows.simply .content .confirm-submit,
+.windows.simply .windows.ios .content .confirm-submit {
   position: absolute;
   bottom: -41px;
   right: 0;
@@ -695,7 +668,7 @@ html {
   font-weight: 200;
   border: 0;
 }
-.windows.ios .dialog-confirm .confirm-cancel {
+.windows.ios .dialog-confirm .confirm-cancel, .windows.ios .windows.simply .content .confirm-cancel, .windows.simply .windows.ios .content .confirm-cancel {
   background-color: #353535;
   color: #656565;
 }
@@ -703,10 +676,10 @@ html {
   font-size: 20px;
   color: #fff;
 }
-.windows.ios .dialog-confirm .confirm-cancel:hover {
+.windows.ios .dialog-confirm .confirm-cancel:hover, .windows.ios .windows.simply .content .confirm-cancel:hover, .windows.simply .windows.ios .content .confirm-cancel:hover {
   background-color: #262626;
 }
-.windows.ios.prompt .dialog-confirm .confirm-submit {
+.windows.ios.prompt .dialog-confirm .confirm-submit, .windows.ios.prompt .windows.simply .content .confirm-submit, .windows.simply .windows.ios.prompt .content .confirm-submit {
   left: 0;
   border-radius: 0 0 0 0.7rem;
   width: calc(80% - 0.5px);
@@ -716,7 +689,7 @@ html {
   letter-spacing: 7px;
   background-color: #8dc116;
 }
-.windows.ios .dialog-confirm .confirm-submit {
+.windows.ios .dialog-confirm .confirm-submit, .windows.ios .windows.simply .content .confirm-submit, .windows.simply .windows.ios .content .confirm-submit {
   left: 0;
   border-radius: 0 0 0 0.7rem;
   width: calc(80% - 0.5px);
@@ -728,34 +701,37 @@ html {
   background-image: linear-gradient(164deg, rgba(0, 255, 0, 0), #2196f3);
   transition: all 0.5s ease-in-out;
 }
-.windows.ios .dialog-confirm .confirm-submit:hover {
+.windows.ios .dialog-confirm .confirm-submit:hover, .windows.ios .windows.simply .content .confirm-submit:hover, .windows.simply .windows.ios .content .confirm-submit:hover {
   background-color: #8bc34a;
   color: #fff;
   /* color: #3a5200; */
 }
-.windows.ios.prompt .dialog-confirm .confirm-submit {
+.windows.ios.prompt .dialog-confirm .confirm-submit, .windows.ios.prompt .windows.simply .content .confirm-submit, .windows.simply .windows.ios.prompt .content .confirm-submit {
   background-color: #FFC107;
 }
-.windows.ios.prompt .dialog-confirm .confirm-submit:hover {
+.windows.ios.prompt .dialog-confirm .confirm-submit:hover, .windows.ios.prompt .windows.simply .content .confirm-submit:hover, .windows.simply .windows.ios.prompt .content .confirm-submit:hover {
   background-color: #FFC720;
 }
 .windows.black .input-style {
   color: #fff;
+}
+.windows.simply {
+  /* 2023年7月4日 */
 }
 .windows.simply .input-style {
   color: #000;
   margin-bottom: 5px;
   background-color: #ffffff;
 }
-.windows.simply.ios .content.dialog-confirm {
+.windows.simply.ios .content.dialog-confirm, .windows.simply.ios .content {
   -webkit-backdrop-filter: saturate(180%) blur(20px);
   backdrop-filter: saturate(180%) blur(20px);
 }
-.windows.simply .dialog-confirm {
+.windows.simply .dialog-confirm, .windows.simply .content {
   overflow: visible;
   border-radius: 0.9rem 0 0.9rem 0.9rem;
 }
-.windows.simply .dialog-confirm .confirm-cancel.close {
+.windows.simply .dialog-confirm .confirm-cancel.close, .windows.simply .content .confirm-cancel.close {
   display: block;
   position: absolute;
   top: 0px;
@@ -774,7 +750,7 @@ html {
   font-weight: 100;
   margin-top: 0;
 }
-.windows.simply .dialog-confirm .confirm-cancel.close:hover {
+.windows.simply .dialog-confirm .confirm-cancel.close:hover, .windows.simply .content .confirm-cancel.close:hover {
   background-color: #f15625;
   color: black;
   font-size: 22px;
@@ -785,8 +761,9 @@ html {
   line-height: 27px;
   border-radius: 8px;
 }
-.windows.simply .dialog-confirm .confirm-submit,
-.windows.simply .dialog-confirm .confirm-cancel {
+.windows.simply .dialog-confirm .confirm-submit, .windows.simply .content .confirm-submit,
+.windows.simply .dialog-confirm .confirm-cancel,
+.windows.simply .content .confirm-cancel {
   display: none;
 }
 .windows span.cur.beteen ~ span:not(.hover ~ span, .forbidden) {
@@ -936,11 +913,11 @@ input.hover-show-hand[readonly],
   animation: loading 0.6s linear infinite;
   content: "";
 }
-.windows .loading:not(.dialog-tips).dialog-confirm {
+.windows .loading:not(.dialog-tips).dialog-confirm, .windows.simply .loading.content:not(.dialog-tips) {
   min-width: 200px;
   background: none;
 }
-.windows .loading:not(.dialog-tips).dialog-confirm .close {
+.windows .loading:not(.dialog-tips).dialog-confirm .close, .windows.simply .loading.content:not(.dialog-tips) .close {
   display: none !important;
 }
 @keyframes loading {
@@ -2940,13 +2917,28 @@ body {
   right: 0px;
 }
 .windows.fade .content {
+  overflow: auto;
   background-color: #fff;
   height: 360px;
   min-width: 300px;
   background-image: linear-gradient(238deg, rgb(255, 255, 255), #e5fec8);
 }
+.windows.fade .content > div > span {
+  position: relative;
+  overflow: hidden;
+}
 .windows.fade .content > div > span.cur {
   border-radius: 25px;
+}
+.windows.fade .content > div > span:not(.title-month):after {
+  content: attr(data-lu);
+  display: block;
+  color: #000;
+  position: absolute;
+  z-index: -1;
+  top: 20px;
+  width: 100%;
+  zoom: 0.7;
 }
 .windows.fade .content .current-month:not(.cur), .windows.fade .content .title-month:not(.cur) {
   color: #000;
@@ -2954,6 +2946,9 @@ body {
 }
 .windows.fade .content .prev-month, .windows.fade .content .next-month {
   color: #dbdbdb;
+}
+.windows.fade .content .prev-month:after, .windows.fade .content .next-month:after {
+  color: #dbdbdb !important;
 }
 .windows.fade .content .month-bg {
   font-size: 150px;
@@ -2967,6 +2962,58 @@ body {
 .windows.fade .content .month-bg::after {
   content: attr(data-txt);
   font-size: 40px;
+}
+
+.windows.dialog-tips.notice-box .content {
+  background-color: rgba(187, 255, 107, 0.6196078431);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+}
+.windows.dialog-tips.notice-box.error .content {
+  background-color: #e91e639e;
+}
+.windows.dialog-tips.notice-box.white .content {
+  background-color: #e6e6e69e;
+}
+.windows.dialog-tips.notice-box.notice .content {
+  background-color: #ffc1079e;
+}
+.windows.dialog-tips.notice-box.black .content {
+  background-color: #2b2b2b9e;
+}
+.windows.dialog-tips.notice-box.black .content {
+  color: #fff;
+}
+.windows.dialog-tips.notice-box.white .content, .windows.dialog-tips.notice-box.error .content {
+  color: #1a1a1a;
+}
+.windows label.radio {
+  border-color: transparent;
+  margin-right: 0;
+}
+.windows label.radio:not(.cur), .windows .formbox label.checkbox:not(.cur) {
+  background-color: #d1d1d1;
+  color: #5e5e5e;
+}
+.windows .color-box.button {
+  border-color: transparent;
+}
+.windows .days .day-box > div, .windows.daysinfo .day-box > div, .windows.fade .day-box > div {
+  border-color: rgba(34, 34, 34, 0.1607843137);
+}
+.windows .tips, .windows .test-title {
+  color: #989898;
+  margin: 7px;
+}
+.windows .tips-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.windows .test-title {
+  margin-left: 0;
+  margin-top: 0;
+  font-weight: 300;
 }
 
 @media (max-width: 900px) {

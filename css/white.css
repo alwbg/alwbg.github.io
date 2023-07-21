@@ -68,3 +68,6 @@ html .windows .times > .current-month:not(.forbidden):hover:before {
   /*/* color: #fff;*/
   font-weight: 700;
 }
+.windows.ios .content .line {
+  background-color: #fff;
+}

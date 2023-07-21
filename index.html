@@ -5,20 +5,25 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta content="yes" name="apple-mobile-web-app-capable" />
     <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <!-- <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,  user-scalable=0" name="viewport" /> -->
     <meta name="disabled-adaptations" content="watch">
     <title>Model Test</title>
+    <style>
+        .loading:not(.dialog-tips) {display: inline-block;}.loading:not(.dialog-tips)::before {position: absolute;top: 50%;left: 50%;-webkit-box-sizing: border-box;box-sizing: border-box;width: 40px;height: 40px;margin-top: -15px;margin-left: -15px;border-top: 2px solid #ff5721;border-right: 2px solid transparent;border-radius: 50%;-webkit-animation: loading 0.6s linear infinite;animation: loading 0.6s linear infinite;content: "";}@keyframes loading {to {transform: rotate(360deg);}}@keyframes markMove {0%, 65% {transform: rotate(0deg);}70% {transform: rotate(10deg);}75% {transform: rotate(-10deg);}80% {transform: rotate(10deg);}85% {transform: rotate(-10deg);}90% {transform: rotate(10deg);}95% {transform: rotate(-10deg);}100% {transform: rotate(0deg);}}
+    </style>
     <script type="text/javascript">
         var _Qma = {
-            v: '2023.7.30',
+            v: '2023.7.21',
             alias: {
                 'model': 'tools#model',
                 'dialog': 'tools#dialog',
                 'mode': 'tools#mode',
                 'time': 'tools#time',
                 'times': 'tools#time.box',
-                'flash': './script/modules/flash'
+                'flash': './script/modules/flash',
+                'notice': './script/modules/notice',
+                'test': './script/modules/test',
                 // 'dialog': 'http://git.i.com/dialog/v1/dialog.js',
             },
             depends: {
@@ -27,7 +32,7 @@
                 }
             },
             searchuri: //'http://localhost:8070/video/getDataByUrl?url=https%3A%2F%2Fv0.yiketianqi.com%2Fapi%3Funescape%3D1%26version%3D{v,v,v9}%26appid%3D43656176%26appsecret%3DI42og6Lm%26ext%3D%26cityid%3D%26city%3D{city}%26callbacks%3Ddefine&callback=define&isjson=true',
-            '//v0.yiketianqi.com/api?unescape=1&version={v,v,v9}&appid=43656176&appsecret=I42og6Lm&ext=&cityid=&city=?&callback=define&age={9999999999-1000000000000}',
+                '//v0.yiketianqi.com/api?unescape=1&version={v,v,v9}&appid=43656176&appsecret=I42og6Lm&ext=&cityid=&city=?&callback=define&age={9999999999-1000000000000}',
             dv: 'v3'
         }
         DEBUG = true
@@ -37,15 +42,16 @@
 </head>
 
 <body>
-    <script src="runjs.js?last-none">
+    <div class="loading"></div>
+    <script src="runjs.js?release">
         let exec = () => {
             require('./script/modules/test#di', (m) => m.run());
         }
         exec();
-        var dialog = require('dialog');
-        dialog.each([0, 1, 2], (k, v) => {
-            dialog.query('img[src="./static/?.?" style="width: 33%;"]'.on(v, v == 0 ? 'jpeg' : 'png'), true).appendTo('body').click(exec)
-        })
+        // var dialog = require('dialog');
+        // dialog.each([0, 1, 2], (k, v) => {
+        //     dialog.query('img[src="./static/?.?" style="width: 33%;"]'.on(v, v == 0 ? 'jpeg' : 'png'), true).appendTo('body').click(exec)
+        // })
     </script>
 </body>
 
