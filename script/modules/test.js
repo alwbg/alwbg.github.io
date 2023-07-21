@@ -262,7 +262,11 @@ define('di', ['dialog'], function (dialog) {
                     this.notice = !this.notice;
                 },
                 showDate() {
-                    require('test#date', (r) => r.show(this))
+                    var loading = dialog.auto('((div.loading))'.buildHtml(), 'offset:0 0 0 0');
+                    require('test#date', (r) => {
+                        loading.remove();
+                        r.show(this)
+                    })
                 },
                 fillTestList() {
                     this.testlist.push({ name: '{100-2000}'.format(), shows: true })
