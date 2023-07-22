@@ -20,7 +20,7 @@ define(['dialog'], function (dialog) {
         // console.log(lists, current, lists.length);
         dialog.each(lists, (k, v) => {
             v = list[v];
-            if (v.id >= id) return;
+            if (v === undefined || v.id >= id) return;
             v.room.stop(true, true).animate({
                 top: '?=?'.on(signal, current + index++ > 1 ? 4 : height),
                 // top: '?=?'.on(signal, 3),
