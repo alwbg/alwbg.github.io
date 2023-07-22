@@ -21,10 +21,10 @@ define(['dialog'], function (dialog) {
         dialog.each(lists, (k, v) => {
             v = list[v];
             if (v.id >= id) return;
-            v.room.animate({
+            v.room.stop(true, true).animate({
                 top: '?=?'.on(signal, current + index++ > 1 ? 4 : height),
                 // top: '?=?'.on(signal, 3),
-                opacity: '?=?'.on(signal == '-' ? '+' : '-', 0.3)
+                // opacity: '?=?'.on(signal == '-' ? '+' : '-', 0.3)
                 // left: '?=3'.on(signal == '-' ? '+' : '-'),
                 // width: '?=10'.on(signal == '-' ? '+' : '-')
             }/* , '{600-1200}'.on() */)
@@ -64,10 +64,10 @@ define(['dialog'], function (dialog) {
                 }
             },
             cs: 'offset: ? 4 ? auto'.on(offsetlr),
-            last() {//[notice,tips,error,white,black]
+            last() {
                 this.addClass('dialog-tips notice-box {0,0,black}'.on(config.theme || 0));
                 isMini && this.room.css({
-                    minWidth: '600px',
+                    minWidth: Math.min(min / 2, 400),
                     // 'border-radius': '5'
                 })
                 move('+', this)
