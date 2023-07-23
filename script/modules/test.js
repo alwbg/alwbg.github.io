@@ -126,6 +126,28 @@ define('di', ['dialog'], function (dialog) {
     )
 ))
 `;
+
+        var loading;
+        require.init({
+            regexp: /date|dialog/,
+            before: function (...args) {
+                loading = dialog.auto({
+                    mode: '((div.loading))'
+                }, {
+                    cs: 'offset:0 0 0 0',
+                    destroy: {
+                        css: { width: '+=1' },
+                        speed: 300
+                    },
+                    // position: 'center center'
+                });
+                console.log('before', ...args)
+            },
+            after: function (...args) {
+                dialog.destroy(loading);
+                console.log('after', ...args)
+            }
+        })
         // 测试
         function Notice(config) {
             return new Promise((resolve, reject) => {
@@ -262,9 +284,7 @@ define('di', ['dialog'], function (dialog) {
                     this.notice = !this.notice;
                 },
                 showDate() {
-                    var loading = dialog.auto('((div.loading))'.buildHtml(), 'offset:0 0 0 0');
                     require('test#date', (r) => {
-                        loading.remove();
                         r.show(this)
                     })
                 },

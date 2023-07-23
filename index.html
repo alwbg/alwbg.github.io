@@ -14,13 +14,14 @@
     </style>
     <script type="text/javascript">
         var _Qma = {
-            v: '2023.7.22.1',
+            v: '2023.7.23',
             alias: {
-                'model': 'tools#model',
-                'dialog': 'tools#dialog',
-                'mode': 'tools#mode',
-                'time': 'tools#time',
-                'times': 'tools#time.box',
+                't': 'tools',
+                'model': 't#model',
+                'dialog': 't#dialog',
+                'mode': 't#mode',
+                'time': 't#time',
+                'times': 't#time.box',
                 'flash': './script/modules/flash',
                 'notice': './script/modules/notice',
                 'test': './script/modules/test',
@@ -43,7 +44,7 @@
 
 <body>
     <div class="loading"></div>
-    <script src="runjs.js?release">
+    <script src="runjs.js?release.1" srcs="//git.i.com/runjs/runjs.js">
         let exec = () => {
             require('./script/modules/test#di', (m) => m.run());
         }
