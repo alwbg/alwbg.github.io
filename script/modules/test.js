@@ -56,98 +56,111 @@ define('di', ['dialog'], function (dialog) {
 ((
     (
         span.color-box[:class=" theme ? 'color-box-green' : ''"]{{!theme?"暗色":"亮色"}}
-    )+div.tips{(点击切换样式~)}))
-((br+br+br))((div.line>div.test-title{时间插件测试项}+Timebox[:tips="请选择区间日期"]))
-((
-    div.line.clock[:onclick="showDate"]>div.test-title{测试下弹式日期}+{日期}+.tips{(点击测试层叠窗口~~)}
-))
-((
-    div.line>
-        .test-title{测试不同方向出现的通知}+
-        (
-            div{Notice通知}>
-                span[:class="notice ? '_open': '_close'" class="i-state" :onclick="notice"]+.tips{(点击测试两个通知~)}
-        )
-        +div{{noticemsg}}
-        +div>(span.color-box[class="color-box-green button" :onclick="addnew"]{新增通知~}+.tips{(点击测试新增通知~)})
-        +div>(span.color-box[class="color-box-red button" :onclick="delall"]{删除所有通知}+.tips{(点击测试删除所有通知~)})
-))
-((
-    div.line.wea>
-    div.inline-block>span[:class="showtq ? '_open': '_close'" class="i-state" :onclick="showtq"]+span.color-box[:class=" showtq ? 'color-box-green' : 'color-box-gray'"]{{showtq ? "天气模块状态为打开" : "已隐藏天气模块"}}+div[:if="showtq"]>Wea[:value="searchcity" :showday="showday" :fly="inputs" :onclick="showinfo"]
-))
-((
-    (div.line>(
-        +div.test-title{测试Array.length}+
-        div.color-box.button[:onclick="fillTestList"]{填充TESTLIST}+
-        {LENGTH = }+
-        div.color-box.button.red{{testlist.length}}
-        (
-            div[:for="testlist"].text-list-room>
-                {{name}}+
-                Onoff:span.onoff[!show="shows" :class.lines="shows"]+
-                .color-box.color-box-yellow[:onclick="testlistClick" :if="!shows"]{删除}
-        )+
-        div.line[:if="!testlist.length"]{空空如也~~}
-    )+)
-    +(div.line>
-        div.test-title{{show?"多选" : "单选"}}+
-        (div.inline-block>span[:class="show ? '_open': '_close'" class="i-state" :onclick="show"])+
-        {({sele.data.id})}+
-        Select[:trigger="name" :multi="show" :data="select" :split="," :current="sele.data.id" :onclick="click1"]+
-        input.input-style[:value="sele.data.id"]
-    )+
-    div.line>(
-        div.test-title{单选}+
-        Select[:data="select" :current="selcurs"]
-    )
-))
-((
-    div.line>div>(
-        div.uppercase>(
-            {操作项列表当}+
-            span.color-box{show}+
-            {值为}+
-            span.color-box[:class=" show ? 'color-box-yellow' : 'color-box-red'"]{{show}}+
-            {时}+
-            span.color-box[:class=" show ? 'color-box-green' : 'color-box-gray'"]{{show ? "显示" : "隐藏"}}
-        )+
-        (div>span[:class="show ? '_open': '_close'" class="i-state" :onclick="show"])+
-        div>(
-            {{!show?'隐藏':'显示'}}{{SPACE}}{:::this.show\\=}+span.uppercase{{show}}
-        )+
-        div.line[:if="show"]>div>(
-            span[:class="!visible ? '_open': '_close'" class="i-state" :onclick="hide"]+
-            div>(
-                {{visible?'隐藏':'显示'}}{{SPACE}}{:::this.visible\\=}+span.uppercase{{!visible}}
-            )+
-            span[:class="visible ? '_open': '_close'" class="i-state" :onclick="hide"]
-        )
-    )
-))
-`;
+    )+div.tips{(点击切换[{!!theme?"暗色":"亮色"}]样式~)}))
+((br+br+br))
+<div class="lines">
+    ((div.line>div.test-title{时间插件测试项}+Timebox[:tips="请选择区间日期"]))
+    ((
+        div.line.clock>.test-title[:onclick="showDate"]{测试下弹式日期}+{日期}+.tips{(点击测试层叠窗口~~)}+
 
-        var loading;
-        require.init({
-            regexp: /date|dialog/,
-            before: function (...args) {
-                loading = dialog.auto({
-                    mode: '((div.loading))'
-                }, {
-                    cs: 'offset:0 0 0 0',
-                    destroy: {
-                        css: { width: '+=1' },
-                        speed: 300
-                    },
-                    // position: 'center center'
-                });
-                console.log('before', ...args)
-            },
-            after: function (...args) {
-                dialog.destroy(loading);
-                console.log('after', ...args)
-            }
-        })
+        div>(span.color-box[class="color-box-blue button" :onclick="clock"]{查看源码~}+.tips{(点击查看通知源码~)})
+    ))
+    ((
+        div.line>
+            div.test-title{测试不同方向出现的通知}+
+            (
+                div{Notice通知}>
+                    span[:class="notice ? '_open': '_close'" class="i-state" :onclick="notice"]+.tips{(点击测试两个通知~)}
+            )
+            +div{{noticemsg}}
+            +div>(span.color-box[class="color-box-green button" :onclick="addnew"]{新增通知~}+.tips{(点击测试新增通知~)})
+            +div>(span.color-box[class="color-box-red button" :onclick="delall"]{删除所有通知}+.tips{(点击测试删除所有通知~)})
+            +div>(span.color-box[class="color-box-blue button" :onclick="code"]{查看源码~}+.tips{(点击查看通知源码~)})
+    ))
+    ((
+        div.line>(
+            +div.test-title{测试Array.length}+
+            div.color-box.button[:onclick="fillTestList"]{填充TESTLIST}+
+            {LENGTH = }+
+            div.color-box.button.red{{testlist.length}}
+            (
+                div[:for="testlist"].text-list-room>
+                    {{name}}+
+                    Onoff:span.onoff[!show="shows" :class.lines="shows"]+
+                    .color-box.color-box-yellow[:onclick="testlistClick" :if="!shows"]{删除}
+            )+
+            div.line[:if="!testlist.length"]{空空如也~~}
+        )
+    ))
+</div><div class="lines">
+    ((
+        div.line.wea>
+        div.inline-block>
+            span[:class="showtq ? '_open': '_close'" class="i-state" :onclick="showtq"]
+            +span.color-box[:class=" showtq ? 'color-box-green' : 'color-box-gray'"]{{showtq ? "天气模块状态为打开" : "已隐藏天气模块"}}
+            +div[:if="showtq"]>
+                Wea[:off="showtq" :value="searchcity" :showday="showday" :onclick="showinfo"]
+    ))
+    ((
+        div.line>(
+            div.test-title{单选}+
+            +.test-title{点击列表切换获取属性值: [{triggerselectname}]}+
+            +Select[:data="selecttriggerlist" :current="triggerselectname" :trigger="id"]
+            +.test-title{获取值的方式已改变为: {triggerselectname}}+
+            +(.test-title{点击获取的值为:}>[style="font-size:15px;color:#2196f3;font-weight:bold;padding:7px"]{{selcurs}})
+            +Select[:data="select" :current="selcurs" :trigger="triggerselectname"]
+        )
+    ))
+    ((
+        div.line>div.test-title{测试输入框}
+            +Input[:value="sele.data.id" :tips="请输入~"]
+            +div.test-title{{inputpassword}}
+            +Input[:value="inputpassword" :tips="请输入密码~" :type="password"]
+    ))
+    ((
+        div.line>
+            .test-title{水波纹}
+            +div>(span.color-box[class="color-box-blue button" :onclick="swing"]{查看源码~}+.tips{(点击查看水波纹源码~)})
+            .test-title{Css变量}
+            +div.code>(span.color-box[class="color-box-blue button" :style="--line-height:lh;width:lh" style="height:var(--line-height);line-height:var(--line-height);width:var(--line-height)" :onclick="cssvar"]{css-var}+.tips{(点击测试css内变量设置[--line-height:{lh}]~)})
+            +text:span.codeshow{}
+    ))
+</div><div class="lines">
+    ((
+        
+        (div.line>
+            div.test-title{{show?"多选" : "单选"}}+
+            (div.inline-block>span[:class="show ? '_open': '_close'" class="i-state" :onclick="show"])+
+            {({sele.data.id})}+
+            Select[:trigger="name" :multi="show" :data="select" :split="," :current="sele.data.id" :onclick="click1"]+
+            input.input-style[:value="sele.data.id"]
+        )
+    ))
+    ((
+        div.line>div>(
+            div.uppercase>(
+                {操作项列表当}+
+                span.color-box{show}+
+                {值为}+
+                span.color-box[:class=" show ? 'color-box-yellow' : 'color-box-red'"]{{show}}+
+                {时}+
+                span.color-box[:class=" show ? 'color-box-green' : 'color-box-gray'"]{{show ? "显示" : "隐藏"}}
+            )+
+            (div>span[:class="show ? '_open': '_close'" class="i-state" :onclick="show"])+
+            div>(
+                {{!show?'隐藏':'显示'}}{{SPACE}}{:::this.show\\=}+span.uppercase{{show}}
+            )+
+            div.line[:if="show"]>div>(
+                span[:class="!visible ? '_open': '_close'" class="i-state" :onclick="hide"]+
+                div>(
+                    {{visible?'隐藏':'显示'}}{{SPACE}}{:::this.visible\\=}+span.uppercase{{!visible}}
+                )+
+                span[:class="visible ? '_open': '_close'" class="i-state" :onclick="hide"]
+            )
+        )
+    ))
+</div>
+`;
         // 测试
         function Notice(config) {
             return new Promise((resolve, reject) => {
@@ -164,28 +177,18 @@ define('di', ['dialog'], function (dialog) {
             selector: 'rainbox',
             slot: {
                 // Test: require('./script/slot/list.test'),
+                Input: require('./script/slot/select#input'),
                 Wea: require('./script/slot/select#tq'),
                 Onoff: require('./script/slot/select#onoff'),
                 Select: require('./script/slot/select'),
                 Timebox: require('./script/slot/time')
             },
             data: {
-                autonotice: 1,
-                themeState: null,
                 theme: !true,
-                notice: !true,
-                noticemsg: '',
-                // 天气模块开关
-                showtq: true,
-                showday: _Qma.dv || 'v9',
-                inputs: false,
-                searchcity: '',
-                // uploadurl: '//i.com:8889/file',
-                // 开启享元模式, 只限于for内部
-                _share__: true,
-                visible: !true,
-                show: true,
-                selcurs: '开启',
+                themeState: null,
+                
+                /* Input start */
+                inputpassword: 'abc',
                 sele: {
                     name: '删除',
                     names: '23',
@@ -193,33 +196,45 @@ define('di', ['dialog'], function (dialog) {
                         id: '开启'
                     }
                 },
-                testlist: [],
+                /* Input end */
+
+                /* Select */
+                selcurs: '1',
+                triggerselectname: 'id',
+                selecttriggerlist: [{ name: 'ID', id: 'id' }, { name: '名称', id: 'name' }, { name: 'Tips', id: 'tips' }],
                 select: [
-                    {
-                        id: 1,
-                        name: '开启'
-                    }, {
-                        id: 2,
-                        name: '关闭'
-                    }, {
-                        id: 3,
-                        name: '待确认'
-                    }, {
-                        id: 4,
-                        name: '已关闭'
-                    }, {
-                        id: 5,
-                        name: '待关闭'
-                    }, {
-                        id: 6,
-                        name: '待删除'
-                    }, {
-                        id: 7,
-                        name: '删除'
-                    }
+                    { id: 1, name: '开启', tips: '该功能处于打开状态~' },
+                    { id: 2, name: '关闭', tips: '切断了点源~' },
+                    { id: 3, name: '待确认', tips: '等待对方确认~' },
+                    { id: 4, name: '已关闭', tips: '木已成舟~' },
+                    { id: 5, name: '待关闭', tips: '不知道该写些啥~' },
+                    { id: 6, name: '待删除', tips: '无~' },
+                    { id: 7, name: '删除', tips: '删除了~' }
                 ],
-                selects: {},
-                autonoticelist: []
+                /* Select ************************ */
+
+                /* 天气 天气模块开关*/
+                showtq: !true,
+                searchcity: '',
+                showday: _Qma.dv || 'v9',
+                /* **************************** */
+
+                // uploadurl: '//i.com:8889/file',
+                // 开启享元模式, 只限于for内部
+                _share__: true,
+                visible: !true,
+                show: true,
+                testlist: [],
+
+                /* 通知 */
+                autonotice: 1,
+                autonoticelist: [],
+                notice: !true,
+                noticemsg: '',
+                /* ****************** */
+
+                count: 0,
+                lh: 50
             },
             watch: {
                 testlist() {
@@ -255,11 +270,44 @@ define('di', ['dialog'], function (dialog) {
                 },
                 autonotice(data) {
                     this.autonoticelist.push(data)
+                },
+                /* Select */
+                triggerselectname(key, old) {
+                    // dialog.each
+                    var a = this.select.find((item) => {
+                        return item[old] == this.selcurs;
+                        console.log(...a)
+                    })
+                    setTimeout(() => {
+                        this.selcurs = a[key];
+                    }, 10);
+                    console.log(a);
+                    // console.log(key, dialog.picker(this.select, '*.?=>key'.on(this.selcurs, key), true).key || key)
                 }
             },
             events: {
+                cssvar() {
+                    // this.count++
+                    this.lh += ((++this.count % 2) * 2 - 1) * 30;
+                },
                 delall() {
                     Notice.close();
+                },
+                code(e) {
+                    require(['./script/modules/colors', 'notice'], (color, notice) => {
+                        // color.show(this._el, () => {console.log(1);})
+                        // color.show(this._el, color.on)
+                        color.show(e.target || this._el, notice)
+                        // color.show(this._el, dialog.runer)
+                        // color.show(this._el, dialog.show)
+                    })
+                },
+                swing(e) {
+
+                    // require('./script/modules/swing', (s) => {s.run()})
+                    require(['./script/modules/colors', './script/modules/swing'], (color, s) => {
+                        color.show(e.target || this._el, s.run)
+                    })
                 },
                 addnew() {
                     Notice({
@@ -282,6 +330,15 @@ define('di', ['dialog'], function (dialog) {
                 },
                 notice() {
                     this.notice = !this.notice;
+                },
+                clock(e) {
+                    require(['./script/modules/colors', 'test#date'], (color, clock) => {
+                        // color.show(this._el, () => {console.log(1);})
+                        // color.show(this._el, color.on)
+                        color.show(e.target || this._el, clock.show)
+                        // color.show(this._el, dialog.runer)
+                        // color.show(this._el, dialog.show)
+                    })
                 },
                 showDate() {
                     require('test#date', (r) => {
@@ -322,7 +379,7 @@ define('di', ['dialog'], function (dialog) {
             }
         });
         // console.log(worker);
-        arguments.callee.toString().colors();
+        // arguments.callee.toString().colors();
         return {
             run() {
                 dialog.auto(worker.node, {
@@ -334,7 +391,7 @@ define('di', ['dialog'], function (dialog) {
                     },
                     center: false,
                     last(...args) {
-                        require('test#clock', () => { });
+                        // require('test#clock', () => { });
                         worker.data.theme = true
                         this.addClass('ios');
                         // this.addClass('ios simply');
@@ -352,6 +409,29 @@ define('di', ['dialog'], function (dialog) {
                         this.onclose(() => {
                             this.room.find('.content').html('')
                         })
+                        require('./script/modules/swing', (s) => {
+                            s.run({
+                                duration: 700,
+                                // 添加样式
+                                selector: '.radio|.color-box|.line|.content'
+                            })
+                        })
+                        setTimeout(() => {
+                            var screen = dialog.screen();
+                            screen.width > 600 && 
+                            Notice({
+                                theme: 'white',
+                                // position: 'bottom',
+                                mode: '(div[:onclick="go"]>(div.tips-title{提示~}+.close[:onclick="close"]{x}+div>{欢迎来到该页面}+div.test-title[style="color: #ff5821;font-size: 6px;zoom: 0.8;"]{[看到这个提示证明你用的是大尺寸屏幕查看]}+[text="手机查看"]+{体验不一样的效果~}',
+                                data: {
+                                },
+                                events: {
+                                    close() {
+                                        this._dialog.remove();
+                                    }
+                                }
+                            })
+                        }, 1000)
                     }
                 })
             }
@@ -368,6 +448,7 @@ define('date', ['dialog', 'time', 'script/slot/calendar', 'flash', 'notice'], fu
             var days = TR.days(1/* 星期一显示的偏移量 */, 0/* 0:中文, 1:英文, 2:日文 *//* 标记start所在年月,默认显示 */);
 
             dialog.each(days, function (k, v) {
+                /* 第三方提供 */
                 k = calendar.solar2lunar(v.year, TR.lt10(v.month), v.day);
                 v.lu = k.lDay == 1 ? k.IMonthCn : k.IDayCn
             })

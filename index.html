@@ -14,7 +14,7 @@
     </style>
     <script type="text/javascript">
         var _Qma = {
-            v: '2023.7.23',
+            v: '2023.8.8',
             alias: {
                 't': 'tools',
                 'model': 't#model',
@@ -36,7 +36,7 @@
                 '//v0.yiketianqi.com/api?unescape=1&version={v,v,v9}&appid=43656176&appsecret=I42og6Lm&ext=&cityid=&city=?&callback=define&age={9999999999-1000000000000}',
             dv: 'v3'
         }
-        DEBUG = true
+        // DEBUG = true
     </script>
     <style>
     </style>
@@ -49,7 +49,29 @@
             require('./script/modules/test#di', (m) => m.run());
         }
         exec();
-        // var dialog = require('dialog');
+
+        var dialog = require('dialog');
+        var loading;
+        require.init({
+            regexp: /date|yiketianqi/,
+            before: function (...args) {
+                loading = dialog.auto({
+                    mode: '((div.loading))'
+                }, {
+                    cs: 'offset:0 0 0 0',
+                    destroy: {
+                        css: { width: '+=1' },
+                        speed: 300
+                    },
+                    // position: 'center center'
+                });
+                console.log('before', ...args)
+            },
+            after: function (...args) {
+                dialog.destroy(loading);
+                console.log('after', ...args)
+            }
+        })
         // dialog.each([0, 1, 2], (k, v) => {
         //     dialog.query('img[src="./static/?.?" style="width: 33%;"]'.on(v, v == 0 ? 'jpeg' : 'png'), true).appendTo('body').click(exec)
         // })

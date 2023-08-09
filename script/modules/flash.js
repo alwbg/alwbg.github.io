@@ -81,7 +81,11 @@ define(['dialog'], function (dialog) {
         toGoIn(host, OLD);
         // alert(screen.width)
         return dialog.auto(SET, {
-            cs: (isDeskTop ? 'in: +=40 -=40' : '?;offset:2 ? 2 0;in: +=40 -=40 ?').on(config.inner || 'inner:0 0 0 0 .content', OffsetTop),
+            cs: (isDeskTop ? 'in: +=40 -=40;center: false;inner: 0 0 0 0 .content>div' : '?;offset:2 ? 2 0;in: +=40 -=40 ?').on(config.inner || 'inner: 0 0 0 0 .content>div', OffsetTop),
+            position: isDeskTop ? config.position || {
+                target: document.documentElement,
+                position: 'top,right,left,bottom'
+            } : null,
             last: function () {
                 var tips = null;
                 isDeskTop || setTimeout(() => {
@@ -103,6 +107,7 @@ define(['dialog'], function (dialog) {
                 }
                 this.addClass(config.selector || 'fade')
 
+                dialog.runer(config.last, this);
                 this.onresize(() => {
                     toGoIn(host, OLD);
                 })

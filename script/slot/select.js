@@ -26,11 +26,11 @@ define(['dialog'], function (dialog) {
             }
         },
         init() {
-            console.log('INIT::', this, ...arguments)
+            // console.log('INIT::', this, ...arguments)
         },
         watch: {
             current(data, prev) {
-                console.log('CURRENT::', ...arguments)
+                // console.log('CURRENT::', ...arguments)
                 // if (data == prev) return;
                 var Map;
                 var _new = {};
@@ -48,7 +48,7 @@ define(['dialog'], function (dialog) {
                 }, this, Map);
             },
             select: function (data, prev) {
-                console.log('SELECT::', this.$idx, ...arguments)
+                // console.log('SELECT::', this.$idx, ...arguments)
                 // if (this.lock) return;
                 var k = this.data[this.$idx][this.trigger];
                 if (data == false) {
@@ -139,75 +139,17 @@ define('link', ['dialog'], function (dialog) {
 define('input', ['dialog'], function (dialog) {
     'use strict';
     var Nil;
+    function chackvalue(host, data){
+        host.fly = !/^\s*$/.test(data);
+    }
     var workers = dialog.render(`
-    <style>
-    .input-line {
-        margin-bottom: 18px;
-        padding: 7px;
-        height: 40px;
-        position: relative;
-    }
-    
-    .input-line input{
-        height:100%;
-        width: 100%;
-        display:block;
-        outline: none;
-        padding: 5px;
-        font-size: 12px;
-        font-weight: bold;
-        border: 0;
-        border-radius: 0.3rem;
-    }
-    
-    span.input-tips {
-        position: absolute;
-        display: block;
-        width: 100%;
-        /* color: #979797; */
-        line-height: 40px;
-    }
-
-    .input-fly>span {
-        animation: input-fly-m 0.3s;
-        animation-fill-mode: forwards;
-    }
-    @keyframes input-fly-m {
-        to {
-            /* color: #fff; */
-            padding-left: 0;
-            top: -25px;
-            font-size: 12px;
-            width: auto;
-            font-weight: bold
-        }
-        from{
-            top: 7px;
-        }
-    }
-    .input-fly-back>span {
-        animation: input-fly-back-m 0.3s;
-        animation-fill-mode: forwards;
-    }
-    @keyframes input-fly-back-m {
-        from{
-            top: -25px;
-            font-size: 12px;
-        }
-        to {
-            font-size: 14px;
-            padding-left: 10px;
-            top: 7px;
-        }
-    }
-    </style>
-    <div class="input-line" :class="fly ? 'input-fly' : 'input-fly-back'">
-        <span class="input-tips" :onclick="tofly">{tips}</span>
-        <input class="" :value="value" :type="type"  :onblur="blur"/>
-    </div>
+    div.input-line[:class="fly ? 'input-fly' : 'input-fly-back'"]>
+        (
+            .input-tips[:onclick="tofly"]{{tips}}+
+            input[:value="value" :type="type" :onblur="blur"]+.label-clear[:onclick="clear"]{×}
+        )
     `, {
-        init(_, target) {
-        },
+        selector: 'flyinput',
         data() {
             return {
                 fly: false,
@@ -217,10 +159,17 @@ define('input', ['dialog'], function (dialog) {
             }
         },
         watch: {
+            value(data) {
+                chackvalue(this, data)
+            }
         },
         events: {
+            clear() {
+                this.value = '';
+                this.fly = false;
+            },
             blur() {
-                this.fly = !/^\s*$/.test(this.value);
+                chackvalue(this, this.value)
             },
             tofly() {
                 this.fly = true;
@@ -228,6 +177,7 @@ define('input', ['dialog'], function (dialog) {
             }
         }
     });
+    console.log(workers)
     return workers;
 });
 
@@ -260,12 +210,12 @@ define('button', ['dialog'], (dialog) => {
 
 define('tq', ['dialog'], (dialog) => {
 
-    function trigger(root, city = root.city, showday = root.showday) {
+    function trigger(root, city = root.city) {
         clearTimeout(root.t);
         root.t = setTimeout(() => {
             console.log(city, root)
             // this.data = [];
-            let api = _Qma.searchuri.on({ city: city || '', v: showday });
+            let api = _Qma.searchuri.on({ city: city || '', v: root.showday });
             // return console.log(api);
             require(api, (data) => {
                 console.log(data)
@@ -279,7 +229,7 @@ define('tq', ['dialog'], (dialog) => {
                 }
             })
 
-        }, 1 * 1000)
+        }, 1 * 10)
     }
     var tq = dialog.render(`
     div>(div.error-tips{天气搜索免责声明,如有侵权,联系删除...(alwbg@163.com)})+
@@ -331,6 +281,7 @@ define('tq', ['dialog'], (dialog) => {
         },
         data() {
             return {
+                off: false,
                 citycur: '北京',
                 showday: '',
                 citys: [{ name: '北京' }, { name: '深圳' }, { name: '沈阳' }, { name: '咸阳' }, { name: '上海' }, { name: '成都' }, { name: '拉萨' }, { name: '重庆' }, { name: '不存在' }],
@@ -350,7 +301,8 @@ define('tq', ['dialog'], (dialog) => {
         },
         watch: {
             value(city) {
-                trigger(this, city)
+                if(this.off)
+                    trigger(this, city)
             },
             citycur(city) {
                 this.value = city;
@@ -358,11 +310,16 @@ define('tq', ['dialog'], (dialog) => {
                 console.log(city)
             },
             showday(v) {
-                trigger(this, this.city, v)
+                if(this.off)
+                    trigger(this, this.city, v)
+            },
+            off(v) {
+                if(v)
+                    trigger(this, this.city, v)
             }
         },
         events: {
-            click() {
+            click(e) {
                 require('flash', (flash) => {
 
                     flash.run(this._el, {

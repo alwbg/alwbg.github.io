@@ -407,7 +407,7 @@ html {
   position: absolute;
   top: 0px;
   right: 5px;
-  color: #58972b;
+  color: #327900;
   cursor: pointer;
 }
 .windows.dialog-tips .bg {
@@ -507,7 +507,7 @@ html {
   padding-right: 30px;
 }
 .windows.dialog-tips.white .content .close {
-  color: #b12424;
+  color: #840000;
   background-color: #FF5722;
 }
 .windows.dialog-tips.white .i-s-left .i-mark {
@@ -562,10 +562,10 @@ html {
   width: 0;
   height: 0;
   border: 7px solid;
-  margin-top: -14px;
+  margin-top: -15px;
   border-color: transparent;
   position: absolute;
-  bottom: -13px;
+  bottom: -14px;
   left: 13px;
   border-top-color: #191919;
 }
@@ -2066,18 +2066,17 @@ html {
   bottom: 0;
   border-radius: 30px;
   border: 1px solid #ffffff;
+  transition: all 0.3s;
 }
 .i-state::after {
   width: 16px;
   height: 16px;
   background-color: #ffffff;
-  animation-fill-mode: forwards;
   box-shadow: inset 0 0.46875rem 2.1875rem rgba(4, 9, 20, 0.03), 0 0.9375rem 1.40625rem rgba(4, 9, 20, 0.03), 0 0.25rem 0.53125rem rgba(4, 9, 20, 0.05), 0 0.125rem 0.1875rem rgba(4, 9, 20, 0.03);
 }
 .i-state::before {
   width: 100%;
-  height: 100%;
-  /* border: 1px solid transparent; */
+  height: 100%; /* border: 1px solid transparent; */
   border: 2px solid rgba(255, 255, 255, 0.168627451);
   box-shadow: inset 20px -17rem 0rem 0px rgba(4, 9, 20, 0.03), inset 0 0.9375rem 0rem rgba(4, 9, 20, 0.03), inset 0 0.25rem 0rem rgba(4, 9, 20, 0.05), inset 0 0.125rem 0.1875rem rgba(4, 9, 20, 0.03);
 }
@@ -2085,64 +2084,68 @@ html {
 /* rgb(102, 51, 153) */
 ._open.i-state::before {
   background-color: #8bc34a;
-  animation: tomovecoloropen 1s;
 }
 ._open.i-state::after {
   margin-left: 17px;
-  animation: tomoveopen 0.3s;
 }
 
 ._close.i-state::before {
   background-color: #c9cacc;
-  animation: tomovecolorclose 1s;
 }
 ._close.i-state::after {
   margin-left: 3px;
-  animation: tomoveclose 0.3s;
 }
 
+/* 
 ._tomovezero {
-  /* width: 0 !important; */
-  animation: tomovezero 0.3s;
+    // width: 0 !important;
+    // animation: tomovezero 0.3s;
+}
+@keyframes tomovezero {
+    to {
+        width: 0;
+    }
 }
 
-@keyframes tomovezero {
-  to {
-    width: 0;
-  }
-}
 @keyframes tomoveclose {
-  to {
-    margin-left: 2px;
-  }
-  from {
-    margin-left: 16px;
-  }
+    to {
+        margin-left: 2px;
+    }
+
+    from {
+        margin-left: 16px;
+    }
 }
+
 @keyframes tomoveopen {
-  to {
-    margin-left: 16px;
-  }
-  from {
-    margin-left: 2px;
-  }
+    to {
+        margin-left: 16px;
+    }
+
+    from {
+        margin-left: 2px;
+    }
 }
+
 @keyframes tomovecolorclose {
-  to {
-    background-color: #c9cacc;
-  }
-  from {
-    background-color: #8bc34a;
-  }
+    to {
+        background-color: #c9cacc;
+    }
+
+    from {
+        background-color: #8bc34a;
+    }
 }
+
 @keyframes tomovecoloropen {
-  to {
-    background-color: #8bc34a;
-  }
-  from {
-    background-color: #c9cacc;
-  }
-}
+    to {
+        background-color: #8bc34a;
+    }
+
+    from {
+        background-color: #c9cacc;
+    }
+} */
 /* ---------------------------------------------------------- */
 .uppercase {
   text-transform: uppercase;
@@ -2467,7 +2470,7 @@ body {
   width: 100%;
 }
 .days .day-box > div > * > span:not(.t), .windows.daysinfo .day-box > div > * > span:not(.t), .windows.fade .day-box > div > * > span:not(.t) {
-  color: #F44336;
+  color: #f44336;
   text-align: right;
 }
 .days .day-box > div > *, .windows.daysinfo .day-box > div > *, .windows.fade .day-box > div > * {
@@ -2527,7 +2530,7 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  background-position-X: 0;
+  background-position-x: 0;
 }
 .clockbox .h {
   background-image: url(./static/H.png);
@@ -2543,7 +2546,7 @@ body {
 }
 
 .windows .color-box {
-  transition: 1s ease-out;
+  transition: 0.3s ease-out;
 }
 
 .clockboxnew {
@@ -2830,10 +2833,14 @@ body {
   display: inline-block;
   vertical-align: middle;
   border-radius: 4px;
-  margin-top: calc(100% - 100px / 2 - 6px / 2 - 1px);
+  margin-top: calc(
+      100% - 100px / 2 - 6px / 2 - 1px
+    );
 }
 .clockboxnew > span::before {
-  margin-left: calc(100% - 100px / 2 - 6px / 2 - 1px);
+  margin-left: calc(
+      100% - 100px / 2 - 6px / 2 - 1px
+    );
   width: 6px;
   height: 6px;
 }
@@ -2845,12 +2852,12 @@ body {
   z-index: 8;
 }
 .clockboxnew .h::before {
-  border: 1px solid #FFC107;
+  border: 1px solid #ffc107;
 }
 .clockboxnew .h::after {
   height: 6px;
   width: calc(100% - 100px / 2 - 30%);
-  background-color: #FFC107;
+  background-color: #ffc107;
 }
 .clockboxnew .m {
   z-index: 9;
@@ -2882,7 +2889,9 @@ body {
   overflow-x: hidden !important;
 }
 
-.model, .windows.fade .content .prev-month:hover, .windows.fade .content .next-month:hover, .windows.fade .content .current-month:not(.cur), .windows.fade .content .title-month:not(.cur), .windows.fade .content > div > span.prev-month:hover, .windows.fade .content > div > span {
+.model, .windows.fade .content .prev-month:hover,
+.windows.fade .content .next-month:hover, .windows.fade .content .current-month:not(.cur),
+.windows.fade .content .title-month:not(.cur), .windows.fade .content > div > span.prev-month:hover, .windows.fade .content > div > span {
   width: calc(14.2857142857% - 7px);
   height: 50px;
   line-height: 50px;
@@ -2916,16 +2925,22 @@ body {
   top: -50px;
   right: 0px;
 }
+.windows.fade .bg {
+  background-color: rgba(0, 0, 0, 0);
+  opacity: 1;
+}
 .windows.fade .content {
-  overflow: auto;
   background-color: #fff;
   height: 400px;
-  min-width: 400px;
   background-image: linear-gradient(238deg, rgb(255, 255, 255), #e5fec8);
+}
+.windows.fade .content > div {
+  overflow: auto;
 }
 .windows.fade .content > div > span {
   position: relative;
   overflow: hidden;
+  line-height: 25px !important;
 }
 .windows.fade .content > div > span.cur {
   border-radius: 25px;
@@ -2940,14 +2955,20 @@ body {
   width: 100%;
   zoom: 0.7;
 }
-.windows.fade .content .current-month:not(.cur), .windows.fade .content .title-month:not(.cur) {
+.windows.fade .content > div > span.str {
+  line-height: 30px !important;
+}
+.windows.fade .content .current-month:not(.cur),
+.windows.fade .content .title-month:not(.cur) {
   color: #000;
   background-color: transparent;
 }
-.windows.fade .content .prev-month, .windows.fade .content .next-month {
+.windows.fade .content .prev-month,
+.windows.fade .content .next-month {
   color: #dbdbdb;
 }
-.windows.fade .content .prev-month:after, .windows.fade .content .next-month:after {
+.windows.fade .content .prev-month:after,
+.windows.fade .content .next-month:after {
   color: #dbdbdb !important;
 }
 .windows.fade .content .month-bg {
@@ -2962,6 +2983,9 @@ body {
 .windows.fade .content .month-bg::after {
   content: attr(data-txt);
   font-size: 40px;
+}
+.windows.fade .content .i-mark {
+  background-color: transparent;
 }
 
 .windows.dialog-tips.notice-box .content {
@@ -2991,7 +3015,8 @@ body {
   border-color: transparent;
   margin-right: 0;
 }
-.windows label.radio:not(.cur), .windows .formbox label.checkbox:not(.cur) {
+.windows label.radio:not(.cur),
+.windows .formbox label.checkbox:not(.cur) {
   background-color: #d1d1d1;
   color: #5e5e5e;
 }
@@ -3001,7 +3026,7 @@ body {
 .windows .days .day-box > div, .windows.daysinfo .day-box > div, .windows.fade .day-box > div {
   border-color: rgba(34, 34, 34, 0.1607843137);
 }
-.windows .tips, .windows .test-title {
+.windows .tips, .windows .test-title, .windows div.test-title {
   color: #989898;
   margin: 7px;
 }
@@ -3010,10 +3035,16 @@ body {
   font-weight: bold;
   margin-bottom: 10px;
 }
-.windows .test-title {
-  margin-left: 0;
-  margin-top: 0;
+.windows .test-title, .windows div.test-title {
   font-weight: 300;
+  margin: 0px;
+  margin-bottom: 7px;
+  margin-top: 3px;
+  margin-left: 7px;
+}
+.windows div.test-title {
+  margin-left: 0px;
+  font-size: 14px;
 }
 
 @media (max-width: 900px) {
@@ -3052,4 +3083,209 @@ body {
     margin-top: 2px;
     margin-right: 1px;
   }
+}
+@media (min-width: 600px) {
+  .windows.fade .content, .windows.fade .content > div {
+    height: 300px !important;
+    width: 400px !important;
+  }
+  .windows.fade .content > div {
+    overflow: auto;
+  }
+}
+@media (max-height: 450px) {
+  .windows.fade .content {
+    height: 80%;
+  }
+}
+.code > .content > div {
+  line-height: inherit !important;
+  height: auto !important;
+}
+.code > .content > div > span {
+  line-height: inherit !important;
+}
+.code .funtion {
+  color: #e91e63;
+}
+.code .block {
+  color: #5f6900;
+}
+.code .blockstart {
+  color: #5f6900;
+  margin-left: 3px;
+}
+.code .define {
+  color: #9682cf;
+  margin-left: 4px;
+}
+.code .str {
+  color: #bacc1e;
+}
+.code .def {
+  color: #ccc;
+}
+.code .function {
+  color: #e91e63;
+}
+.code .attr {
+  color: #9c27b0;
+}
+.code .attrs {
+  color: #5f6900;
+  background: #cddc39;
+  padding: 3px;
+  border-radius: 7px;
+  margin: 3px;
+  font-size: 10px;
+  border: 3px solid rgba(255, 255, 255, 0.1764705882) !important;
+}
+.code .comment {
+  color: #c4c4c4;
+}
+.code .regexp {
+  color: #00bcd4;
+}
+.code .newline {
+  display: inline-block;
+  height: 20px !important;
+  vertical-align: middle;
+  margin: 1px;
+}
+.code .newline1 {
+  width: 40px !important;
+}
+.code .newline2 {
+  width: 80px !important;
+}
+.code .newline3 {
+  width: 120px !important;
+}
+.code .newline4 {
+  width: 160px !important;
+}
+.code .newline5 {
+  width: 200px !important;
+}
+.code .newline6 {
+  width: 240px !important;
+}
+.code .newline7 {
+  width: 280px !important;
+}
+.code .newline8 {
+  width: 320px !important;
+}
+.code .newline9 {
+  width: 360px !important;
+}
+.code .newline10 {
+  width: 400px !important;
+}
+.code .newline + .blockend {
+  margin-left: -40px;
+}
+
+.swing {
+  position: absolute;
+  border-radius: 53%;
+  width: 25px;
+  height: 25px;
+  opacity: 0.8;
+  background: rgba(255, 255, 255, 0.3);
+  transition-property: transform, opacity;
+  transform: scale(0);
+  pointer-events: none;
+}
+
+.radio,
+.color-box,
+.line,
+.notice-box > .content {
+  position: relative;
+  overflow: hidden;
+}
+
+@media (min-width: 700px) {
+  .content > .rainbox > .lines {
+    padding: 5px !important;
+    width: calc(100% / 3 - 12px);
+    display: inline-block;
+    vertical-align: text-top;
+  }
+  .content > .rainbox > .lines .days .day-box, .content > .rainbox > .lines .windows.daysinfo .day-box, .content > .rainbox > .lines .windows.fade .day-box {
+    width: calc(100% - 4px);
+  }
+  .content > .rainbox > .lines > .line {
+    overflow: scroll;
+    max-height: 500px;
+    margin-bottom: 10px;
+  }
+}
+.flyinput {
+  margin-top: 20px;
+}
+.flyinput .input-line {
+  margin-bottom: 18px;
+  padding: 7px;
+  height: 40px;
+  position: relative;
+}
+.flyinput .input-line input {
+  height: 100%;
+  width: 100%;
+  display: block;
+  outline: none;
+  padding: 5px;
+  font-size: 12px;
+  font-weight: bold;
+  border: 0;
+  border-radius: 0.3rem;
+  background: #f7f7f7;
+  transition: 0.7s ease-out;
+}
+.flyinput span.input-tips {
+  position: absolute;
+  display: block;
+  width: 100%;
+  /* color: #979797; */
+  line-height: 40px;
+  transition: 0.3s ease-out;
+}
+.flyinput .input-fly input {
+  border-radius: 15px;
+  padding: 13px;
+}
+.flyinput .input-fly > span {
+  padding-left: 0;
+  top: -25px;
+  font-size: 12px;
+  font-weight: bold;
+}
+.flyinput .input-fly > span.label-clear {
+  display: inline-block;
+  position: absolute;
+  background-color: #e2e0e0;
+  height: 20px;
+  width: 20px;
+  line-height: 19px;
+  text-align: center;
+  border-radius: 10px;
+  color: #595959;
+  font-size: 14px;
+  font-weight: bold;
+  top: calc(50% - 10px);
+  right: 12px;
+}
+.flyinput .input-fly-back input {
+  border-radius: 10px;
+  padding: 10px;
+}
+.flyinput .input-fly-back > span {
+  font-size: 14px;
+  padding-left: 10px;
+  top: 7px;
+}
+.flyinput .input-fly-back > span.label-clear {
+  display: none;
 }

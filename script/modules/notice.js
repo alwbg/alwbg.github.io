@@ -15,7 +15,6 @@ define(['dialog'], function (dialog) {
             }
             lists.push(v.id)
         });
-        host.room.animate({ top: '?=?'.on(signal, 4) })
         lists.sort((a, b) => 2 * (a < b) - 1);
         // console.log(lists, current, lists.length);
         dialog.each(lists, (k, v) => {
@@ -30,6 +29,7 @@ define(['dialog'], function (dialog) {
             }/* , '{600-1200}'.on() */)
             v._top = v.room.css('top', 'number');
         });
+        host.room.animate({ top: '?=?'.on(signal, 4) })
     }
     function closeall() {
         var list = dialog.list;
