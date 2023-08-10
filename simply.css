@@ -3289,3 +3289,10 @@ body {
 .flyinput .input-fly-back > span.label-clear {
   display: none;
 }
+
+.windows.simply .content {
+  padding: 10px;
+}
+.windows.simply .content > div {
+  overflow: auto;
+}

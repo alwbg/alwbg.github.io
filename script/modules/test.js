@@ -61,7 +61,7 @@ define('di', ['dialog'], function (dialog) {
 <div class="lines">
     ((div.line>div.test-title{时间插件测试项}+Timebox[:tips="请选择区间日期"]))
     ((
-        div.line.clock>.test-title[:onclick="showDate"]{测试下弹式日期}+{日期}+.tips{(点击测试层叠窗口~~)}+
+        div.line.clock>div.test-title[:onclick="showDate"]{测试下弹式日期}+{日期}+.tips{(点击测试层叠窗口~~)}+
 
         div>(span.color-box[class="color-box-blue button" :onclick="clock"]{查看源码~}+.tips{(点击查看通知源码~)})
     ))
@@ -98,8 +98,9 @@ define('di', ['dialog'], function (dialog) {
         div.inline-block>
             span[:class="showtq ? '_open': '_close'" class="i-state" :onclick="showtq"]
             +span.color-box[:class=" showtq ? 'color-box-green' : 'color-box-gray'"]{{showtq ? "天气模块状态为打开" : "已隐藏天气模块"}}
+            +span.color-box.color-box-blue[:onclick="opendialogwea" :if="!openwithdialog"]{窗体打开}
             +div[:if="showtq"]>
-                Wea[:off="showtq" :value="searchcity" :showday="showday" :onclick="showinfo"]
+                Wea[:off="showtq" :data="watchwea" :value="searchcity" :showday="showday" :onclick="showinfo"]
     ))
     ((
         div.line>(
@@ -161,14 +162,11 @@ define('di', ['dialog'], function (dialog) {
     ))
 </div>
 `;
+        var _Notice = require('notice');
         // 测试
         function Notice(config) {
-            return new Promise((resolve, reject) => {
-                require('notice', (notice) => {
-                    arguments.callee.host = notice;
-                    resolve(notice(config))
-                })
-            })
+            arguments.callee.host = _Notice;
+            return _Notice(config);
         }
         Notice.close = () => {
             dialog.runer(dialog.picker(Notice, 'host.close=>c').c, Notice.host)
@@ -186,7 +184,7 @@ define('di', ['dialog'], function (dialog) {
             data: {
                 theme: !true,
                 themeState: null,
-                
+
                 /* Input start */
                 inputpassword: 'abc',
                 sele: {
@@ -217,6 +215,8 @@ define('di', ['dialog'], function (dialog) {
                 showtq: !true,
                 searchcity: '',
                 showday: _Qma.dv || 'v9',
+                watchwea: [],
+                openwithdialog: !false,
                 /* **************************** */
 
                 // uploadurl: '//i.com:8889/file',
@@ -234,9 +234,12 @@ define('di', ['dialog'], function (dialog) {
                 /* ****************** */
 
                 count: 0,
-                lh: 50
+                lh: 50,
             },
             watch: {
+                watchwea() {
+                    dialog.exec(this, 'app.resize')
+                },
                 testlist() {
                     console.log(...arguments, '--MARK')
                 },
@@ -273,19 +276,52 @@ define('di', ['dialog'], function (dialog) {
                 },
                 /* Select */
                 triggerselectname(key, old) {
-                    // dialog.each
                     var a = this.select.find((item) => {
                         return item[old] == this.selcurs;
-                        console.log(...a)
                     })
                     setTimeout(() => {
                         this.selcurs = a[key];
                     }, 10);
-                    console.log(a);
-                    // console.log(key, dialog.picker(this.select, '*.?=>key'.on(this.selcurs, key), true).key || key)
                 }
             },
             events: {
+                opendialogwea(e) {
+                    var app = dialog.auto({
+                        selector: 'cccccc',
+                        mode: '.list{{opendialogwea}}+.confirm-cancel.close[:onclick="close"]{×}',
+                        data: {
+                            opendialogwea: ''
+                        },
+                        events: {
+                            close() {
+                                this._dialog.remove();
+                            }
+                        }
+                    }, {
+                        cs: 'offset:2 2 50 2;inner: 0 0 0 0 .cccccc',
+                        last() {
+                            this.addClass('ios simply big');
+                            this.proxy('bg', () => {
+                                this.remove()
+                            })
+                        }
+                    });
+                    this.app = app;
+                    var linelement = dialog.query(e.target).parent('.line');
+                    var moveelement = linelement.find('.inline-block')
+                    app.render.data.opendialogwea = moveelement;
+                    this.openwithdialog = true
+                    var state;
+                    if (state = this.showtq); else
+                        this.showtq = true;
+                    app.onclose(() => {
+                        this.openwithdialog = !true
+                        this.showtq = !!state;
+                        linelement.append(moveelement)
+                    })
+                    console.log(
+                    )
+                },
                 cssvar() {
                     // this.count++
                     this.lh += ((++this.count % 2) * 2 - 1) * 30;
@@ -416,22 +452,32 @@ define('di', ['dialog'], function (dialog) {
                                 selector: '.radio|.color-box|.line|.content'
                             })
                         })
-                        setTimeout(() => {
+                        var Nt, res;
+                        this.onresize(res = () => {
                             var screen = dialog.screen();
-                            screen.width > 600 && 
-                            Notice({
-                                theme: 'white',
-                                // position: 'bottom',
-                                mode: '(div[:onclick="go"]>(div.tips-title{提示~}+.close[:onclick="close"]{x}+div>{欢迎来到该页面}+div.test-title[style="color: #ff5821;font-size: 6px;zoom: 0.8;"]{[看到这个提示证明你用的是大尺寸屏幕查看]}+[text="手机查看"]+{体验不一样的效果~}',
-                                data: {
-                                },
-                                events: {
-                                    close() {
-                                        this._dialog.remove();
-                                    }
+                            var state = worker.data.openwithdialog = screen.width < 600;
+
+                            setTimeout(() => {
+                                if (!state) {
+                                    Nt || (Nt = Notice({
+                                        theme: 'white',
+                                        // position: 'bottom',
+                                        mode: '(div[:onclick="go"]>(div.tips-title{提示~}+.close[:onclick="close"]{x}+div>{欢迎来到该页面}+div.test-title[style="color: #ff5821;font-size: 6px;zoom: 0.8;"]{[看到这个提示证明你用的是大尺寸屏幕查看]}+[text="手机查看"]+{体验不一样的效果~}',
+                                        data: {
+                                        },
+                                        events: {
+                                            close() {
+                                                this._dialog.remove();
+                                            }
+                                        }
+                                    }))
+                                } else {
+                                    dialog.destroy(Nt);
+                                    Nt = null
                                 }
-                            })
-                        }, 1000)
+                            }, 1000)
+                        })
+                        res();
                     }
                 })
             }
