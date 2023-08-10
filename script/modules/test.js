@@ -94,6 +94,12 @@ define('di', ['dialog'], function (dialog) {
     ))
 </div><div class="lines">
     ((
+        div.line>div.test-title{着色测试&方法解释{}}
+            +div.test-title.code{{testexecstr}}
+            +div.test-title{{testexechtml}}
+            +Input[:value="testexec" :tips="请输入~"]
+    ))
+    ((
         div.line.wea>
         div.inline-block>
             span[:class="showtq ? '_open': '_close'" class="i-state" :onclick="showtq"]
@@ -163,6 +169,7 @@ define('di', ['dialog'], function (dialog) {
 </div>
 `;
         var _Notice = require('notice');
+        var Color = require('./script/modules/colors');
         // 测试
         function Notice(config) {
             arguments.callee.host = _Notice;
@@ -194,6 +201,8 @@ define('di', ['dialog'], function (dialog) {
                         id: '开启'
                     }
                 },
+                testexec: '',
+                testexecstr: '',
                 /* Input end */
 
                 /* Select */
@@ -237,6 +246,18 @@ define('di', ['dialog'], function (dialog) {
                 lh: 50,
             },
             watch: {
+                testexec(data) {
+                    var c = data.split(/,/);
+                    var str = c.shift(), args = c.join('","');
+                    console.log('\n"?".on( ? )'.on(str, args, 1))
+                    // console.log(str, args, 'dialog.format("?")\n"?".on(?)'.on(data.replace(/,/g, '","'), str, args))
+                    this.testexecstr = dialog.query(Color.on([
+                        '//这里是方法调用\ndialog.format("?");\n\n\n'.on(data.replace(/,/g, '","')),
+                        '//这里是String上注册的方法调用\n\n"[0]".on("[1]");'.on(str, args)
+                    ].join('')), true)
+                    // this.testexecstr = ;
+                    this.testexechtml = dialog.format.apply(null, data.split(','))
+                },
                 watchwea() {
                     dialog.exec(this, 'app.resize')
                 },
@@ -445,6 +466,8 @@ define('di', ['dialog'], function (dialog) {
                         this.onclose(() => {
                             this.room.find('.content').html('')
                         })
+
+                        worker.data.testexec = '\'?\'是什么？它是一只?~,卡卡,宠物';
                         require('./script/modules/swing', (s) => {
                             s.run({
                                 duration: 700,
