@@ -3296,3 +3296,8 @@ body {
 .windows.simply .content > div {
   overflow: auto;
 }
+.windows .code-color {
+  background: #202020;
+  border-radius: 10px;
+  padding: 10px;
+}
