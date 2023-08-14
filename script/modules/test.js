@@ -95,7 +95,7 @@ define('di', ['dialog'], function (dialog) {
 </div><div class="lines">
     ((
         div.line>div.test-title{着色测试&方法解释{}}
-            +div.test-title.code{{testexecstr}}
+            +div.test-title.code.code-color{{testexecstr}}
             +div.test-title{{testexechtml}}
             +Input[:value="testexec" :tips="请输入~"]
     ))
@@ -249,7 +249,7 @@ define('di', ['dialog'], function (dialog) {
                 testexec(data) {
                     var c = data.split(/,/);
                     var str = c.shift(), args = c.join('","');
-                    console.log('\n"?".on( ? )'.on(str, args, 1))
+                    // console.log('\n"?".on( ? )'.on(str, args, 1))
                     // console.log(str, args, 'dialog.format("?")\n"?".on(?)'.on(data.replace(/,/g, '","'), str, args))
                     this.testexecstr = dialog.query(Color.on([
                         '//这里是方法调用\ndialog.format("?");\n\n\n'.on(data.replace(/,/g, '","')),
