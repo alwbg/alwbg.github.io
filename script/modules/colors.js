@@ -1,7 +1,6 @@
 define(['dialog', 'flash'], function (dialog, flash) {
     var exprots = {};
-
-    var COLORR = /(?:(["'\`])(?:(?!\1)[\w\W])*\1)|(\{)|(\})|((?:;?\n+|;(?!\n)))|((?:\/\*+(?:(?!\*\/).)*\*\/)|(?:\/\/.*$))|(\/(?:(?!\/|\s).)+\/[igm]?)|(?:(?=[^\w]|^)*((?:\([^()]*\)\s*=\>|\w+\([^()]*\)|function\s*(?:[\w]*\([^()]+\)|)))|(?=[^\w]|)(function|var|let|const|console|log|setTimeout|this|for|do|return|try|dialog|if|else|new[\s])(?=[^\w]+)|(\]|\[|\(|\))|(=>|=)|(?:(\.\w+(?=\()|(?:\w+\.|)data))|(\w+)\s*(?=\:)|(arguments))/mg;
+    var COLORR = /(?:(["'\`])(?:(?!\1)[\w\W])*\1)|(\{)|(\})|((?:;?\n+|;(?!\n)))|((?:\/\*+(?:(?!\*\/)[\w\W])*\*\/)|(?:\/\/.*$))|(\/(?:\\\/|\/(?:[^,;]|[igm][,;])|(?!\/|\s).)+\/[igm]?)|(?:(?=[^\w]|^)*((?:\([^()]*\)\s*=\>|\w+\([^()]*\)|function\s*(?:[\w]*\([^()]+\)|)))|(?=[^\w]|)(function|var|let|const|console|log|setTimeout|this|for|do|return|try|dialog|if|else|new[\s])(?=[^\w]+)|(\]|\[|\(|\))|(=>|=)|(?:(\.\w+(?=\()|(?:\w+\.|)data))|(\w+)\s*(?=\:)|(arguments))/mg;
     var ATTR = /(?:\{[^\{\}]+\}|(?:[\:!*][\w!\.-]+|for)="(?:(?!\"(?:\s|>|\]|\/>)).)+")/g;//[:if="state ? "吸烟" : "戒烟""]
     var COLORS = {
         DEF: 'def'
@@ -39,7 +38,7 @@ define(['dialog', 'flash'], function (dialog, flash) {
                 position: 'top,right,left,bottom'
             },
             top: '100',
-            mode: this.on(func).replace(/(\\){4}/g, '$1$1'),
+            mode: this.on(func, true).replace(/(\\){4}/g, '$1$1'),
             data: {
 
             },
@@ -61,7 +60,8 @@ define(['dialog', 'flash'], function (dialog, flash) {
             v.innerHTML = source;
         })
     }
-    exprots.on = function (func) {
+    var PARTICULAR = /({|}|>|<|\(|\)|\.|\\|\+|\\n|\|)|(=)(>)/g
+    exprots.on = function (func, _export_simply) {
         Count.count = 0;
         var colorString = dialog.isString(func) ? func : func.toString();
         /* 替换 [{key: value},....] */
@@ -81,7 +81,7 @@ define(['dialog', 'flash'], function (dialog, flash) {
             })
             var k = COLOR[index] || COLORS.DEF;
             // console.log(source, k);
-            var format = source.replace(/({|}|>|<|\(|\)|\.|\\|\+|\\n|\|)|(=)(>)/g, '$2\\$1$3');
+            var format = source.replace(PARTICULAR, '$2\\$1$3')//.replace(/(\)|(<)(!)(DOCTYPE))/, '$2\\$3\\\\$1');
             var mo = ['((text:span.{0}{{1}}))', '((+div+.newline.newline{2}))']
             if (/^[2-3]$/.test(index)) {
                 if (index == 2) mo[1] = ''//mo.reverse();
@@ -98,7 +98,8 @@ define(['dialog', 'flash'], function (dialog, flash) {
             // console.log(k, source);
             return '((text:span.?{?}))\n'.on(k, format)//.buildHtml();
         })
-        // console.log(colorString);
+        if (!_export_simply) colorString = colorString.replace(/text\:span/g, 'span');
+        console.log(colorString.buildHtml());
         return colorString
     }
     return exprots;
