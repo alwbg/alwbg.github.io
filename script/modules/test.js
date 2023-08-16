@@ -101,9 +101,6 @@ define('di', ['dialog'], function (dialog) {
             /* 例子: */
             let time = new time('YYYY-MM-DD 24h:mm:ss (AM|PM)');
             time.fire();
-            function app(g,f,g) {
-                c;
-            }
         })
         +Input[:value="timemode" :tips="请输入模版信息~"]
     ))
