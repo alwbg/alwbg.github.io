@@ -78,23 +78,37 @@ define('di', ['dialog'], function (dialog) {
             +div>(span.color-box[class="color-box-blue button" :onclick="code"]{查看源码~}+.tips{(点击查看通知源码~)})
     ))
     ((
-        div.line>(
-            +div.test-title{测试Array.length}+
-            div.color-box.button[:onclick="fillTestList"]{填充TESTLIST}+
-            {LENGTH = }+
-            div.color-box.button.red{{testlist.length}}
-            (
-                div[:for="testlist"].text-list-room>
-                    {{name}}+
-                    Onoff:span.onoff[!show="shows" :class.lines="shows"]+
-                    .color-box.color-box-yellow[:onclick="testlistClick" :if="!shows"]{删除}
-            )+
-            div.line[:if="!testlist.length"]{空空如也~~}
-        )
+        div.line>
+            .test-title{水波纹}
+            +div>(span.color-box[class="color-box-blue button" :onclick="swing"]{查看源码~}+.tips{(点击查看水波纹源码~)})
+            .test-title{Css变量}
+            +div.code>(span.color-box[class="color-box-blue button" :style="--line-height:lh;width:lh" style="height:var(--line-height);line-height:var(--line-height);width:var(--line-height)" :onclick="cssvar"]{css-var}+.tips{(点击测试css内变量设置[--line-height:{lh}]~)})
+            +text:span.codeshow{}
     ))
 </div><div class="lines">
     ((
-        div.line>div.test-title{着色测试&方法解释{}}
+        div.line[:onclick="click2"]>div.test-title{测试时间}
+        +Clock[:mode="timemode"]
+        +(Code.app[:state="!theme"]>text:span{
+            /* -使用说明- */
+            // 年: YYYY | YY
+            // 月: MM
+            // 日: DD
+            // 时: hh | 24h | 12h
+            // 分: mm
+            // 秒: ss
+            // 24小时平分 \\(...\\|...\\|...\\)
+            /* 例子: */
+            let time = new time('YYYY-MM-DD 24h:mm:ss (AM|PM)');
+            time.fire();
+            function app(g,f,g) {
+                c;
+            }
+        })
+        +Input[:value="timemode" :tips="请输入模版信息~"]
+    ))
+    ((
+        div.line>div.test-title{着色测试&方法解释}
             +div.test-title.code.code-color{{testexecstr}}
             +div.test-title{{testexechtml}}
             +Input[:value="testexec" :tips="请输入~"]
@@ -124,15 +138,22 @@ define('di', ['dialog'], function (dialog) {
             +div.test-title{{inputpassword}}
             +Input[:value="inputpassword" :tips="请输入密码~" :type="password"]
     ))
-    ((
-        div.line>
-            .test-title{水波纹}
-            +div>(span.color-box[class="color-box-blue button" :onclick="swing"]{查看源码~}+.tips{(点击查看水波纹源码~)})
-            .test-title{Css变量}
-            +div.code>(span.color-box[class="color-box-blue button" :style="--line-height:lh;width:lh" style="height:var(--line-height);line-height:var(--line-height);width:var(--line-height)" :onclick="cssvar"]{css-var}+.tips{(点击测试css内变量设置[--line-height:{lh}]~)})
-            +text:span.codeshow{}
-    ))
 </div><div class="lines">
+((
+    div.line>(
+        +div.test-title{测试Array.length}+
+        div.color-box.button[:onclick="fillTestList"]{填充TESTLIST}+
+        {LENGTH = }+
+        div.color-box.button.red{{testlist.length}}
+        (
+            div[:for="testlist"].text-list-room>
+                {{name}}+
+                Onoff:span.onoff[!show="shows" :class.lines="shows"]+
+                .color-box.color-box-yellow[:onclick="testlistClick" :if="!shows"]{删除}
+        )+
+        div.line[:if="!testlist.length"]{空空如也~~}
+    )
+    ))
     ((
         
         (div.line>
@@ -168,6 +189,7 @@ define('di', ['dialog'], function (dialog) {
     ))
 </div>
 `;
+
         var _Notice = require('notice');
         var Color = require('./script/modules/colors');
         // 测试
@@ -186,7 +208,9 @@ define('di', ['dialog'], function (dialog) {
                 Wea: require('./script/slot/select#tq'),
                 Onoff: require('./script/slot/select#onoff'),
                 Select: require('./script/slot/select'),
-                Timebox: require('./script/slot/time')
+                Timebox: require('./script/slot/time'),
+                Clock: require('./script/slot/clock'),
+                Code: require('code')
             },
             data: {
                 theme: !true,
@@ -219,7 +243,8 @@ define('di', ['dialog'], function (dialog) {
                     { id: 7, name: '删除', tips: '删除了~' }
                 ],
                 /* Select ************************ */
-
+                /* 时间 */
+                timemode: 'YYYY-MM-DD (子|丑|丑|寅|寅|卯|卯|辰|辰|巳|巳|午|午|未|未|申|申|酉|酉|戌|戌|亥|亥|子)时 24h:mm:ss',
                 /* 天气 天气模块开关*/
                 showtq: !true,
                 searchcity: '',
@@ -249,12 +274,12 @@ define('di', ['dialog'], function (dialog) {
                 testexec(data) {
                     var c = data.split(/,/);
                     var str = c.shift(), args = c.join('","');
-                    // console.log('\n"?".on( ? )'.on(str, args, 1))
-                    // console.log(str, args, 'dialog.format("?")\n"?".on(?)'.on(data.replace(/,/g, '","'), str, args))
-                    this.testexecstr = dialog.query(Color.on([
+                    var code = Color.on([
                         '//这里是方法调用\ndialog.format("?");\n\n\n'.on(data.replace(/,/g, '","')),
-                        '//这里是String上注册的方法调用\n\n"[0]".on("[1]");'.on(str, args)
-                    ].join('')), true)
+                        '//这里是String上注册的方法调用\n\n"[0]".on("[1]");'.on(str, args),
+                        '/* 输出:\n\n"?"*\n*/'.on(dialog.format.apply(null, data.split(',')))
+                    ].join('\n'));
+                    this.testexecstr = dialog.query(code, true)
                     // this.testexecstr = ;
                     this.testexechtml = dialog.format.apply(null, data.split(','))
                 },
@@ -306,6 +331,13 @@ define('di', ['dialog'], function (dialog) {
                 }
             },
             events: {
+                click2(e) {
+                    // alert()
+                    var target;
+                    if(target = dialog.is('.str', e.target)){
+                        this.timemode = dialog.html(target).replace(/^["']|['"]$/g, '')
+                    }
+                },
                 opendialogwea(e) {
                     var app = dialog.auto({
                         selector: 'cccccc',

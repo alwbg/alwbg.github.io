@@ -1,6 +1,6 @@
 define(['dialog', 'flash'], function (dialog, flash) {
-    var exprots = {};
-    var COLORR = /(?:(["'\`])(?:(?!\1)[\w\W])*\1)|(\{)|(\})|((?:;?\n+|;(?!\n)))|((?:\/\*+(?:(?!\*\/)[\w\W])*\*\/)|(?:\/\/.*$))|(\/(?:\\\/|\/(?:[^,;]|[igm][,;])|(?!\/|\s).)+\/[igm]?)|(?:(?=[^\w]|^)*((?:\([^()]*\)\s*=\>|\w+\([^()]*\)|function\s*(?:[\w]*\([^()]+\)|)))|(?=[^\w]|)(function|var|let|const|console|log|setTimeout|this|for|do|return|try|dialog|if|else|new[\s])(?=[^\w]+)|(\]|\[|\(|\))|(=>|=)|(?:(\.\w+(?=\()|(?:\w+\.|)data))|(\w+)\s*(?=\:)|(arguments))/mg;
+    var exports = {};
+    var COLORR = /(?:(["'\`])(?:(?!\1)[\w\W])*\1)|(\{)|(\})|((?:;?\n+|;(?!\n)))|((?:\/\*+(?:(?!\*\/)[\w\W])*\*\/)|(?:\/\/.*$))|(\/(?:\\\/|\/(?:[^,;]|[igm][,;])|(?!\/|\s).)+\/[igm]?)|(?=[^\w]|)(function|var|let|const|console|log|setTimeout|this|for|do|try|dialog|if|else|new[\s]*)(?=[^\w]+)|(?:(?=[^\w]|^)*((?:\([^()]*\)\s*=\>|\w+\([^()]*\)|function\s*(?:[\w]*\([^()]+\)|)))|(\]|\[|\(|\))|(=>|=)|(?:(\.\w+(?=\()|(?:\w+\.|)data))|(\w+)\s*(?=\:)|(arguments))/mg;
     var ATTR = /(?:\{[^\{\}]+\}|(?:[\:!*][\w!\.-]+|for)="(?:(?!\"(?:\s|>|\]|\/>)).)+")/g;//[:if="state ? "吸烟" : "戒烟""]
     var COLORS = {
         DEF: 'def'
@@ -21,15 +21,15 @@ define(['dialog', 'flash'], function (dialog, flash) {
         '', //newline
         'comment',//COLORS.comment,
         'regexp',//COLORS.regexp,
-        'function',//COLORS.FUNCTION,
         'define',//COLORS.DEFINE,
+        'function',//COLORS.FUNCTION,
         'block',//COLORS.BLOCK,
         'block',//COLORS.DEF,,
         'attr',
         'attr',
         'attr'
     ];
-    exprots.show = function (element, func) {
+    exports.show = function (element, func) {
         // console.log(func)
         // console.log(this.on(func))
         var f = flash.run(element, {
@@ -61,17 +61,25 @@ define(['dialog', 'flash'], function (dialog, flash) {
         })
     }
     var PARTICULAR = /({|}|>|<|\(|\)|\.|\\|\+|\\n|\|)|(=)(>)/g
-    exprots.on = function (func, _export_simply) {
+    exports.element = function (func) {
+        var code = this.on(func), source;
+        code = dialog.query(code, true);
+        code.find('.str').each((k, v) => {
+            source = v.innerHTML;
+            source = source.replace(ATTR, (a) => {
+                return '.attrs{?}'.on(a).buildHtml();
+            })
+            v.innerHTML = source;
+        })
+        return code;
+    }
+    exports.on = function (func, _export_simply) {
         Count.count = 0;
         var colorString = dialog.isString(func) ? func : func.toString();
         /* 替换 [{key: value},....] */
         /* .replace(/\[(?:\{[^\]\[]+\},*)+\]/g, '[...]') */
         colorString = colorString;
-        //.replace(/\n{1,}|;{1,}/g, '\n')
-        // console.log(colorString);
-        // debugger;
-        // colorString.match(COLORR)
-        colorString = colorString.replace(COLORR, (source, ...list) => {
+        colorString = colorString.replace(/(?:(?:([;{]|\/\*)|((?:}|\*\/)(?!,|\)|\s*else\s+)))([^\n]))/g, '$1\n$2\n$3').replace(COLORR, (source, ...list) => {
             if (Count[source]) {
                 Count[source]();
                 /* if (source == '\\}') Count[source](); */
@@ -80,9 +88,9 @@ define(['dialog', 'flash'], function (dialog, flash) {
                 if (v) return true
             })
             var k = COLOR[index] || COLORS.DEF;
-            // console.log(source, k);
+            console.log(source, k, index);
             var format = source.replace(PARTICULAR, '$2\\$1$3')//.replace(/(\)|(<)(!)(DOCTYPE))/, '$2\\$3\\\\$1');
-            var mo = ['((text:span.{0}{{1}}))', '((+div+.newline.newline{2}))']
+            var mo = ['((text:span.{0}{{1}}))', '((+div+.newline.newline{2}))'];
             if (/^[2-3]$/.test(index)) {
                 if (index == 2) mo[1] = ''//mo.reverse();
                 // if(k == 'def' && format == '\n') mo[1] = '';
@@ -99,8 +107,30 @@ define(['dialog', 'flash'], function (dialog, flash) {
             return '((text:span.?{?}))\n'.on(k, format)//.buildHtml();
         })
         if (!_export_simply) colorString = colorString.replace(/text\:span/g, 'span');
-        console.log(colorString.buildHtml());
+        // console.log(colorString.buildHtml());
         return colorString
     }
-    return exprots;
+    return exports;
 })
+define('code', ['dialog', 'color'], function (dialog, color) {
+    'use strict';
+    var render = dialog.render('div.test-title.code[:class="code-color:state"]{{color}}', {
+        init(host) {
+            var ret = dialog.each(host.children, function (k, v) {
+                if (v.source == 'text') return dialog.picker(v, 'children.0.value=>v').v;
+            })
+            if (!ret) {
+                return;
+            }
+            var code = color.element(ret);
+            this.color = code;
+        },
+        data() {
+            return {
+                color: '',
+                state: false
+            }
+        }
+    });
+    return render;
+});

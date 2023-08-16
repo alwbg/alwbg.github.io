@@ -71,3 +71,11 @@ html .windows .times > .current-month:not(.forbidden):hover:before {
 .windows.ios .content .line {
   background-color: #fff;
 }
+
+.code {
+  background-color: #f7f7f7;
+  color: #f3f3f3;
+}
+.code .comment {
+  color: #cacaca;
+}

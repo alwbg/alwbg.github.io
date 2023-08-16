@@ -3098,6 +3098,15 @@ body {
     height: 80%;
   }
 }
+.code {
+  border-radius: 10px;
+  padding: 10px;
+  transition: 0.3s ease-in-out;
+}
+.code.code-color {
+  background: #282828;
+  color: #f3f3f3;
+}
 .code > .content > div {
   line-height: inherit !important;
   height: auto !important;
@@ -3117,7 +3126,10 @@ body {
 }
 .code .define {
   color: #9682cf;
-  margin-left: 4px;
+  margin-right: 4px;
+}
+.code .blockend {
+  margin-right: 3px;
 }
 .code .str {
   color: #bacc1e;
@@ -3127,6 +3139,19 @@ body {
 }
 .code .function {
   color: #e91e63;
+}
+.code .attr ~ .define {
+  margin-right: 0px;
+}
+.code .block + .define {
+  margin-left: 3px;
+  margin-right: 0px;
+}
+.code .define + .attr {
+  margin-left: -3px;
+}
+.code .newline ~ .attr {
+  margin-left: 0px;
 }
 .code .attr {
   color: #9c27b0;
@@ -3139,9 +3164,10 @@ body {
   margin: 3px;
   font-size: 10px;
   border: 3px solid rgba(255, 255, 255, 0.1764705882) !important;
+  line-height: 30px;
 }
 .code .comment {
-  color: #c4c4c4;
+  color: #888888;
 }
 .code .regexp {
   color: #00bcd4;
@@ -3204,6 +3230,10 @@ body {
 .notice-box > .content {
   position: relative;
   overflow: hidden;
+}
+
+.color-box {
+  border-radius: 20px;
 }
 
 @media (min-width: 700px) {
@@ -3295,9 +3325,4 @@ body {
 }
 .windows.simply .content > div {
   overflow: auto;
-}
-.windows .code-color {
-  background: #202020;
-  border-radius: 10px;
-  padding: 10px;
 }
