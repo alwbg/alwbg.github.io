@@ -3101,11 +3101,13 @@ body {
 .code {
   border-radius: 10px;
   padding: 10px;
-  transition: 0.3s ease-in-out;
 }
 .code.code-color {
   background: #282828;
   color: #f3f3f3;
+}
+.code:not(.content) {
+  transition: 0.3s ease-in-out;
 }
 .code > .content > div {
   line-height: inherit !important;
