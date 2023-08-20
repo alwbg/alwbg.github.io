@@ -79,7 +79,7 @@ define(['dialog', 'flash'], function (dialog, flash) {
         /* 替换 [{key: value},....] */
         /* .replace(/\[(?:\{[^\]\[]+\},*)+\]/g, '[...]') */
         colorString = colorString;
-        colorString = colorString.replace(/(?:(?:([;{]|\/\*)|((?:}|\*\/)(?!,|\)|\s*else\s+)))([^\n]))/g, '$1\n$2\n$3').replace(COLORR, (source, ...list) => {
+        colorString = colorString/* .replace(/(?:(?:([;{]|(?:^\s*(?!\/\/).*|)\/\*)|((?:}|\*\/)(?!,|\)|\s*else\s+)))([^\n]))/g, '$1\n$2\n$3') */.replace(COLORR, (source, ...list) => {
             if (Count[source]) {
                 Count[source]();
                 /* if (source == '\\}') Count[source](); */
@@ -88,7 +88,7 @@ define(['dialog', 'flash'], function (dialog, flash) {
                 if (v) return true
             })
             var k = COLOR[index] || COLORS.DEF;
-            console.log(source, k, index);
+            //console.log(source, k, index);
             var format = source.replace(PARTICULAR, '$2\\$1$3')//.replace(/(\)|(<)(!)(DOCTYPE))/, '$2\\$3\\\\$1');
             var mo = ['((text:span.{0}{{1}}))', '((+div+.newline.newline{2}))'];
             if (/^[2-3]$/.test(index)) {
