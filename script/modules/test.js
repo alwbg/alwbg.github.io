@@ -87,6 +87,16 @@ define('di', ['dialog'], function (dialog) {
     ))
 </div><div class="lines">
     ((
+        div.line>(
+            div.test-title{单选}+
+            +.test-title{点击列表切换获取属性值: [{triggerselectname}]}+
+            +Select[:selector="show?"square":"arc"" :data="selecttriggerlist" :current="triggerselectname" :trigger="id"]
+            +.test-title{获取值的方式已改变为: {triggerselectname}}+
+            +(.test-title{点击获取的值为:}>[style="font-size:15px;color:#2196f3;font-weight:bold;padding:7px"]{{selcurs}})
+            +Select[:selector="show?"square":"arc"" :data="select" :current="selcurs" :trigger="triggerselectname"]
+        )
+    ))
+    ((
         div.line[:onclick="click2"]>div.test-title{测试时间}
         +Clock[:mode="timemode"]
         +(Code.app[:state="!theme"]>text:span{
@@ -120,16 +130,6 @@ define('di', ['dialog'], function (dialog) {
                 Wea[:off="showtq" :data="watchwea" :value="searchcity" :showday="showday" :onclick="showinfo"]
     ))
     ((
-        div.line>(
-            div.test-title{单选}+
-            +.test-title{点击列表切换获取属性值: [{triggerselectname}]}+
-            +Select[:data="selecttriggerlist" :current="triggerselectname" :trigger="id"]
-            +.test-title{获取值的方式已改变为: {triggerselectname}}+
-            +(.test-title{点击获取的值为:}>[style="font-size:15px;color:#2196f3;font-weight:bold;padding:7px"]{{selcurs}})
-            +Select[:data="select" :current="selcurs" :trigger="triggerselectname"]
-        )
-    ))
-    ((
         div.line>div.test-title{测试输入框}
             +Input[:value="sele.data.id" :tips="请输入~"]
             +div.test-title{{inputpassword}}
@@ -157,7 +157,7 @@ define('di', ['dialog'], function (dialog) {
             div.test-title{{show?"多选" : "单选"}}+
             (div.inline-block>span[:class="show ? '_open': '_close'" class="i-state" :onclick="show"])+
             {({sele.data.id})}+
-            Select[:trigger="name" :multi="show" :data="select" :split="," :current="sele.data.id" :onclick="click1"]+
+            Select[:selector="show?"square":"arc"" :trigger="name" :multi="show" :data="select" :split="," :current="sele.data.id" :onclick="click1"]+
             input.input-style[:value="sele.data.id"]
         )
     ))
@@ -236,7 +236,7 @@ define('di', ['dialog'], function (dialog) {
                     { id: 3, name: '待确认', tips: '等待对方确认~' },
                     { id: 4, name: '已关闭', tips: '木已成舟~' },
                     { id: 5, name: '待关闭', tips: '不知道该写些啥~' },
-                    { id: 6, name: '待删除', tips: '无~' },
+                    // { id: 6, name: '待删除', tips: '无~' },
                     { id: 7, name: '删除', tips: '删除了~' }
                 ],
                 /* Select ************************ */
@@ -742,8 +742,8 @@ define('showlocalip', ['dialog', 'notice'], function (dialog, Notice) {
                 rtc.createDataChannel('', { reliable: false });
 
                 rtc.addEventListener('icecandidate', (evt) => {
-                    if (evt.candidate) {
-                        var address = evt.candidate.address;
+                    var address = dialog.picker(evt, 'candidate.address=>address').address
+                    if (address) {
                         if (!/^(localhost|127.0.0.1)$/.test(location.hostname) || address == location.hostname || !/^(?:\.?\d{1,3}){4}$/.test(address)) {
                             if (!count) return;
                             count = false;

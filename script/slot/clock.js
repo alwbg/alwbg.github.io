@@ -18,7 +18,7 @@ define(['dialog', 'time'], function (dialog, time) {
     (({时间{index%2?"开启":"关闭"}}))
     index%2=((span{{index%2}}))(index={index})
     ((+span[:class="isShow ? '_open': '_close'" class="i-state" :onclick="color"]+{{!isShow ? "查看":"隐藏"}该区域源码}))
-    ((div.color-box.date[:class="color-box-gray:state" :onclick="click" style="font-size:18px;height:30px;line-height:30px;text-align:center"]{- {date} -}))
+    ((div.color-box.date[:class="color-box-gray:state" :onclick="click" style="font-size:18px;height:30px;line-height:30px;text-align:center;margin-bottom:10px"]{- {date} -}))
     ((div.test-title.code.code-color[:if="isShow"]{{color}}))
  `, {
         data: () => {

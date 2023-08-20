@@ -49,7 +49,7 @@ define(['dialog', 'flash'], function (dialog, flash) {
                     'background-image': 'none'
                 })
                 this.room.addClass('dialog-confirm');
-                this.room.addClass('code')
+                this.room.addClass('code code-color')
             }
         });
         f.room.find('.str').each((k, v) => {

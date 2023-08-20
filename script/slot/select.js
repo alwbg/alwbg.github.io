@@ -11,6 +11,7 @@ define(['dialog'], function (dialog) {
     `, {
         data() {
             return {
+                selector: '',
                 // 数据
                 data: null,
                 // 是否多选
@@ -29,6 +30,9 @@ define(['dialog'], function (dialog) {
             // console.log('INIT::', this, ...arguments)
         },
         watch: {
+            selector(data) {
+                dialog.query(this._el).removeClass(this.selector).addClass(data);
+            },
             current(data, prev) {
                 // console.log('CURRENT::', ...arguments)
                 // if (data == prev) return;
@@ -53,6 +57,7 @@ define(['dialog'], function (dialog) {
                 var k = this.data[this.$idx][this.trigger];
                 if (data == false) {
                     delete this.selects[k];
+                    k = '';
                 } else {
                     if (this.selects[k]) return;
                     this.selects[k] = true;
@@ -139,7 +144,7 @@ define('link', ['dialog'], function (dialog) {
 define('input', ['dialog'], function (dialog) {
     'use strict';
     var Nil;
-    function chackvalue(host, data){
+    function chackvalue(host, data) {
         host.fly = !/^\s*$/.test(data);
     }
     var workers = dialog.render(`
@@ -301,7 +306,7 @@ define('tq', ['dialog'], (dialog) => {
         },
         watch: {
             value(city) {
-                if(this.off)
+                if (this.off)
                     trigger(this, city)
             },
             citycur(city) {
@@ -310,11 +315,11 @@ define('tq', ['dialog'], (dialog) => {
                 console.log(city)
             },
             showday(v) {
-                if(this.off)
+                if (this.off)
                     trigger(this, this.city, v)
             },
             off(v) {
-                if(v)
+                if (v)
                     trigger(this, this.city, v)
             }
         },
