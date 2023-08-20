@@ -478,7 +478,7 @@ define('di', ['dialog'], function (dialog) {
                     center: false,
                     last(...args) {
                         // require('test#clock', () => { });
-                        worker.data.theme = true
+                        // worker.data.theme = true
                         this.addClass('ios');
                         // this.addClass('ios simply');
                         dialog.query('.confirm-cancel.close[data-bind="c"]{×}', true).appendTo(this.room).click(() => {
