@@ -59,6 +59,21 @@ define('di', ['dialog'], function (dialog) {
     )+div.tips{(点击切换[{!!theme?"暗色":"亮色"}]样式~)}))
 ((br+br+br))
 <div class="lines">
+((
+    div.line>(
+        div.test-title{日历内嵌}+
+        +TT+(Code.app[:state="!theme"]>text:span{
+            /* -使用说明- */
+            // "SELF" 自定义
+            var render = dialog.render('(\\(SELF.selector)\\)', {
+                slot: {
+                    // 这里的element返回render对象
+                    SELF: require(\\'date').element()
+                }
+            })
+        })
+    )
+))
     ((div.line>div.test-title{时间插件测试项}+Timebox[:tips="请选择区间日期"]))
     ((
         div.line.clock>div.test-title[:onclick="showDate"]{测试下弹式日期}+{日期}+.tips{(点击测试层叠窗口~~)}+
@@ -207,7 +222,8 @@ define('di', ['dialog'], function (dialog) {
                 Select: require('./script/slot/select'),
                 Timebox: require('./script/slot/time'),
                 Clock: require('./script/slot/clock'),
-                Code: require('code')
+                Code: require('code'),
+                TT: require('./script/modules/test#date').element()
             },
             data: {
                 theme: !true,
@@ -539,7 +555,34 @@ define('di', ['dialog'], function (dialog) {
     }
 })
 define('date', ['dialog', 'time', 'script/slot/calendar', 'flash', 'notice'], function (dialog, times, calendar, flash, notice) {
+    var MODE = '((div.month-select>div.title>.prev-month[:onclick="prev"]{←}+div.current-date{{day}}+.next-month[:onclick="next"]{→}))((div.month-bg[data-txt="月"]{{day}}))<span :for="times" :class="title + "-month"" :onclick="trigger" :class="$1 = start && start.year==year && start.month==month && start.day==day, $2 = end && end.year==year && end.month==month && end.day==day, $1 == $2 && $1 == true || $2 ? "hover cur": $1 ? "cur":""" :class.beteen.hover="bh" :class.cur="select" :class.beteen="show && title!="title"" :class.hover="hover" :class.cur="cur==true" :onmouseover="hover" :onmouseout="out" :class.forbidden="forbidden" :data-lu="lu">{day}</span>'
     return {
+        element() { 
+            var TR = new times('YYYY-MM');
+            // console.log(TR, TR.days(1/* 星期一显示的偏移量 */, 0/* 0:中文, 1:英文, 2:日文 *//* 标记start所在年月,默认显示 */))
+            var days = TR.days(1/* 星期一显示的偏移量 */, 0/* 0:中文, 1:英文, 2:日文 *//* 标记start所在年月,默认显示 */);
+            function T(host, offset) {
+                var time = TR.dates(offset>>0);
+                host.times = TR.days(1/* 星期一显示的偏移量 */, 0/* 0:中文, 1:英文, 2:日文 *//* 标记start所在年月,默认显示 */, time);
+                host.day = TR.fire()
+            }
+            var data = {
+                selector: 'date-room times',
+                data: {
+                    times: days,
+                    day: TR.fire()
+                },
+                events: {
+                    prev() {
+                        T(this, -1);
+                    },
+                    next() {
+                        T(this, 1);
+                    }
+                }
+            };
+            return dialog.render(MODE, data)
+        },
         show(host) {
             var TR = new times('MM');
             // console.log(TR, TR.days(1/* 星期一显示的偏移量 */, 0/* 0:中文, 1:英文, 2:日文 *//* 标记start所在年月,默认显示 */))

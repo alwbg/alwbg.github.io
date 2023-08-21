@@ -2160,7 +2160,7 @@ html {
   margin: 5px;
   font-weight: bold;
   background: #2196f3;
-  color: #fff;
+  color: #053861;
   border: 1px solid rgba(255, 255, 255, 0.168627451);
   vertical-align: middle;
 }
@@ -2173,12 +2173,12 @@ html {
 
 .color-box-red {
   background: #d43241;
-  color: #fff;
+  color: #6e0913;
 }
 
 .color-box-green {
   background: #8bc34a;
-  color: #fff;
+  color: #263f0a;
 }
 
 .color-box-gray {
@@ -3364,4 +3364,44 @@ label.radio {
 .theme._close.i-state::after {
   content: "☾";
   color: #bdbec2;
+}
+
+.windows.ios .line .date-slot {
+  background-color: #1b1b1b;
+}
+.windows.ios .line {
+  background-color: #1c1e1f;
+}
+
+.code.code-color {
+  background-color: #131313;
+}
+
+div.windows.ios div.content {
+  background-color: #202122;
+}
+div.windows.ios div.content .line {
+  border: 0px;
+}
+.date-room {
+  width: auto;
+  border: 0;
+  background-color: transparent;
+}
+.date-room > span {
+  width: calc(14.2857142857% - 7px) !important;
+}
+.date-room .title-month {
+  background-color: transparent;
+}
+.date-room .month-bg {
+  font-size: 60px;
+  position: absolute;
+  z-index: -1;
+  color: #252525;
+  right: 0;
+  bottom: 0;
+  font-family: fantasy;
+  height: 100px;
+  line-height: 150px;
 }
