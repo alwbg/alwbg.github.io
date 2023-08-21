@@ -52,7 +52,7 @@ define('di', ['dialog'], function (dialog) {
     try {
         var modeString =
             `
-((span[:class="theme ? '_open': '_close'" class="i-state" :onclick="theme"]))
+((span.theme[:class="theme ? '_open': '_close'" class="i-state" :onclick="theme"]))
 ((
     (
         span.color-box[:class=" theme ? 'color-box-green' : ''"]{{!theme?"暗色":"亮色"}}

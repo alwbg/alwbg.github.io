@@ -3355,3 +3355,13 @@ label.radio {
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
 }
+
+.theme::after {
+  text-align: center;
+  line-height: 16px;
+  color: black;
+}
+.theme._close.i-state::after {
+  content: "☾";
+  color: #bdbec2;
+}
