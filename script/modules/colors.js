@@ -43,7 +43,6 @@ define(['dialog', 'flash'], function (dialog, flash) {
 
             },
             last() {
-                // this.removeClass('fade')
                 this.room.css({
                     // width: 500,
                     'background-image': 'none'
@@ -78,33 +77,23 @@ define(['dialog', 'flash'], function (dialog, flash) {
         var colorString = dialog.isString(func) ? func : func.toString();
         /* 替换 [{key: value},....] */
         /* .replace(/\[(?:\{[^\]\[]+\},*)+\]/g, '[...]') */
-        colorString = colorString;
-        colorString = colorString/* .replace(/(?:(?:([;{]|(?:^\s*(?!\/\/).*|)\/\*)|((?:}|\*\/)(?!,|\)|\s*else\s+)))([^\n]))/g, '$1\n$2\n$3') */.replace(COLORR, (source, ...list) => {
+        colorString = colorString;/* .replace(/(?:(?:([;{]|(?:^\s*(?!\/\/).*|)\/\*)|((?:}|\*\/)(?!,|\)|\s*else\s+)))([^\n]))/g, '$1\n$2\n$3') */
+        colorString = colorString.replace(COLORR, (source, ...list) => {
             if (Count[source]) {
                 Count[source]();
-                /* if (source == '\\}') Count[source](); */
             }
             var index = list.findIndex((v, i) => {
                 if (v) return true
             })
             var k = COLOR[index] || COLORS.DEF;
             //console.log(source, k, index);
-            var format = source.replace(PARTICULAR, '$2\\$1$3')//.replace(/(\)|(<)(!)(DOCTYPE))/, '$2\\$3\\\\$1');
+            var format = source.replace(PARTICULAR, '$2\\$1$3');
             var mo = ['((text:span.{0}{{1}}))', '((+div+.newline.newline{2}))'];
             if (/^[2-3]$/.test(index)) {
-                if (index == 2) mo[1] = ''//mo.reverse();
-                // if(k == 'def' && format == '\n') mo[1] = '';
-                return mo.join('\n').on(k, format, Count.count)//.buildHtml()
+                if (index == 2) mo.length = 1;
+                return mo.join('').on(k, format, Count.count)//.buildHtml()
             }
-            /* l.push(k); */
-            // if (index === 0/* ==0 @see COLORR正则 */ && ATTR.test(source)) {
-            //     // source = source.replace(/\<(style)(?:(?!\<\1)[\w\W])+\<\/\1\>/g, '<$1>...</$1>');
-            //     source = '((text:code>{?}))'.on(source)/* .buildHtml() *//* .replace(ATTR, (a) => {
-            //         return '.attrs{?}'.on(a).buildHtml();
-            //     }) */
-            // }
-            // console.log(k, source);
-            return '((text:span.?{?}))\n'.on(k, format)//.buildHtml();
+            return '((text:span.?{?}))'.on(k, format);
         })
         if (!_export_simply) colorString = colorString.replace(/text\:span/g, 'span');
         // console.log(colorString.buildHtml());
