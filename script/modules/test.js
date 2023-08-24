@@ -477,6 +477,7 @@ define('di', ['dialog'], function (dialog) {
                 },
                 theme() {
                     this.theme = !this.theme;
+                    dialog.query('meta[name="theme-color"]').attr('content', this.theme ? '#f9f9f9' : '#202122')
                 }
             }
         });
@@ -566,7 +567,16 @@ define('date', ['dialog', 'time', 'script/slot/calendar', 'flash', 'notice'], fu
                 host.times = TR.days(1/* 星期一显示的偏移量 */, 0/* 0:中文, 1:英文, 2:日文 *//* 标记start所在年月,默认显示 */, time);
                 host.day = TR.fire()
             }
+            // dialog.query(document.documentElement).css('zoom', 1.3)
             var data = {
+                init() {
+                    console.log(this._el, ...arguments)
+
+                    // dialog.query(this._el).on('click', '.prev-month|.current-month|next-month', (e) => {
+                    //     console.log(e.target);
+                    //     dialog.notice('?----?'.on(dialog.html(e.target), dialog.query(document.documentElement).css('zoom')), 2, {position: 'left', target: e.target})
+                    // })
+                },
                 selector: 'date-room times',
                 data: {
                     times: days,
@@ -581,7 +591,7 @@ define('date', ['dialog', 'time', 'script/slot/calendar', 'flash', 'notice'], fu
                     }
                 }
             };
-            return dialog.render(MODE, data)
+            return dialog.render(MODE, data);
         },
         show(host) {
             var TR = new times('MM');
