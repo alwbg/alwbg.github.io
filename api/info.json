@@ -1,0 +1,23 @@
+[
+    {
+        "name": "照片1",
+        "desc": "dialog.reader模块的说明",
+        "image": "https://alwbg.github.io/static/render.code.1.jpg",
+        "date": "2022-11-10 20:10:10",
+        "rate": "3200"
+    },
+    {
+        "name": "照片2",
+        "desc": "dialog.readerde动态绑定",
+        "image": "https://alwbg.github.io/static/render.code.2.jpg",
+        "date": "2022-10-10 10:10:10",
+        "rate": "1202"
+    },
+    {
+        "name": "照片3",
+        "desc": "dialog实例",
+        "image": "https://alwbg.github.io/static/1.png",
+        "date": "2022-10-10 17:10:10",
+        "rate": "201"
+    }
+]
